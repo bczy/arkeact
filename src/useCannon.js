@@ -1,6 +1,6 @@
-import * as CANNON from "cannon";
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { useFrame } from "react-three-fiber";
+import * as CANNON from 'cannon';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { useFrame } from 'react-three-fiber';
 
 // Cannon-world context provider
 const context = React.createContext();
@@ -10,7 +10,6 @@ export function Provider({ children }) {
   useEffect(() => {
     world.broadphase = new CANNON.NaiveBroadphase();
     world.solver.iterations = 10;
-    world.gravity.set(0, 0, -25);
   }, [world]);
 
   // Run world stepper every frame
@@ -39,7 +38,6 @@ export function useCannon({ ...props }, fn, deps = []) {
     if (ref.current) {
       // Transport cannon physics into the referenced threejs object
       ref.current.position.copy(body.position);
-      ref.current.quaternion.copy(body.quaternion);
     }
   });
 

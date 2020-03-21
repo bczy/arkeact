@@ -1,56 +1,83 @@
-/** POC for three-fiber and cannon (a 3d physics lib)
- *
- *  useCannon is a custom hook that lets you link a physics body to a threejs
- *  mesh with zero effort. It will automatically update the mesh with the
- *  correct positioning.
- *
- *  When components with useCannon mount they are known to cannons world, when
- *  they unmount, they'll remove themselves from physics processing.
- *
- *  Check out three-fiber here: https://github.com/drcmda/react-three-fiber
- */
+import * as THREE from 'three';
+import * as CANNON from 'cannon';
+import ReactDOM from 'react-dom';
+import React, { useCallback } from 'react';
+import { Canvas, useThree, useFrame } from 'react-three-fiber';
+import { useCannon, Provider } from './useCannon';
+import './styles.css';
 
-import * as THREE from "three";
-import * as CANNON from "cannon";
-import ReactDOM from "react-dom";
-import React, { useEffect, useState } from "react";
-import { Canvas } from "react-three-fiber";
-import { useCannon, Provider } from "./useCannon";
-import "./styles.css";
+const brickTypes = {
+  red: {
+    color: '#FF0000',
+    bonusProbability: 0,
+    strength: 1
+  },
+  green: {
+    color: '#00FF00',
+    bonusProbability: 0,
+    strength: 1
+  },
+  blue: {
+    color: '#0000FF',
+    bonusProbability: 0,
+    strength: 1
+  },
+  grey: {
+    color: '#CCCCCC',
+    bonusProbability: 0,
+    strength: 100000
+  }
+};
 
-function Plane({ position }) {
-  // Register plane as a physics body with zero mass
-  const ref = useCannon({ mass: 0 }, body => {
-    body.addShape(new CANNON.Plane());
-    body.position.set(...position);
+function Paddle() {
+  // Register box as a physics body with mass
+  const ref = useCannon({ mass: 1 }, body => {
+    body.addShape(new CANNON.Box(new CANNON.Vec3(2, 2, 0.5)));
+    body.position.set(0, 0, 10);
+  });
+
+  const { mouse } = useThree();
+  useFrame(() => {
+    ref.current.position.x = 12.5 * mouse.x;
+    ref.current.position.y = 12.5 * mouse.y;
+    ref.current.position.z = 5;
   });
   return (
-    <mesh ref={ref} receiveShadow>
-      <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
-      <meshStandardMaterial attach="material" color="#171717" />
+    <mesh ref={ref} castShadow receiveShadow>
+      <boxGeometry attach="geometry" args={[2, 2, 0.5]} />
+      <meshBasicMaterial attach="material" wireframe={true} color="#FF0000" />
     </mesh>
   );
 }
 
-function Box({ position }) {
+function Box({ position, type, size = [2, 2, 2] }) {
   // Register box as a physics body with mass
-  const ref = useCannon({ mass: 100000 }, body => {
+  const ref = useCannon({ mass: 1 }, body => {
     body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)));
     body.position.set(...position);
   });
   return (
     <mesh ref={ref} castShadow receiveShadow>
-      <boxGeometry attach="geometry" args={[2, 2, 2]} />
-      <meshStandardMaterial attach="material" roughness={0.5} color="#575757" />
+      <boxGeometry attach="geometry" args={size} />
+      <meshStandardMaterial attach="material" roughness={0.5} color={brickTypes[type].color} />
+    </mesh>
+  );
+}
+function Sphere({ position }) {
+  // Register box as a physics body with mass
+  const ref = useCannon({ mass: 1 }, body => {
+    body.addShape(new CANNON.Sphere(1));
+    body.position.set(...position);
+  });
+  return (
+    <mesh ref={ref} castShadow receiveShadow>
+      <sphereGeometry attach="geometry" args={[1, 15, 15]} />
+      <meshStandardMaterial attach="material" roughness={0.5} color="#FFFFFF" />
     </mesh>
   );
 }
 
 export default function App() {
-  const [showPlane, set] = useState(false);
-  // When React removes (unmounts) the upper plane after 5 sec, objects should drop ...
-  // This may seem like magic, but as the plane unmounts it removes itself from cannon and that's that
-  useEffect(() => void setTimeout(() => set(false), 5000), []);
   return (
     <div className="main">
       <Canvas
@@ -59,23 +86,51 @@ export default function App() {
         onCreated={({ gl }) => {
           gl.toneMapping = THREE.ACESFilmicToneMapping;
           gl.outputEncoding = THREE.sRGBEncoding;
-        }}>
-        <pointLight position={[-10, -10, 30]} intensity={0.25} />
-        <spotLight intensity={0.3} position={[30, 30, 50]} angle={0.2} penumbra={1} castShadow />
+        }}
+      >
+        <pointLight position={[-0, -0, 30]} intensity={0.25} />
+        <spotLight intensity={0.3} position={[0, 0, -20]} angle={0.2} penumbra={1} castShadow />
         <Provider>
-          <Plane position={[0, 0, -10]} />
-          {showPlane && <Plane position={[0, 0, 0]} />}
-          <Box position={[1, 0, 1]} />
-          <Box position={[2, 1, 5]} />
-          <Box position={[0, 0, 6]} />
-          <Box position={[-1, 1, 8]} />
-          <Box position={[-2, 2, 13]} />
-          <Box position={[2, -1, 13]} />
-          <Box position={[0.5, 1.0, 20]} />
+          <Box position={[-12.5, 0, 0]} type="grey" size={[1, 25, 130]} />
+          <Box position={[12.5, 0, 0]} type="grey" size={[1, 25, 130]} />
+          <Box position={[0, 12.5, 0]} type="grey" size={[25, 1, 130]} />
+          <Box position={[0, -12.5, 0]} type="grey" size={[25, 1, 130]} />
+          <Box position={[0, 0, -75]} type="grey" size={[25, 25, 1]} />
+          <Box position={[-10, 0, -50]} type="red" />
+          <Box position={[-7.5, 0, -50]} type="green" />
+          <Box position={[-5, 0, -50]} type="red" />
+          <Box position={[-2.5, 0, -50]} type="blue" />
+          <Box position={[0, 0, -50]} type="green" />
+          <Box position={[2.5, 0, -50]} type="blue" />
+          <Box position={[5, 0, -50]} type="red" />
+          <Box position={[7.5, 0, -50]} type="green" />
+          <Box position={[10, 0, -50]} type="red" />
+
+          <Box position={[-10, 2.5, -50]} type="red" />
+          <Box position={[-7.5, 2.5, -50]} type="green" />
+          <Box position={[-5, 2.5, -50]} type="red" />
+          <Box position={[-2.5, 2.5, -50]} type="blue" />
+          <Box position={[0, 2.5, -50]} type="green" />
+          <Box position={[2.5, 2.5, -50]} type="blue" />
+          <Box position={[5, 2.5, -50]} type="red" />
+          <Box position={[7.5, 2.5, -50]} type="green" />
+          <Box position={[10, 2.5, -50]} type="red" />
+
+          <Box position={[-10, -2.5, -50]} type="red" />
+          <Box position={[-7.5, -2.5, -50]} type="green" />
+          <Box position={[-5, -2.5, -50]} type="red" />
+          <Box position={[-2.5, -2.5, -50]} type="blue" />
+          <Box position={[0, -2.5, -50]} type="green" />
+          <Box position={[2.5, -2.5, -50]} type="blue" />
+          <Box position={[5, -2.5, -50]} type="red" />
+          <Box position={[7.5, -2.5, -50]} type="green" />
+          <Box position={[10, -2.5, -50]} type="red" />
+          <Sphere position={[0, 0, 4]} />
+          <Paddle />
         </Provider>
       </Canvas>
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));
