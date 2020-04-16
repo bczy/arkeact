@@ -16,7 +16,6 @@ export const [useStore] = create(set => ({
   inGame: false,
   api: {
     pong(velocity) {
-      console.log('touch paddle', velocity);
       if (velocity > 4) set(state => ({ count: state.count + 1 }));
     },
     reset: welcome => set(state => ({ welcome, count: welcome ? state.count : 0 })),
@@ -87,7 +86,7 @@ export default function App() {
           <Walls />
           <Tiles />
           <Paddle />
-          <Ball position={[0, 10, 0]} />
+          <Ball position={[0, 10, -0.5]} />
         </Physics>
       </Canvas>
     </div>
