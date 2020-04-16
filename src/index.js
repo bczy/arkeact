@@ -1,133 +1,94 @@
-import * as THREE from 'three';
-import * as CANNON from 'cannon';
-import ReactDOM from 'react-dom';
 import React, { useCallback } from 'react';
-import { Canvas, useThree, useFrame } from 'react-three-fiber';
-import { useCannon, Provider } from './useCannon';
+import ReactDOM from 'react-dom';
+
+import { Canvas, useFrame } from 'react-three-fiber';
+import { Physics, useSphere, useBox } from 'use-cannon';
+
+import create from 'zustand';
+
+import { Tiles } from './Tiles';
+import { Walls } from './Walls';
+
 import './styles.css';
 
-const brickTypes = {
-  red: {
-    color: '#FF0000',
-    bonusProbability: 0,
-    strength: 1
-  },
-  green: {
-    color: '#00FF00',
-    bonusProbability: 0,
-    strength: 1
-  },
-  blue: {
-    color: '#0000FF',
-    bonusProbability: 0,
-    strength: 1
-  },
-  grey: {
-    color: '#CCCCCC',
-    bonusProbability: 0,
-    strength: 100000
+export const [useStore] = create(set => ({
+  count: 0,
+  inGame: false,
+  api: {
+    pong(velocity) {
+      console.log('touch paddle', velocity);
+      if (velocity > 4) set(state => ({ count: state.count + 1 }));
+    },
+    reset: welcome => set(state => ({ welcome, count: welcome ? state.count : 0 })),
+    touch() {
+      console.log('touch');
+    }
   }
-};
+}));
+
+function Ball({ position }) {
+  // Make the ball a physics object with a low mass
+  const [ref] = useSphere(() => ({
+    mass: 1,
+    args: 0.5,
+    position
+  }));
+  return (
+    <mesh castShadow ref={ref}>
+      <sphereBufferGeometry attach="geometry" args={[0.5, 64, 64]} />
+      <meshStandardMaterial attach="material" color="#FFFFFF" />
+    </mesh>
+  );
+}
 
 function Paddle() {
   // Register box as a physics body with mass
-  const ref = useCannon({ mass: 1 }, body => {
-    body.addShape(new CANNON.Box(new CANNON.Vec3(2, 2, 0.5)));
-    body.position.set(0, 0, 10);
-  });
-
-  const { mouse } = useThree();
-  useFrame(() => {
-    ref.current.position.x = 12.5 * mouse.x;
-    ref.current.position.y = 12.5 * mouse.y;
-    ref.current.position.z = 5;
+  // Make it a physical object that adheres to gravitation and impact
+  const { pong } = useStore(state => state.api);
+  const [ref, api] = useBox(() => ({
+    type: 'Kinematic',
+    args: [1, 1, 0.25],
+    onCollide: e => pong(e.contact.impactVelocity)
+  }));
+  useFrame(state => {
+    // The paddle is kinematic (not subject to gravitation), we move it with the api returned by useBox
+    api.position.set(state.mouse.x * 10, state.mouse.y * 10, 0);
   });
   return (
-    <mesh ref={ref} castShadow receiveShadow>
+    <mesh ref={ref}>
       <boxGeometry attach="geometry" args={[2, 2, 0.5]} />
       <meshBasicMaterial attach="material" wireframe={true} color="#FF0000" />
     </mesh>
   );
 }
 
-function Box({ position, type, size = [2, 2, 2] }) {
-  // Register box as a physics body with mass
-  const ref = useCannon({ mass: 1 }, body => {
-    body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)));
-    body.position.set(...position);
-  });
-  return (
-    <mesh ref={ref} castShadow receiveShadow>
-      <boxGeometry attach="geometry" args={size} />
-      <meshStandardMaterial attach="material" roughness={0.5} color={brickTypes[type].color} />
-    </mesh>
-  );
-}
-function Sphere({ position }) {
-  // Register box as a physics body with mass
-  const ref = useCannon({ mass: 1 }, body => {
-    body.addShape(new CANNON.Sphere(1));
-    body.position.set(...position);
-  });
-  return (
-    <mesh ref={ref} castShadow receiveShadow>
-      <sphereGeometry attach="geometry" args={[1, 15, 15]} />
-      <meshStandardMaterial attach="material" roughness={0.5} color="#FFFFFF" />
-    </mesh>
-  );
-}
-
 export default function App() {
+  const inGame = useStore(state => state.inGame);
+  const onClick = useCallback(() => inGame, [inGame]);
   return (
     <div className="main">
-      <Canvas
-        shadowMap
-        camera={{ position: [0, 0, 15] }}
-        onCreated={({ gl }) => {
-          gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.outputEncoding = THREE.sRGBEncoding;
-        }}
-      >
-        <pointLight position={[-0, -0, 30]} intensity={0.25} />
-        <spotLight intensity={0.3} position={[0, 0, -20]} angle={0.2} penumbra={1} castShadow />
-        <Provider>
-          <Box position={[-12.5, 0, 0]} type="grey" size={[1, 25, 130]} />
-          <Box position={[12.5, 0, 0]} type="grey" size={[1, 25, 130]} />
-          <Box position={[0, 12.5, 0]} type="grey" size={[25, 1, 130]} />
-          <Box position={[0, -12.5, 0]} type="grey" size={[25, 1, 130]} />
-          <Box position={[0, 0, -75]} type="grey" size={[25, 25, 1]} />
-          <Box position={[-10, 0, -50]} type="red" />
-          <Box position={[-7.5, 0, -50]} type="green" />
-          <Box position={[-5, 0, -50]} type="red" />
-          <Box position={[-2.5, 0, -50]} type="blue" />
-          <Box position={[0, 0, -50]} type="green" />
-          <Box position={[2.5, 0, -50]} type="blue" />
-          <Box position={[5, 0, -50]} type="red" />
-          <Box position={[7.5, 0, -50]} type="green" />
-          <Box position={[10, 0, -50]} type="red" />
-
-          <Box position={[-10, 2.5, -50]} type="red" />
-          <Box position={[-7.5, 2.5, -50]} type="green" />
-          <Box position={[-5, 2.5, -50]} type="red" />
-          <Box position={[-2.5, 2.5, -50]} type="blue" />
-          <Box position={[0, 2.5, -50]} type="green" />
-          <Box position={[2.5, 2.5, -50]} type="blue" />
-          <Box position={[5, 2.5, -50]} type="red" />
-          <Box position={[7.5, 2.5, -50]} type="green" />
-          <Box position={[10, 2.5, -50]} type="red" />
-
-          <Box position={[-10, -2.5, -50]} type="red" />
-          <Box position={[-7.5, -2.5, -50]} type="green" />
-          <Box position={[-5, -2.5, -50]} type="red" />
-          <Box position={[-2.5, -2.5, -50]} type="blue" />
-          <Box position={[0, -2.5, -50]} type="green" />
-          <Box position={[2.5, -2.5, -50]} type="blue" />
-          <Box position={[5, -2.5, -50]} type="red" />
-          <Box position={[7.5, -2.5, -50]} type="green" />
-          <Box position={[10, -2.5, -50]} type="red" />
-          <Sphere position={[0, 0, 4]} />
+      <Canvas shadowMap sRGB camera={{ position: [0, 0, 15] }} onClick={onClick}>
+        <ambientLight intensity={0.001} />
+        <pointLight position={[0, 0, 10]} intensity={0.5} />
+        <Physics
+          iterations={20}
+          tolerance={0.0001}
+          defaultContactMaterial={{
+            friction: 0.9,
+            restitution: 0.7,
+            contactEquationStiffness: 1e7,
+            contactEquationRelaxation: 1,
+            frictionEquationStiffness: 1e7,
+            frictionEquationRelaxation: 2
+          }}
+          gravity={[0, 0, 0]}
+          allowSleep={false}
+        >
+          <Walls />
+          <Tiles />
           <Paddle />
-        </Provider>
+          <Ball position={[0, 10, 0]} />
+        </Physics>
       </Canvas>
     </div>
   );
