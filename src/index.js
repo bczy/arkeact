@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Canvas, useFrame } from 'react-three-fiber';
 import { Physics, useBox } from 'use-cannon';
 
-import { useStore } from './store';
+import { useStore } from './data/store';
 
 import { Tiles } from './components/game/Tiles';
 import { Walls } from './components/game/Walls';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from './Box.js';
-import * as BRICKS from '../../gameBalanceData.json';
+import * as BRICKS from '../../data/gameBalanceData.json';
 
 export function Tiles() {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useBox } from 'use-cannon';
 
-import { useStore } from '../../store';
+import { useStore } from '../../data/store';
 
 export function Box({ position, size = [2, 2, 2], userData = { type: 'tile', color: 'blue' } }) {
   // Register box as a physics body with mass
