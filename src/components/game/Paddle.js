@@ -8,6 +8,7 @@ export function Paddle() {
   // Make it a physical object that adheres to gravitation and impact
   const [ref, api] = useBox(() => ({
     type: 'Kinematic',
+    mass: 1,
     args: [1, 1, 0.25],
   }));
   useFrame((state) => {

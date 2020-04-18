@@ -8,7 +8,7 @@ export function Ball({ position }) {
     position,
   }));
   return (
-    <mesh castShadow ref={ref}>
+    <mesh castShadow receiveShadow ref={ref}>
       <sphereBufferGeometry attach="geometry" args={[0.5, 64, 64]} />
       <meshStandardMaterial attach="material" color="#FFFFFF" />
     </mesh>
