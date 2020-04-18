@@ -4,7 +4,7 @@ import { useSphere } from 'use-cannon';
 export function Ball({ position }) {
   const [ref] = useSphere(() => ({
     mass: 1,
-    args: 0.5,
+    args: 1,
     position,
   }));
   return (

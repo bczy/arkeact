@@ -1,15 +1,11 @@
 import React from 'react';
 
 import { useFrame } from 'react-three-fiber';
-import { useBox } from 'use-cannon';
+import { useSphere } from 'use-cannon';
 
 export function Paddle() {
-  // Register box as a physics body with mass
-  // Make it a physical object that adheres to gravitation and impact
-  const [ref, api] = useBox(() => ({
-    type: 'Kinematic',
-    mass: 1,
-    args: [1, 1, 0.25],
+  const [ref, api] = useSphere(() => ({
+    args: 1,
   }));
   useFrame((state) => {
     // The paddle is kinematic (not subject to gravitation), we move it with the api returned by useBox

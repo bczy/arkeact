@@ -17,7 +17,7 @@ export function Game() {
         <Canvas
           shadowMap
           sRGB
-          camera={{ position: [0, 0, 10] }}
+          camera={{ position: [0, 0, 13] }}
           onCreated={({ gl }) => {
             gl.toneMapping = THREE.ACESFilmicToneMapping;
             gl.outputEncoding = THREE.sRGBEncoding;
