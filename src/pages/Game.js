@@ -13,7 +13,7 @@ import { Paddle } from '../components/game/Paddle';
 import { useStore } from '../data/store';
 
 export function Game() {
-  const { ballLaunched, launchBall } = useStore((state) => state);
+  const { ballLaunched, launchBall, balls, score } = useStore((state) => state);
   function handleClick() {
     if (!ballLaunched) {
       launchBall();
@@ -66,8 +66,8 @@ export function Game() {
         </Canvas>
       </div>
       <div id="hudContainer">
-        <p>Score: TODO</p>
-        <p>Balls: TODO</p>
+        <p>Score: {score}</p>
+        <p>Balls: {balls}</p>
       </div>
     </>
   );

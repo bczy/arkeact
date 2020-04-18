@@ -2,7 +2,7 @@ import create from 'zustand';
 
 export const [useStore] = create((set) => ({
   score: 0,
-  balls: 0,
+  balls: 3,
   inGame: false,
   ballLaunched: false,
   launchBall: () => {
@@ -14,6 +14,10 @@ export const [useStore] = create((set) => ({
     set(() => ({
       inGame: true,
     }));
+  },
+  addScore: () => {
+    console.log('muf');
+    set((state) => ({ score: state.score + 1 }));
   },
   api: {
     collide(velocity, e) {
