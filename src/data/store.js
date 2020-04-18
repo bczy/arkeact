@@ -2,6 +2,8 @@ import create from 'zustand';
 export const [useStore] = create((set) => ({
   count: 0,
   inGame: false,
+  getGameState: (state) => state.inGame,
+  launchGame: () => set((state) => (state.inGame = true)),
   api: {
     collide(velocity, e) {
       console.log(e, e.contact.impactVelocity, e.contact);

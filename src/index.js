@@ -32,29 +32,40 @@ function Paddle() {
 }
 
 export default function App() {
-  const inGame = useStore((state) => state.inGame);
-  const onClick = useCallback(() => inGame, [inGame]);
+  const { launchGame, inGame } = useStore();
+  console.log(launchGame, inGame);
+  const onClick = useCallback(
+    (set) => {
+      console.log(inGame);
+      if (!inGame) launchGame();
+    },
+    [inGame, launchGame]
+  );
   return (
-    <div className="main">
-      <Canvas shadowMap sRGB camera={{ position: [0, 0, 15] }} onClick={onClick}>
-        <ambientLight intensity={0.001} />
-        <pointLight position={[0, 0, 10]} intensity={0.5} />
-        <Physics
-          iterations={20}
-          tolerance={0.0001}
-          defaultContactMaterial={{
-            friction: 0,
-            restitution: 1.1,
-          }}
-          gravity={[0, 0, 0]}
-          allowSleep={false}
-        >
-          <Walls />
-          <Tiles />
-          <Paddle />
-          <Ball position={[0, 10, -0.5]} />
-        </Physics>
-      </Canvas>
+    <div className="main" onClick={onClick}>
+      {inGame ? (
+        <Canvas shadowMap sRGB camera={{ position: [0, 0, 15] }}>
+          <ambientLight intensity={0.001} />
+          <pointLight position={[0, 0, 10]} intensity={0.5} />
+          <Physics
+            iterations={20}
+            tolerance={0.0001}
+            defaultContactMaterial={{
+              friction: 0,
+              restitution: 1.1,
+            }}
+            gravity={[0, 0, 0]}
+            allowSleep={false}
+          >
+            <Walls />
+            <Tiles />
+            <Paddle />
+            <Ball position={[0, 10, -0.5]} />
+          </Physics>
+        </Canvas>
+      ) : (
+        <div>Click to start</div>
+      )}
     </div>
   );
 }
