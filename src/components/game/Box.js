@@ -7,7 +7,7 @@ import { useStore } from '../../data/store';
 export function Box({ position, size = [2, 2, 2], userData }, receiveShadow) {
   // Register box as a physics body with mass
   // Make it a physical object that adheres to gravitation and impact
-  const { api, addScore } = useStore((state) => state);
+  const { addScore, retrieveBall } = useStore((state) => state);
 
   const [ref] = useBox(() => ({
     type: 'Kinematic',
@@ -18,9 +18,11 @@ export function Box({ position, size = [2, 2, 2], userData }, receiveShadow) {
       if (e.body.userData.strength) {
         e.body.userData.strength--;
         addScore();
+      } else if (e.body.userData.isRoof) {
+        retrieveBall();
       }
       console.log(e.body.userData.strength);
-      api.collide(e.contact.impactVelocity, e);
+      //physicApi.collide(e.contact.impactVelocity, e);
     },
   }));
   return (

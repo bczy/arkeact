@@ -27,7 +27,7 @@
         "color": "#FF00FF"
       },
       "ground": { "color": "#FF00FF" },
-      "roof": { "color": "#FF00FF" }
+      "roof": { "color": "#FF00FF", "isRoof": true }
     }
   }
 }

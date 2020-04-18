@@ -16,10 +16,12 @@ export const [useStore] = create((set) => ({
     }));
   },
   addScore: () => {
-    console.log('muf');
     set((state) => ({ score: state.score + 1 }));
   },
-  api: {
+  retrieveBall: () => {
+    set((state) => ({ balls: state.balls - 1, ballLaunched: false }));
+  },
+  physicApi: {
     collide(velocity, e) {
       console.log(e, e.contact.impactVelocity, e.contact);
       if (velocity > 4) set((state) => ({ count: state.count + 1 }));
