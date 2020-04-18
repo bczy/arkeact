@@ -1,35 +1,17 @@
 import React, { useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
-import { Canvas, useFrame } from 'react-three-fiber';
-import { Physics, useBox } from 'use-cannon';
+import { Canvas } from 'react-three-fiber';
+import { Physics } from 'use-cannon';
 
 import { useStore } from './data/store';
 
 import { Tiles } from './components/game/Tiles';
 import { Walls } from './components/game/Walls';
 import { Ball } from './components/game/Ball';
+import { Paddle } from './components/game/Paddle';
 
 import './styles.css';
-
-function Paddle() {
-  // Register box as a physics body with mass
-  // Make it a physical object that adheres to gravitation and impact
-  const [ref, api] = useBox(() => ({
-    type: 'Kinematic',
-    args: [1, 1, 0.25],
-  }));
-  useFrame((state) => {
-    // The paddle is kinematic (not subject to gravitation), we move it with the api returned by useBox
-    api.position.set(state.mouse.x * 10, state.mouse.y * 10, 0);
-  });
-  return (
-    <mesh ref={ref}>
-      <boxGeometry attach="geometry" args={[2, 2, 0.5]} />
-      <meshBasicMaterial attach="material" wireframe={true} color="#FF0000" />
-    </mesh>
-  );
-}
 
 export default function App() {
   const { launchGame, inGame } = useStore();
