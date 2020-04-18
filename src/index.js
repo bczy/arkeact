@@ -6,9 +6,9 @@ import { Physics, useBox } from 'use-cannon';
 
 import { useStore } from './store';
 
-import { Tiles } from './Tiles';
-import { Walls } from './Walls';
-import { Ball } from './Ball';
+import { Tiles } from './components/game/Tiles';
+import { Walls } from './components/game/Walls';
+import { Ball } from './components/game/Ball';
 
 import './styles.css';
 
