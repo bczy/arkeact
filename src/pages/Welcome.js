@@ -1,5 +1,5 @@
 import React from 'react';
 
 export function Welcome() {
-  return <div>Click to start</div>;
+  return <div style={{ margin: 'auto' }}>Click to start</div>;
 }
