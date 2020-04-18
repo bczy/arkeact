@@ -3,13 +3,13 @@ import { useSphere } from 'use-cannon';
 import { useFrame } from 'react-three-fiber';
 import { useStore } from '../../data/store';
 
-export function Ball({ position }) {
+export function Ball() {
   const { ballLaunched } = useStore((state) => state);
 
   const [ref, api] = useSphere(() => ({
     mass: 1,
     args: 1,
-    position,
+    position: [0, 0, 0],
   }));
 
   useFrame((state) => {
