@@ -10,10 +10,19 @@ import { Walls } from '../components/game/Walls';
 import { Ball } from '../components/game/Ball';
 import { Paddle } from '../components/game/Paddle';
 
+import { useStore } from '../data/store';
+
 export function Game() {
+  const { ballLaunched, launchBall } = useStore((state) => state);
+  function handleClick() {
+    if (!ballLaunched) {
+      launchBall();
+    }
+  }
+
   return (
     <>
-      <div id="canvasContainer">
+      <div id="canvasContainer" onClick={handleClick}>
         <Canvas
           shadowMap
           sRGB
@@ -26,19 +35,25 @@ export function Game() {
           <directionalLight
             customDistanceMaterial={20}
             intensity={0.5}
-            position={[0, 0, 10]}
-            angle={-Math.PI / 2}
+            position={[0, 0, 1]}
+            angle={Math.PI / 2}
             penumbra={0.2}
             castShadow
           />
-          <spotLight intensity={0.5} position={[0, 0, 10]} angle={-Math.PI / 2} />
+          <spotLight
+            castShadow
+            distance={0}
+            intensity={0.3}
+            position={[0, 0, 10]}
+            angle={-Math.PI}
+          />
           <Physics
             iterations={20}
             tolerance={0.0001}
             defaultContactMaterial={{
-              friction: 0,
+              friction: 100,
               //TODO: make this dynamic and make a cooldown in collide function
-              restitution: 1.1,
+              restitution: 1.05,
             }}
             gravity={[0, 0, 0]}
             allowSleep={false}
@@ -46,12 +61,13 @@ export function Game() {
             <Walls />
             <Tiles />
             <Paddle />
-            <Ball position={[5, 5, -0.5]} />
+            <Ball position={[5, 5, -0.6]} />
           </Physics>
         </Canvas>
       </div>
       <div id="hudContainer">
         <p>Score: TODO</p>
+        <p>Balls: TODO</p>
       </div>
     </>
   );

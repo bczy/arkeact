@@ -12,7 +12,7 @@ export function Paddle() {
     api.position.set(state.mouse.x * 10, state.mouse.y * 10, 0);
   });
   return (
-    <mesh ref={ref}>
+    <mesh ref={ref} castShadow>
       <boxGeometry attach="geometry" args={[2, 2, 0.5]} />
       <meshBasicMaterial attach="material" wireframe={true} color="#FF0000" />
     </mesh>
