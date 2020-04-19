@@ -11,15 +11,20 @@ import { Ball } from '../components/game/Ball';
 import { Paddle } from '../components/game/Paddle';
 
 import { useGameStore } from '../data/stores/game';
+import { useLevelStore } from '../data/stores/level';
+import * as LEVELS from '../data/levels/levels.json';
 
 export function Game() {
   const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
 
+  const { buildLevel } = useLevelStore((state) => state);
+
   function handleClick() {
     if (balls < 0) {
       resetGame();
+      buildLevel(LEVELS.levels[0].layers.flat());
     } else if (!ballLaunched) {
       launchBall();
     }

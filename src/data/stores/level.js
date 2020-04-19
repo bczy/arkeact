@@ -1,10 +1,23 @@
 import create from 'zustand';
 
-export const [useLevelStore] = create((set) => ({
+export const [useLevelStore] = create((set, get) => ({
   tiles: [],
-  buildLevel: (level) => {
+  getTiles: () => get().tiles,
+  removeTile: (position) => {
     set((state) => ({
-      state: { tiles: [] },
+      tiles: state.tiles.filter((tile) => {
+        // Check if all items exist and are in the same order
+        const hittedTilePosition = Object.values(position);
+        for (let i = 0; i < tile.position.length; i++) {
+          if (tile.position[i] !== hittedTilePosition[i]) {
+            return true;
+          }
+        }
+        return false;
+      }),
     }));
+  },
+  buildLevel: (tiles) => {
+    set(() => ({ tiles: tiles }));
   },
 }));
