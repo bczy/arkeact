@@ -13,7 +13,7 @@ export function Paddle() {
   });
   return (
     <mesh ref={ref} castShadow>
-      <boxGeometry attach="geometry" args={[2, 2, 0.5]} />
+      <boxGeometry attach="geometry" args={[3, 3, 0.5]} />
       <meshBasicMaterial attach="material" wireframe={true} color="#FF0000" />
     </mesh>
   );

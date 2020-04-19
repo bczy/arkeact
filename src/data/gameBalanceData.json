@@ -1,33 +1,35 @@
 {
-  "category": {
-    "tiles": {
-      "red": {
-        "color": "#FF0000",
-        "bonusProbability": 0,
-        "strength": 2
-      },
-      "green": {
-        "color": "#00FF00",
-        "bonusProbability": 0,
-        "strength": 1
-      },
-      "blue": {
-        "color": "#0000FF",
-        "bonusProbability": 0,
-        "strength": 3
-      },
-      "yellow": {
-        "color": "#FFFF00",
-        "bonusProbability": 0,
-        "strength": 10
-      }
+  "tiles": {
+    "red": {
+      "color": "#FF0000",
+      "bonusProbability": 0,
+      "strength": 2
     },
-    "walls": {
-      "side": {
-        "color": "#FF00FF"
-      },
-      "ground": { "color": "#FF00FF" },
-      "roof": { "color": "#FF00FF", "isRoof": true }
+    "green": {
+      "color": "#00FF00",
+      "bonusProbability": 0,
+      "strength": 1
+    },
+    "blue": {
+      "color": "#0000FF",
+      "bonusProbability": 0,
+      "strength": 3
+    },
+    "yellow": {
+      "color": "#FFFF00",
+      "bonusProbability": 0,
+      "strength": 2
     }
+  },
+  "walls": {
+    "side": {
+      "color": "#FF00FF"
+    },
+    "ground": { "color": "#FF00FF" },
+    "roof": { "color": "#FF00FF", "isRoof": true }
+  },
+  "game": {
+    "balls": 3,
+    "level": 1
   }
 }

@@ -1,10 +1,13 @@
 import create from 'zustand';
+import * as gameBalanceData from './gameBalanceData.json';
 
 export const [useStore] = create((set) => ({
-  score: 0,
+  score: gameBalanceData.game.balls,
+  level: gameBalanceData.game.level,
   balls: 3,
   inGame: false,
   ballLaunched: false,
+  currentLevel: 1,
   launchBall: () => {
     set(() => ({
       ballLaunched: true,
@@ -13,6 +16,12 @@ export const [useStore] = create((set) => ({
   launchGame: () => {
     set(() => ({
       inGame: true,
+    }));
+  },
+  resetGame: () => {
+    set(() => ({
+      balls: 3,
+      inGame: false,
     }));
   },
   addScore: () => {

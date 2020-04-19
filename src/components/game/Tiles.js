@@ -1,39 +1,20 @@
 import React from 'react';
 import { Box } from './Box.js';
-import * as BRICKS from '../../data/gameBalanceData.json';
+import * as LEVELS from '../../data/levels/levels.json';
+import { useStore } from '../../data/store';
+import { tiles } from '../../data/gameBalanceData.json';
+
+const Tile = ({ position, userData }) => <Box position={position} userData={userData} />;
 
 export function Tiles() {
+  const { currentLevel } = useStore((state) => state);
   return (
     <>
-      <Box position={[-10, 0, -10]} userData={BRICKS.category.tiles.yellow} />
-      <Box position={[-7.5, 0, -10]} userData={BRICKS.category.tiles.yellow} />
-      <Box position={[-5, 0, -10]} userData={BRICKS.category.tiles.yellow} />
-      <Box position={[-2.5, 0, -10]} userData={BRICKS.category.tiles.yellow} />
-      <Box position={[0, 0, -10]} userData={BRICKS.category.tiles.yellow} />
-      <Box position={[2.5, 0, -10]} userData={BRICKS.category.tiles.blue} />
-      <Box position={[5, 0, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[7.5, 0, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[10, 0, -10]} userData={BRICKS.category.tiles.red} />
-
-      <Box position={[-10, 2.5, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[-7.5, 2.5, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[-5, 2.5, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[-2.5, 2.5, -10]} userData={BRICKS.category.tiles.blue} />
-      <Box position={[0, 2.5, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[2.5, 2.5, -10]} userData={BRICKS.category.tiles.blue} />
-      <Box position={[5, 2.5, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[7.5, 2.5, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[10, 2.5, -10]} userData={BRICKS.category.tiles.red} />
-
-      <Box position={[-10, -2.5, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[-7.5, -2.5, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[-5, -2.5, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[-2.5, -2.5, -10]} userData={BRICKS.category.tiles.blue} />
-      <Box position={[0, -2.5, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[2.5, -2.5, -10]} userData={BRICKS.category.tiles.blue} />
-      <Box position={[5, -2.5, -10]} userData={BRICKS.category.tiles.red} />
-      <Box position={[7.5, -2.5, -10]} userData={BRICKS.category.tiles.green} />
-      <Box position={[10, -2.5, -10]} userData={BRICKS.category.tiles.red} />
+      {LEVELS.levels[currentLevel - 1].layers.map((layer) =>
+        layer.map((brick, i) => {
+          return <Tile key={i} position={brick.position} userData={tiles[brick.userDataType]} />;
+        })
+      )}
     </>
   );
 }
