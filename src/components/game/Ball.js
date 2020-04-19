@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSphere } from 'use-cannon';
 import { useFrame } from 'react-three-fiber';
-import { useStore } from '../../data/store';
+import { useGameStore } from '../../data/stores/game';
 
 export function Ball() {
-  const { ballLaunched } = useStore((state) => state);
+  const { ballLaunched } = useGameStore((state) => state);
 
   const [ref, api] = useSphere(() => ({
     mass: 1,

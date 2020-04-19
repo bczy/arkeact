@@ -10,10 +10,10 @@ import { Walls } from '../components/game/Walls';
 import { Ball } from '../components/game/Ball';
 import { Paddle } from '../components/game/Paddle';
 
-import { useStore } from '../data/store';
+import { useGameStore } from '../data/stores/game';
 
 export function Game() {
-  const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useStore(
+  const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
 

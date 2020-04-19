@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useStore } from '../data/store';
+import { useGameStore } from '../data/stores/game';
 
 export function Welcome() {
-  const { launchGame } = useStore((state) => state);
+  const { launchGame } = useGameStore((state) => state);
 
   return (
     <div id="welcome" onClick={launchGame} style={{ margin: 'auto' }}>

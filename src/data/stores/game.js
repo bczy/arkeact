@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-export const [useStore] = create((set) => ({
+export const [useGameStore] = create((set) => ({
   score: 0,
   balls: 3,
   inGame: false,

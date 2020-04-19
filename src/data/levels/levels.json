@@ -32,6 +32,37 @@
           { "position": [5, -2.5, -10], "userDataType": "red" },
           { "position": [7.5, -2.5, -10], "userDataType": "green" },
           { "position": [10, -2.5, -10], "userDataType": "red" }
+        ],
+        [
+          { "position": [-10, 0, -5], "userDataType": "yellow" },
+          { "position": [-7.5, 0, -5], "userDataType": "yellow" },
+          { "position": [-5, 0, -5], "userDataType": "yellow" },
+          { "position": [-2.5, 0, -5], "userDataType": "yellow" },
+          { "position": [0, 0, -5], "userDataType": "yellow" },
+          { "position": [2.5, 0, -5], "userDataType": "blue" },
+          { "position": [5, 0, -5], "userDataType": "red" },
+          { "position": [7.5, 0, -5], "userDataType": "green" },
+          { "position": [10, 0, -5], "userDataType": "red" },
+
+          { "position": [-10, 2.5, -10], "userDataType": "red" },
+          { "position": [-7.5, 2.5, -10], "userDataType": "green" },
+          { "position": [-5, 2.5, -10], "userDataType": "red" },
+          { "position": [-2.5, 2.5, -10], "userDataType": "blue" },
+          { "position": [0, 2.5, -10], "userDataType": "green" },
+          { "position": [2.5, 2.5, -10], "userDataType": "blue" },
+          { "position": [5, 2.5, -10], "userDataType": "red" },
+          { "position": [7.5, 2.5, -10], "userDataType": "green" },
+          { "position": [10, 2.5, -10], "userDataType": "red" },
+
+          { "position": [-10, -2.5, -10], "userDataType": "red" },
+          { "position": [-7.5, -2.5, -10], "userDataType": "green" },
+          { "position": [-5, -2.5, -10], "userDataType": "red" },
+          { "position": [-2.5, -2.5, -10], "userDataType": "blue" },
+          { "position": [0, -2.5, -10], "userDataType": "green" },
+          { "position": [2.5, -2.5, -10], "userDataType": "blue" },
+          { "position": [5, -2.5, -10], "userDataType": "red" },
+          { "position": [7.5, -2.5, -10], "userDataType": "green" },
+          { "position": [10, -2.5, -10], "userDataType": "red" }
         ]
       ]
     }
