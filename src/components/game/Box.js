@@ -15,7 +15,6 @@ export function Box({ position, size = [2, 2, 2], userData }) {
     userData: userData,
     onCollide: (e) => {
       if (strength) {
-        console.log(strength);
         setStrengh(strength - 1);
         addScore();
       } else if (e.body.userData.isRoof) {

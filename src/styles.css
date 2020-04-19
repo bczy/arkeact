@@ -29,7 +29,6 @@ body {
 }
 
 .main {
-  position: relative;
   width: 100%;
   height: 100%;
   color: white;
@@ -47,14 +46,22 @@ body {
   align-items: center;
 }
 
-#hudContainer {
-  width: 25%;
-  height: 75%;
+#game {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
+
 canvas {
   width: 50vw;
   height: 50vw;
   top: 0;
   pointer-events: none;
   overflow: hidden;
+}
+
+#hud {
+  width: 25%;
+  height: 75%;
 }

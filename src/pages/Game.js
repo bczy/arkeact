@@ -13,7 +13,9 @@ import { Paddle } from '../components/game/Paddle';
 import { useStore } from '../data/store';
 
 export function Game() {
-  const { ballLaunched, launchBall, balls, score, resetGame } = useStore((state) => state);
+  const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useStore(
+    (state) => state
+  );
 
   function handleClick() {
     if (balls < 0) {
@@ -24,9 +26,9 @@ export function Game() {
   }
 
   return (
-    <div onClick={handleClick}>
+    <div id="game" onClick={handleClick}>
       {balls >= 0 ? (
-        <div id="canvasContainer">
+        <div id="canvas">
           <Canvas
             shadowMap
             sRGB
@@ -75,9 +77,10 @@ export function Game() {
           <p></p>Click to restart
         </div>
       )}
-      <div id="hudContainer">
+      <div id="hud">
         <p>Score: {score}</p>
         <p>Balls: {balls}</p>
+        <p>Level: {currentLevel}</p>
       </div>
     </div>
   );

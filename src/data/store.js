@@ -1,9 +1,7 @@
 import create from 'zustand';
-import * as gameBalanceData from './gameBalanceData.json';
 
 export const [useStore] = create((set) => ({
-  score: gameBalanceData.game.balls,
-  level: gameBalanceData.game.level,
+  score: 0,
   balls: 3,
   inGame: false,
   ballLaunched: false,
@@ -21,6 +19,7 @@ export const [useStore] = create((set) => ({
   resetGame: () => {
     set(() => ({
       balls: 3,
+      score: 0,
       inGame: false,
     }));
   },
@@ -31,9 +30,8 @@ export const [useStore] = create((set) => ({
     set((state) => ({ balls: state.balls - 1, ballLaunched: false }));
   },
   physicApi: {
-    collide(velocity, e) {
-      console.log(e, e.contact.impactVelocity, e.contact);
-      if (velocity > 4) set((state) => ({ count: state.count + 1 }));
+    collide(userData, e) {
+      console.log(e, userData);
     },
   },
 }));
