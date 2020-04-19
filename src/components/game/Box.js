@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { useBox } from 'use-cannon';
 
@@ -8,9 +8,10 @@ export function Box({ position, size = [2, 2, 2], userData }) {
   const { addScore, retrieveBall } = useStore((state) => state);
 
   const [strength, setStrengh] = useState(userData.strength);
+  const [collisionBox, setCollisionBox] = useState(size.map((x) => x / 2));
   const [ref] = useBox(() => ({
     type: 'Kinematic',
-    args: size.map((x) => x / 2),
+    args: collisionBox,
     position,
     userData: userData,
     onCollide: (e) => {
@@ -22,6 +23,10 @@ export function Box({ position, size = [2, 2, 2], userData }) {
       }
     },
   }));
+  useCallback(() => {
+    if (isNaN(strength) || strength > 0) setCollisionBox([0, 0, 0]);
+  }, [strength]);
+
   return (
     <mesh ref={ref} scale={strength} receiveShadow userData={userData}>
       <boxGeometry attach="geometry" args={size} />
