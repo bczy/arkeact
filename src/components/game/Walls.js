@@ -17,7 +17,7 @@ export function Walls() {
         rotation={Math.PI / 2}
       />
       <Box
-        position={[0, 0, 14.5]}
+        position={[0, 0, 24]}
         userData={BRICKS.walls.roof}
         size={[25, 25, 1]}
         rotation={Math.PI / 2}

@@ -10,7 +10,6 @@ export function Welcome() {
   const { buildLevel } = useLevelStore();
 
   useEffect(() => {
-    console.log('building level');
     buildLevel(LEVELS.levels[0].layers.flat());
   }, [buildLevel]);
 

@@ -51,6 +51,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  cursor: none;
 }
 
 canvas {

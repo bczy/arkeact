@@ -9,22 +9,18 @@ import { Tiles } from '../components/game/Tiles';
 import { Walls } from '../components/game/Walls';
 import { Ball } from '../components/game/Ball';
 import { Paddle } from '../components/game/Paddle';
+import { Lights } from '../components/game/Lights';
 
 import { useGameStore } from '../data/stores/game';
-import { useLevelStore } from '../data/stores/level';
-import * as LEVELS from '../data/levels/levels.json';
 
 export function Game() {
   const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
 
-  const { buildLevel } = useLevelStore((state) => state);
-
   function handleClick() {
     if (balls < 0) {
       resetGame();
-      buildLevel(LEVELS.levels[0].layers.flat());
     } else if (!ballLaunched) {
       launchBall();
     }
@@ -37,27 +33,13 @@ export function Game() {
           <Canvas
             shadowMap
             sRGB
-            camera={{ position: [0, 0, 13] }}
+            camera={{ position: [0, 0, 23.5] }}
             onCreated={({ gl }) => {
               gl.toneMapping = THREE.ACESFilmicToneMapping;
               gl.outputEncoding = THREE.sRGBEncoding;
             }}
           >
-            <directionalLight
-              customDistanceMaterial={20}
-              intensity={0.5}
-              position={[0, 0, 1]}
-              angle={Math.PI / 2}
-              penumbra={0.2}
-              castShadow
-            />
-            <spotLight
-              castShadow
-              distance={0}
-              intensity={0.3}
-              position={[0, 0, 10]}
-              angle={-Math.PI}
-            />
+            <Lights />
             <Physics
               iterations={20}
               tolerance={0.0001}
@@ -72,7 +54,7 @@ export function Game() {
               <Walls />
               <Tiles />
               <Paddle />
-              <Ball position={[5, 5, -0.6]} />
+              <Ball />
             </Physics>
           </Canvas>
         </div>

@@ -6,6 +6,7 @@ import { useGameStore } from '../../data/stores/game';
 
 export function Box({ position, size = [2, 2, 2], userData, id }) {
   const { addScore, retrieveBall } = useGameStore();
+
   const [ref, api] = useBox(() => ({
     type: 'Kinematic',
     args: size.map((x) => x / 2),
@@ -13,8 +14,9 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
     userData: userData,
     onCollide: (e) => {
       if (!isNaN(userData.strength)) {
+        userData.strength--;
+        console.log(userData.strength);
         api.position.set(-1000, -1000, -100);
-        //buildLevel(newTiles);
         addScore();
       } else if (userData.isRoof) {
         retrieveBall();

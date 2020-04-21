@@ -14,7 +14,7 @@ export function Ball() {
   useFrame((state) => {
     // The paddle is kinematic (not subject to gravitation), we move it with the api returned by useBox
     if (!ballLaunched) {
-      api.position.set(state.mouse.x * 10, state.mouse.y * 10, -1.5);
+      api.position.set(state.mouse.x * 10, state.mouse.y * 10, 8.1);
       // Velocity
       api.velocity.set(0, 0, 0, 1);
       api.angularVelocity.set(0, 0, 0, 1);
