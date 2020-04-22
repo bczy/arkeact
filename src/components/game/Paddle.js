@@ -5,7 +5,7 @@ import { useSphere } from 'use-cannon';
 
 export function Paddle() {
   const [ref, api] = useSphere(() => ({
-    args: 1.4,
+    args: 1.8,
   }));
   useFrame((state) => {
     // The paddle is kinematic (not subject to gravitation), we move it with the api returned by useBox
