@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useBox } from 'use-cannon';
 
@@ -7,6 +7,7 @@ import { useGameStore } from '../../data/stores/game';
 export function Box({ position, size = [2, 2, 2], userData, id }) {
   const { addScore, retrieveBall } = useGameStore();
 
+  const [hovered, setHovered] = useState();
   const [ref, api] = useBox(() => ({
     type: 'Kinematic',
     args: size.map((x) => x / 2),
@@ -25,7 +26,14 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
   }));
 
   return (
-    <mesh key={id} ref={ref} receiveShadow userData={userData}>
+    <mesh
+      key={id}
+      ref={ref}
+      receiveShadow
+      userData={userData}
+      onPointerMove={(e) => setHovered(e.instanceId)}
+      onPointerOut={(e) => setHovered(undefined)}
+    >
       <boxGeometry attach="geometry" args={size} />
       <meshStandardMaterial attach="material" color={userData.color} />
     </mesh>
