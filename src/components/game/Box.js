@@ -14,10 +14,10 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
     userData: userData,
     onCollide: (e) => {
       if (!isNaN(userData.strength)) {
+        console.log(userData);
         userData.strength--;
-        console.log(userData.strength);
         api.position.set(-1000, -1000, -100);
-        addScore();
+        addScore(userData.score);
       } else if (userData.isRoof) {
         retrieveBall();
       }

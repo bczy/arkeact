@@ -1,31 +1,35 @@
 {
   "tiles": {
     "red": {
-      "color": "#FF0000",
+      "color": "#fe5e51",
       "bonusProbability": 0,
-      "strength": 2
+      "strength": 2,
+      "score": 500
     },
-    "green": {
-      "color": "#00FF00",
+    "pink": {
+      "color": "#ffb554",
       "bonusProbability": 0,
-      "strength": 1
+      "strength": 1,
+      "score": 250
     },
     "blue": {
-      "color": "#0000FF",
+      "color": "#36abb5",
       "bonusProbability": 0,
-      "strength": 3
+      "strength": 3,
+      "score": 1000
     },
     "yellow": {
-      "color": "#FFFF00",
+      "color": "#f6db5f",
       "bonusProbability": 0,
-      "strength": 2
+      "strength": 2,
+      "score": 500
     }
   },
   "walls": {
     "side": {
-      "color": "#FF00FF"
+      "color": "#9e3d64"
     },
-    "ground": { "color": "#FF00FF" },
+    "ground": { "color": "#9e3d64" },
     "roof": { "color": "#FF00FF", "isRoof": true }
   },
   "game": {

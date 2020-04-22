@@ -30,17 +30,10 @@ export function Game() {
     <div id="game" onClick={handleClick}>
       {balls >= 0 ? (
         <div id="canvas">
-          <Canvas
-            shadowMap
-            sRGB
-            camera={{ position: [0, 0, 23.5] }}
-            onCreated={({ gl }) => {
-              gl.toneMapping = THREE.ACESFilmicToneMapping;
-              gl.outputEncoding = THREE.sRGBEncoding;
-            }}
-          >
+          <Canvas shadowMap camera={{ position: [0, 0, 23.5] }}>
             <Lights />
             <Physics
+              //TODO: make a component of this
               iterations={20}
               tolerance={0.0001}
               defaultContactMaterial={{
@@ -61,13 +54,14 @@ export function Game() {
       ) : (
         <div>
           <p>Game Over</p>
-          <p></p>Click to restart
+          <p>Click to restart</p>
         </div>
       )}
       <div id="hud">
         <p>Score: {score}</p>
         <p>Balls: {balls}</p>
         <p>Level: {currentLevel}</p>
+        <p onClick={resetGame}>Click to restart</p>
       </div>
     </div>
   );

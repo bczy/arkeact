@@ -24,8 +24,12 @@ export const [useGameStore] = create((set) => {
         inGame: false,
       }));
     },
-    addScore: () => {
-      set((state) => ({ score: state.score + 1 }));
+    restartGame: (state) => {
+      state.resetGame();
+      state.launchGame();
+    },
+    addScore: (points) => {
+      set((state) => ({ score: state.score + points }));
     },
     retrieveBall: () => {
       set((state) => ({ balls: state.balls - 1, ballLaunched: false }));

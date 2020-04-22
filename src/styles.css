@@ -51,18 +51,22 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  cursor: none;
 }
 
+#canvas {
+  cursor: none;
+}
 canvas {
   width: 50vw;
   height: 50vw;
   top: 0;
   pointer-events: none;
+  cursor: none;
   overflow: hidden;
 }
 
 #hud {
   width: 25%;
   height: 75%;
+  pointer-events: all;
 }
