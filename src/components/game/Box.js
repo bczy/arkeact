@@ -1,12 +1,15 @@
 import React from 'react';
 
+import { useLoader } from 'react-three-fiber';
+import * as THREE from 'three';
 import { useBox } from 'use-cannon';
 
 import { useGameStore } from '../../data/stores/game';
 
+import UIFx from 'uifx';
+
 import brick from '../../assets/sounds/brick.mp3';
 import wall from '../../assets/sounds/wall.mp3';
-import UIFx from 'uifx';
 
 export function Box({ position, size = [2, 2, 2], userData, id }) {
   const { retrieveBall } = useGameStore();
@@ -42,6 +45,7 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
   return (
     <mesh key={id} ref={ref} receiveShadow userData={userData}>
       <boxGeometry attach="geometry" args={size} />
+
       <meshStandardMaterial attach="material" color={userData.color} />
     </mesh>
   );

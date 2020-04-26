@@ -27,10 +27,10 @@
   },
   "walls": {
     "side": {
-      "color": "#543304"
+      "color": "#5433FF"
     },
-    "ground": { "color": "#543304" },
-    "roof": { "color": "#CCC", "isRoof": true },
+    "ground": { "color": "#5433FF" },
+    "roof": { "isRoof": true, "color": "#000" },
     "corner": { "color": "#FFF", "isCorner": true }
   },
   "game": {

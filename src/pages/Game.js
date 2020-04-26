@@ -10,15 +10,15 @@ import { Paddle } from '../components/game/Paddle';
 import { Lights } from '../components/game/Lights';
 
 import { useGameStore } from '../data/stores/game';
-import { PerspectiveCamera, Camera } from 'three';
+import { PerspectiveCamera } from 'three';
 
 export function Game() {
-  const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useGameStore(
+  const { ballLaunched, launchBall, balls, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
   const camera = useMemo(() => {
-    const camera = new PerspectiveCamera(45, 1, 1, 1000);
-    camera.position.set(0, 0, 44.9);
+    const camera = new PerspectiveCamera(45, 1, 1, 57);
+    camera.position.set(0, 0, 45);
     return camera;
   }, []);
 
@@ -41,8 +41,7 @@ export function Game() {
               iterations={20}
               tolerance={0.0001}
               defaultContactMaterial={{
-                friction: 100,
-                //TODO: make this dynamic and make a cooldown in collide function
+                friction: 0,
                 restitution: 1,
               }}
               gravity={[0, 0, 0]}
