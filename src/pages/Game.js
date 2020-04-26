@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
@@ -10,11 +10,17 @@ import { Paddle } from '../components/game/Paddle';
 import { Lights } from '../components/game/Lights';
 
 import { useGameStore } from '../data/stores/game';
+import { PerspectiveCamera, Camera } from 'three';
 
 export function Game() {
   const { ballLaunched, launchBall, balls, score, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
+  const camera = useMemo(() => {
+    const camera = new PerspectiveCamera(45, 1, 1, 1000);
+    camera.position.set(0, 0, 44.9);
+    return camera;
+  }, []);
 
   function handleClick() {
     if (balls < 0) {
@@ -28,7 +34,7 @@ export function Game() {
     <div id="game" onClick={handleClick}>
       {balls >= 0 ? (
         <div id="canvas">
-          <Canvas shadowMap camera={{ position: [0, 0, 23.5] }}>
+          <Canvas shadowMap camera={camera}>
             <Lights />
             <Physics
               //TODO: make a component of this

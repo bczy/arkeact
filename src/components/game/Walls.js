@@ -16,10 +16,59 @@ export function Walls() {
         size={[25, 25, 1]}
         rotation={Math.PI / 2}
       />
+
       <Box
-        position={[0, 0, 24]}
+        position={[-12, -12, -12.5]}
+        userData={BRICKS.walls.corner}
+        size={[0.25, 0.25, 130]}
+        rotation={Math.PI / 2}
+      />
+      <Box
+        position={[-12, 12, -12.5]}
+        userData={BRICKS.walls.corner}
+        size={[0.25, 0.25, 130]}
+        rotation={Math.PI / 2}
+      />
+      <Box
+        position={[12, 12, -12.5]}
+        userData={BRICKS.walls.corner}
+        size={[0.25, 0.25, 130]}
+        rotation={Math.PI / 2}
+      />
+      <Box
+        position={[12, -12, -12.5]}
+        userData={BRICKS.walls.corner}
+        size={[0.25, 0.25, 130]}
+        rotation={Math.PI / 2}
+      />
+      <Box
+        position={[0, 12, -12]}
+        userData={BRICKS.walls.corner}
+        size={[130, 0.25, 0.25]}
+        rotation={Math.PI / 2}
+      />
+      <Box
+        position={[0, -12, -12]}
+        userData={BRICKS.walls.corner}
+        size={[130, 0.25, 0.25]}
+        rotation={Math.PI / 2}
+      />
+      <Box
+        position={[12, 0, -12]}
+        userData={BRICKS.walls.corner}
+        size={[0.25, 120, 0.25]}
+        rotation={Math.PI}
+      />
+      <Box
+        position={[-12, 0, -12]}
+        userData={BRICKS.walls.corner}
+        size={[0.25, 120, 0.25]}
+        rotation={Math.PI}
+      />
+      <Box
+        position={[0, 0, 45]}
         userData={BRICKS.walls.roof}
-        size={[25, 25, 1]}
+        size={[25, 25, 0.01]}
         rotation={Math.PI / 2}
       />
     </>

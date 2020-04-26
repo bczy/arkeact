@@ -34,7 +34,7 @@ export function Paddle() {
     <>
       <mesh ref={ref} castShadow>
         <boxGeometry attach="geometry" args={[4, 4, 1]} />
-        <meshBasicMaterial attach="material" wireframe={true} color="#FF0000" />
+        <meshBasicMaterial attach="material" wireframe={true} color="#FFF" />
       </mesh>
     </>
   );

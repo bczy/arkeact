@@ -27,10 +27,11 @@
   },
   "walls": {
     "side": {
-      "color": "#9e3d64"
+      "color": "#543304"
     },
-    "ground": { "color": "#9e3d64" },
-    "roof": { "color": "#FF00FF", "isRoof": true }
+    "ground": { "color": "#543304" },
+    "roof": { "color": "#CCC", "isRoof": true },
+    "corner": { "color": "#FFF", "isCorner": true }
   },
   "game": {
     "balls": 3,
