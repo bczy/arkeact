@@ -18,7 +18,6 @@ export function Ball() {
       // Velocity
       api.velocity.set(0, 0, 0, 1);
       api.angularVelocity.set(0, 0, 0, 1);
-    } else {
     }
   });
   return (
