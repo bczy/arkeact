@@ -12,7 +12,7 @@ export function Lights() {
       <ambientLight intensity={0.75} />
       <directionalLight
         ref={ref}
-        position={[0, 0, 10]}
+        position={[0, 0, 25]}
         shadow-camera-near={0.1}
         shadow-camera-far={1500}
         castShadow
