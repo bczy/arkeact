@@ -6,6 +6,7 @@ import { useGameStore } from '../../data/stores/game';
 
 import brick from '../../assets/sounds/brick.mp3';
 import wall from '../../assets/sounds/wall.mp3';
+import UIFx from 'uifx';
 
 export function Box({ position, size = [2, 2, 2], userData, id }) {
   const { addScore, retrieveBall } = useGameStore();
@@ -17,7 +18,7 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
   } else if (!userData.isRoof) {
     soundAsset = brick;
   }
-  const hitSound = new Audio(soundAsset);
+  const hitSound = new UIFx(soundAsset);
 
   const [ref, api] = useBox(() => ({
     type: 'Kinematic',
@@ -29,7 +30,6 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
       if (!isWall) {
         userData.strength--;
         api.position.set(-1000, -1000, -100);
-        addScore(userData.score);
       } else if (userData.isRoof) {
         retrieveBall();
       }

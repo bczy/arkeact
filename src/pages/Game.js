@@ -56,7 +56,6 @@ export function Game() {
         </div>
       )}
       <div id="hud">
-        <p>Score: {score}</p>
         <p>Balls: {balls}</p>
         <p>Level: {currentLevel}</p>
         <p onClick={resetGame}>Click to restart</p>
