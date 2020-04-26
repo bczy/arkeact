@@ -1,7 +1,5 @@
 import React from 'react';
 
-import * as THREE from 'three';
-
 import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
 
