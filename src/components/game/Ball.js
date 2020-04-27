@@ -16,9 +16,7 @@ export function Ball() {
   useFrame((state) => {
     if (!ballLaunched) {
       api.position.set(state.mouse.x * 10, state.mouse.y * 10, 15.2);
-      // Velocity
       api.velocity.set(0, 0, 0, 1);
-      //api.angularVelocity.set(0, 0, 0, 1);
     }
   });
   return (
