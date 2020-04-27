@@ -11,7 +11,6 @@ export function Ball() {
     mass: 1,
     args: 1,
     fixedRotation: false,
-    scale: [1.5, 1.5, 0.25],
     position: [0, 0, 0],
   }));
   useFrame((state) => {

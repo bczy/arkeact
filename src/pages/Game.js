@@ -31,40 +31,43 @@ export function Game() {
   }
 
   return (
-    <div id="game" onClick={handleClick}>
-      {balls >= 0 ? (
-        <div id="canvas">
-          <Canvas shadowMap camera={camera}>
-            <Lights />
-            <Physics
-              //TODO: make a component of this
-              iterations={20}
-              tolerance={0.0001}
-              defaultContactMaterial={{
-                friction: 0,
-                restitution: 1,
-              }}
-              gravity={[0, 0, 0]}
-              allowSleep={false}
-            >
-              <Walls />
-              <Tiles />
-              <Paddle />
-              <Ball />
-            </Physics>
-          </Canvas>
+    <>
+      <div id="game" onClick={handleClick}>
+        {balls >= 0 ? (
+          <div id="canvas">
+            <Canvas shadowMap camera={camera}>
+              <Lights />
+              <Physics
+                //TODO: make a component of this
+                iterations={20}
+                tolerance={0.0001}
+                defaultContactMaterial={{
+                  friction: 0,
+                  restitution: 1,
+                }}
+                gravity={[0, 0, 0]}
+                allowSleep={false}
+              >
+                <Walls />
+                <Tiles />
+                <Paddle />
+                <Ball />
+              </Physics>
+            </Canvas>
+          </div>
+        ) : (
+          <div>
+            <p>Game Over</p>
+            <p>Click to restart</p>
+          </div>
+        )}
+        <div id="hud">
+          <p>Balls: {balls}</p>
+          <p>Level: {currentLevel}</p>
+          <p onClick={resetGame}>Click to restart</p>
         </div>
-      ) : (
-        <div>
-          <p>Game Over</p>
-          <p>Click to restart</p>
-        </div>
-      )}
-      <div id="hud">
-        <p>Balls: {balls}</p>
-        <p>Level: {currentLevel}</p>
-        <p onClick={resetGame}>Click to restart</p>
       </div>
-    </div>
+      <div class="crt" />
+    </>
   );
 }

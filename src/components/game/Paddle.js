@@ -5,8 +5,9 @@ import { useSphere } from 'use-cannon';
 
 export function Paddle() {
   const [ref, api] = useSphere(() => ({
-    args: 1.25,
-    position: [0, 0, 4],
+    args: 1,
+    scale: [1, 1, 0.01],
+    position: [0, 0, 25],
   }));
   function clampMouseMovement(diffCurrentPos, maxVelocity = 1) {
     const isNeg = diffCurrentPos < 0;
