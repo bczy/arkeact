@@ -67,7 +67,6 @@ export function Game() {
           <p onClick={resetGame}>Click to restart</p>
         </div>
       </div>
-      <div class="crt" />
     </>
   );
 }
