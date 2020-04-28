@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
@@ -8,11 +8,16 @@ import { Walls } from '../components/game/Walls';
 import { Ball } from '../components/game/Ball';
 import { Paddle } from '../components/game/Paddle';
 import { Lights } from '../components/game/Lights';
+import { Effect } from '../components/vfx/Effect';
 
+import { GameContext } from '../data/game-context';
 import { useGameStore } from '../data/stores/game';
 import { PerspectiveCamera } from 'three';
 
 export function Game() {
+  const [glitching, setGlitching] = useState(false);
+  const value = { glitching, setGlitching };
+  console.log(glitching);
   const { ballLaunched, launchBall, balls, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
@@ -27,6 +32,7 @@ export function Game() {
       resetGame();
     } else if (!ballLaunched) {
       launchBall();
+      console.log(glitching);
     }
   }
 
@@ -36,23 +42,26 @@ export function Game() {
         {balls >= 0 ? (
           <div id="canvas">
             <Canvas shadowMap camera={camera}>
-              <Lights />
-              <Physics
-                //TODO: make a component of this
-                iterations={20}
-                tolerance={0.0001}
-                defaultContactMaterial={{
-                  friction: 0,
-                  restitution: 1,
-                }}
-                gravity={[0, 0, 0]}
-                allowSleep={false}
-              >
-                <Walls />
-                <Tiles />
-                <Paddle />
-                <Ball />
-              </Physics>
+              <GameContext.Provider value={value}>
+                <Lights />
+                <Physics
+                  //TODO: make a component of this
+                  iterations={20}
+                  tolerance={0.0001}
+                  defaultContactMaterial={{
+                    friction: 0,
+                    restitution: 1,
+                  }}
+                  gravity={[0, 0, 0]}
+                  allowSleep={false}
+                >
+                  <Walls />
+                  <Tiles />
+                  <Paddle />
+                  <Ball />
+                  <Effect camera={camera} />
+                </Physics>
+              </GameContext.Provider>
             </Canvas>
           </div>
         ) : (

@@ -3,17 +3,13 @@
     {
       "layers": [
         [
-          { "position": [-5, 2.5, -10], "userDataType": "blue" },
           { "position": [0, 2.5, -10], "userDataType": "blue" },
-          { "position": [5, 2.5, -10], "userDataType": "blue" },
 
           { "position": [-5, 0, -10], "userDataType": "yellow" },
           { "position": [0, 0, -10], "userDataType": "yellow" },
           { "position": [5, 0, -10], "userDataType": "yellow" },
 
-          { "position": [-5, -2.5, -10], "userDataType": "blue" },
-          { "position": [0, -2.5, -10], "userDataType": "blue" },
-          { "position": [5, -2.5, -10], "userDataType": "blue" }
+          { "position": [0, -2.5, -10], "userDataType": "blue" }
         ],
         [
           { "position": [-2.5, 1.25, -5], "userDataType": "pink" },
