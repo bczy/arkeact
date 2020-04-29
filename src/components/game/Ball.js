@@ -10,12 +10,12 @@ export function Ball() {
   const [ref, api] = useSphere(() => ({
     mass: 1,
     args: 1,
-    fixedRotation: false,
     position: [0, 0, 0],
+    onCollide: (e) => {},
   }));
   useFrame((state) => {
     if (!ballLaunched) {
-      api.position.set(state.mouse.x * 10, state.mouse.y * 10, 15.2);
+      api.position.set(state.mouse.x * 10, state.mouse.y * 10, 17.6);
       api.velocity.set(0, 0, 0, 1);
     }
   });

@@ -17,7 +17,6 @@ import { PerspectiveCamera } from 'three';
 export function Game() {
   const [glitching, setGlitching] = useState(false);
   const value = { glitching, setGlitching };
-  console.log(glitching);
   const { ballLaunched, launchBall, balls, resetGame, currentLevel } = useGameStore(
     (state) => state
   );
@@ -45,7 +44,6 @@ export function Game() {
               <GameContext.Provider value={value}>
                 <Lights />
                 <Physics
-                  //TODO: make a component of this
                   iterations={20}
                   tolerance={0.0001}
                   defaultContactMaterial={{

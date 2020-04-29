@@ -5,9 +5,10 @@ import { useSphere } from 'use-cannon';
 
 export function Paddle() {
   const [ref, api] = useSphere(() => ({
-    args: 1,
+    args: 1.3,
     scale: [1, 1, 0.01],
-    position: [0, 0, 25],
+    position: [0, 0, 10],
+    sleepSpeedLimit: 4,
     onCollide: (e) => {},
   }));
   function clampMouseMovement(diffCurrentPos, maxVelocity = 1) {
@@ -30,13 +31,13 @@ export function Paddle() {
     api.position.set(
       ref.current.position.x + clampMouseMovement(diffCurrentPosX),
       ref.current.position.y + clampMouseMovement(diffCurrentPosY),
-      16
+      18
     );
   });
   return (
     <>
       <mesh ref={ref} castShadow>
-        <boxGeometry attach="geometry" args={[4, 4, 1]} />
+        <boxGeometry attach="geometry" args={[5, 5, 1]} />
         <meshBasicMaterial attach="material" wireframe={true} color={'#FFF'} />
       </mesh>
     </>

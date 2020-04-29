@@ -24,7 +24,7 @@ export function Effect(camera) {
       <renderPass attachArray="passes" scene={scene} camera={camera.camera} />
       <unrealBloomPass attachArray="passes" args={[aspect, 0.25, 0.2, 0]} />
       <glitchPass attachArray="passes" factor={glitching ? 1 : 0} />
-      <filmPass attachArray="passes" args={[0.25, 0.4, 1500, false]} />
+      <filmPass attachArray="passes" args={[0.35, 0.6, 1500, false]} />
     </effectComposer>
   );
 }

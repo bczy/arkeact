@@ -26,6 +26,7 @@ export const [useGameStore] = create((set, get) => ({
       inGame: false,
     }));
   },
+  resetBall: () => set(() => ({ ballLaunched: false })),
   getRemainingBalls: () => {
     return get(() => {});
   },
@@ -41,6 +42,6 @@ export const [useGameStore] = create((set, get) => ({
       gameOverSound.play();
     }
 
-    set((state) => ({ balls: state.balls - 1, ballLaunched: false }));
+    set((state) => ({ balls: state.balls - 1 }));
   },
 }));
