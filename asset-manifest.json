@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/arkareact/static/css/main.52f15fef.chunk.css",
+    "main.js": "/arkareact/static/js/main.9551db82.chunk.js",
+    "main.js.map": "/arkareact/static/js/main.9551db82.chunk.js.map",
+    "runtime-main.js": "/arkareact/static/js/runtime-main.4a975ea5.js",
+    "runtime-main.js.map": "/arkareact/static/js/runtime-main.4a975ea5.js.map",
+    "static/js/2.708170b4.chunk.js": "/arkareact/static/js/2.708170b4.chunk.js",
+    "static/js/2.708170b4.chunk.js.map": "/arkareact/static/js/2.708170b4.chunk.js.map",
+    "static/js/3.28c2fb60.chunk.js": "/arkareact/static/js/3.28c2fb60.chunk.js",
+    "static/js/3.28c2fb60.chunk.js.map": "/arkareact/static/js/3.28c2fb60.chunk.js.map",
+    "index.html": "/arkareact/index.html",
+    "precache-manifest.4ab0b869d49db09beb336ccd4037a65f.js": "/arkareact/precache-manifest.4ab0b869d49db09beb336ccd4037a65f.js",
+    "service-worker.js": "/arkareact/service-worker.js",
+    "static/css/main.52f15fef.chunk.css.map": "/arkareact/static/css/main.52f15fef.chunk.css.map",
+    "static/js/2.708170b4.chunk.js.LICENSE.txt": "/arkareact/static/js/2.708170b4.chunk.js.LICENSE.txt",
+    "static/js/3.28c2fb60.chunk.js.LICENSE.txt": "/arkareact/static/js/3.28c2fb60.chunk.js.LICENSE.txt",
+    "static/media/brick.mp3": "/arkareact/static/media/brick.eed03f13.mp3",
+    "static/media/cross.jpg": "/arkareact/static/media/cross.00397b42.jpg",
+    "static/media/gameOver.mp3": "/arkareact/static/media/gameOver.b6bfcd79.mp3",
+    "static/media/tryAgain.mp3": "/arkareact/static/media/tryAgain.9cae2b3e.mp3",
+    "static/media/wall.mp3": "/arkareact/static/media/wall.4c0964a4.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4a975ea5.js",
+    "static/js/2.708170b4.chunk.js",
+    "static/css/main.52f15fef.chunk.css",
+    "static/js/main.9551db82.chunk.js"
+  ]
+}
