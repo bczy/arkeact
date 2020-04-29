@@ -54,6 +54,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 128px;
 }
 
 #game {
@@ -79,4 +80,5 @@ canvas {
   width: 25%;
   height: 75%;
   pointer-events: all;
+  font-size: 64px;
 }
