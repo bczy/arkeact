@@ -1,17 +1,27 @@
 import React from 'react';
 
 import { gameStore, GAME_STATES } from '../store/gameStore';
+import { Button } from '../components/hud/Button';
+import { Title } from '../components/hud/Title';
 
 export function Welcome() {
   return (
-    <div
-      id="welcome"
-      onClick={() => {
-        gameStore.setGameState(GAME_STATES.LEVEL_CHOICE);
-      }}
-      style={{ margin: 'auto' }}
-    >
-      Click to start
-    </div>
+    <>
+      <div style={{ flexDirection: 'column' }}>
+        <div>
+          <Title text="ARKAREACT" />
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <Button
+            big
+            callback={() => {
+              gameStore.setGameState(GAME_STATES.LEVEL_CHOICE);
+            }}
+            enabled
+            text="Start"
+          />
+        </div>
+      </div>
+    </>
   );
 }

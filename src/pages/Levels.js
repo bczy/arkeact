@@ -1,39 +1,95 @@
-import React from 'react';
+import React, { useLayoutEffect, useState } from 'react';
+
 import * as LEVELS from '../data/levels.json';
 import { gameStore, GAME_STATES } from '../store/gameStore';
+import { playerStore } from '../store/playerStore';
 
-const Level = ({ levelId }) => {
+import { Button } from '../components/hud/Button';
+
+import styled from 'styled-components';
+
+export const LevelContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0.5em;
+`;
+
+export const LevelList = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+`;
+
+export const LevelLocked = styled.div`
+  position: absolute;
+  padding: 0%;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 4.25% 10%;
+  color: rgb(200, 0, 0);
+  border: rgb(200, 0, 0) solid;
+  transition: 0.5s all ease-out;
+  margin-top: -0.2em;
+  &:hover {
+    padding: 4.25% 10%;
+    color: red;
+    border: red solid;
+  }
+`;
+
+const Level = ({ levelId, unlocked }) => {
+  console.log(playerStore.bestScores[levelId], playerStore.bestScores);
   return (
-    <div>
-      <h2>{levelId} - Score: </h2>
-      <button
-        onClick={() => {
+    <LevelContainer>
+      <div>
+        <h2>Level {levelId + 1}</h2>
+        <h3>Score: {unlocked ? playerStore.bestScores.value[levelId] : ''}</h3>
+      </div>
+      <Button
+        callback={() => {
           gameStore.launchLevel(levelId);
         }}
+        enabled={unlocked}
+        text="Play"
       >
         Play
-      </button>
-    </div>
+      </Button>
+      {!unlocked && <LevelLocked>FINISH LEVEL {levelId} TO UNLOCK</LevelLocked>}
+    </LevelContainer>
   );
 };
+
 export const Levels = () => {
+  const [bestScores, setBestScores] = useState([0]);
+  useLayoutEffect(() => {
+    const subs = playerStore.bestScores.subscribe(setBestScores);
+    return () => subs.unsubscribe();
+  }, []);
   return (
-    <>
+    <LevelList>
       <div>
         <h1>LEVELS</h1>
-        <button
-          onClick={() => {
-            gameStore.setGameState(GAME_STATES.WELCOME);
-          }}
-        >
-          Back
-        </button>
       </div>
       <div>
-        {LEVELS.levels.map((level, i) => (
-          <Level key={level.id} levelId={i} />
-        ))}
+        <div>
+          {LEVELS.levels.map((level, i) => (
+            <Level key={level.id} levelId={i} unlocked={!isNaN(bestScores[i])} />
+          ))}
+        </div>
       </div>
-    </>
+
+      <div>
+        <Button
+          callback={() => {
+            gameStore.setGameState(GAME_STATES.WELCOME);
+          }}
+          enabled
+          text="Back"
+        />
+      </div>
+    </LevelList>
   );
 };

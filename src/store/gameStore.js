@@ -1,6 +1,6 @@
 import { Subject, BehaviorSubject } from 'rxjs';
 
-export const GAME_STATES = { WELCOME: 0, LEVEL_CHOICE: 1, GAME: 2 };
+export const GAME_STATES = { WELCOME: 0, LEVEL_CHOICE: 1, GAME: 2, LEVEL_DEBRIEF: 3 };
 class GameStore {
   constructor() {
     if (!GameStore.instance) {
@@ -31,8 +31,12 @@ class GameStore {
     this.ballLaunched.next(true);
   };
   resetBall = () => {
-    this.balls.next(this.balls.value - 1);
-    this.ballLaunched.next(false);
+    if (this.balls.value > 0) {
+      this.balls.next(this.balls.value - 1);
+      this.ballLaunched.next(false);
+    } else {
+      this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
+    }
   };
   resetGame = () => {
     this.balls.next(3);

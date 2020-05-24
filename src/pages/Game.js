@@ -47,34 +47,27 @@ export function Game() {
   return (
     <>
       <div id="game" onClick={handleClick}>
-        {balls >= 0 ? (
-          <div id="canvas">
-            <Canvas shadowMap camera={camera}>
-              <Lights />
-              <Physics
-                iterations={20}
-                tolerance={0.0001}
-                defaultContactMaterial={{
-                  friction: 0,
-                  restitution: 1,
-                }}
-                gravity={[0, 0, 0]}
-                allowSleep={false}
-              >
-                <Walls />
-                <Tiles />
-                <Paddle />
-                <Ball />
-                <Effect camera={camera} />
-              </Physics>
-            </Canvas>
-          </div>
-        ) : (
-          <div>
-            <p>Game Over</p>
-            <p>Click to restart</p>
-          </div>
-        )}
+        <div id="canvas">
+          <Canvas shadowMap camera={camera}>
+            <Lights />
+            <Physics
+              iterations={20}
+              tolerance={0.0001}
+              defaultContactMaterial={{
+                friction: 0,
+                restitution: 1,
+              }}
+              gravity={[0, 0, 0]}
+              allowSleep={false}
+            >
+              <Walls />
+              <Tiles />
+              <Paddle />
+              <Ball />
+              <Effect camera={camera} />
+            </Physics>
+          </Canvas>
+        </div>
         <div id="hud">
           <p>Balls: {balls}</p>
           <p>Level: {currentLevel}</p>

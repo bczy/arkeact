@@ -4,7 +4,7 @@ class PlayerStore {
   constructor() {
     if (!PlayerStore.instance) {
       PlayerStore.instance = this;
-      this.bestScores = new BehaviorSubject([]);
+      this.bestScores = new BehaviorSubject([0]);
       this.achievements = new BehaviorSubject([]);
     }
 

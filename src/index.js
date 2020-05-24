@@ -6,6 +6,7 @@ import { gameStore, GAME_STATES } from './store/gameStore';
 import { Welcome } from './pages/Welcome';
 import { Game } from './pages/Game';
 import { Levels } from './pages/Levels';
+import { LevelDebrief } from './pages/LevelDebrief';
 
 import './styles.css';
 
@@ -17,6 +18,8 @@ const ArkaReact = ({ gameState }) => {
       return <Levels />;
     case GAME_STATES.GAME:
       return <Game />;
+    case GAME_STATES.LEVEL_DEBRIEF:
+      return <LevelDebrief />;
     default:
       return <Welcome />;
   }
