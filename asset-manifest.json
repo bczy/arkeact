@@ -1,28 +1,28 @@
 {
   "files": {
     "main.css": "/arkareact/static/css/main.bd41be1d.chunk.css",
-    "main.js": "/arkareact/static/js/main.1065ea74.chunk.js",
-    "main.js.map": "/arkareact/static/js/main.1065ea74.chunk.js.map",
-    "runtime-main.js": "/arkareact/static/js/runtime-main.f315ffec.js",
-    "runtime-main.js.map": "/arkareact/static/js/runtime-main.f315ffec.js.map",
-    "static/js/2.ff4fdf6e.chunk.js": "/arkareact/static/js/2.ff4fdf6e.chunk.js",
-    "static/js/2.ff4fdf6e.chunk.js.map": "/arkareact/static/js/2.ff4fdf6e.chunk.js.map",
-    "static/js/3.68e7adf1.chunk.js": "/arkareact/static/js/3.68e7adf1.chunk.js",
-    "static/js/3.68e7adf1.chunk.js.map": "/arkareact/static/js/3.68e7adf1.chunk.js.map",
+    "main.js": "/arkareact/static/js/main.d24d52c4.chunk.js",
+    "main.js.map": "/arkareact/static/js/main.d24d52c4.chunk.js.map",
+    "runtime-main.js": "/arkareact/static/js/runtime-main.1c708503.js",
+    "runtime-main.js.map": "/arkareact/static/js/runtime-main.1c708503.js.map",
+    "static/js/2.354857b0.chunk.js": "/arkareact/static/js/2.354857b0.chunk.js",
+    "static/js/2.354857b0.chunk.js.map": "/arkareact/static/js/2.354857b0.chunk.js.map",
+    "static/js/3.7e4e91aa.chunk.js": "/arkareact/static/js/3.7e4e91aa.chunk.js",
+    "static/js/3.7e4e91aa.chunk.js.map": "/arkareact/static/js/3.7e4e91aa.chunk.js.map",
     "index.html": "/arkareact/index.html",
-    "precache-manifest.dfd5fd743e8d2738e21d4ec3b53903ea.js": "/arkareact/precache-manifest.dfd5fd743e8d2738e21d4ec3b53903ea.js",
+    "precache-manifest.227101e2603e24e0086874e6ee641d61.js": "/arkareact/precache-manifest.227101e2603e24e0086874e6ee641d61.js",
     "service-worker.js": "/arkareact/service-worker.js",
     "static/css/main.bd41be1d.chunk.css.map": "/arkareact/static/css/main.bd41be1d.chunk.css.map",
-    "static/js/2.ff4fdf6e.chunk.js.LICENSE.txt": "/arkareact/static/js/2.ff4fdf6e.chunk.js.LICENSE.txt",
-    "static/js/3.68e7adf1.chunk.js.LICENSE.txt": "/arkareact/static/js/3.68e7adf1.chunk.js.LICENSE.txt",
+    "static/js/2.354857b0.chunk.js.LICENSE.txt": "/arkareact/static/js/2.354857b0.chunk.js.LICENSE.txt",
+    "static/js/3.7e4e91aa.chunk.js.LICENSE.txt": "/arkareact/static/js/3.7e4e91aa.chunk.js.LICENSE.txt",
     "static/media/brick.mp3": "/arkareact/static/media/brick.eed03f13.mp3",
     "static/media/cross.jpg": "/arkareact/static/media/cross.00397b42.jpg",
     "static/media/wall.mp3": "/arkareact/static/media/wall.4c0964a4.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.f315ffec.js",
-    "static/js/2.ff4fdf6e.chunk.js",
+    "static/js/runtime-main.1c708503.js",
+    "static/js/2.354857b0.chunk.js",
     "static/css/main.bd41be1d.chunk.css",
-    "static/js/main.1065ea74.chunk.js"
+    "static/js/main.d24d52c4.chunk.js"
   ]
 }
