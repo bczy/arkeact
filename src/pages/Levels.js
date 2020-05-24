@@ -1,6 +1,6 @@
 import React from 'react';
 import * as LEVELS from '../data/levels.json';
-import { gameStore } from '../store/gameStore';
+import { gameStore, GAME_STATES } from '../store/gameStore';
 
 const Level = ({ levelId }) => {
   return (
@@ -21,6 +21,13 @@ export const Levels = () => {
     <>
       <div>
         <h1>LEVELS</h1>
+        <button
+          onClick={() => {
+            gameStore.setGameState(GAME_STATES.WELCOME);
+          }}
+        >
+          Back
+        </button>
       </div>
       <div>
         {LEVELS.levels.map((level, i) => (

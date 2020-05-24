@@ -20,7 +20,6 @@ class GameStore {
     this.gameState.next(gameState);
   };
   launchLevel = (levelId) => {
-    console.log(levelId);
     this.currentLevel.next(levelId);
     this.gameState.next(GAME_STATES.GAME);
   };

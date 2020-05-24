@@ -3,7 +3,7 @@ import React, { useMemo, useState, useLayoutEffect } from 'react';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
 
-import { gameStore } from '../store/gameStore';
+import { gameStore, GAME_STATES } from '../store/gameStore';
 
 import { Tiles } from '../components/game/Tiles';
 import { Walls } from '../components/game/Walls';
@@ -79,7 +79,14 @@ export function Game() {
           <p>Balls: {balls}</p>
           <p>Level: {currentLevel}</p>
           <p>Score: {score}</p>
-          <p onClick={gameStore.resetGame}>Click to restart</p>
+          <button
+            onClick={() => {
+              gameStore.resetGame();
+              gameStore.setGameState(GAME_STATES.LEVEL_CHOICE);
+            }}
+          >
+            Back
+          </button>
         </div>
       </div>
     </>
