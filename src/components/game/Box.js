@@ -77,6 +77,7 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
           userData.strength--;
           api.position.set(-1000, -1000, -100);
           setParticleSystem(buildParticleSystem());
+          gameStore.addScore(userData.score);
         } else if (userData.isRoof) {
           gameStore.resetBall();
           gameStore.setGlitching(true);

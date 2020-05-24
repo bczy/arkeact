@@ -18,11 +18,13 @@ export function Game() {
   const [balls, setBalls] = useState(3);
   const [ballLaunched, setBallLaunched] = useState(false);
   const [currentLevel, setCurrentLevel] = useState(1);
+  const [score, setGameScore] = useState(0);
 
   useLayoutEffect(() => {
     const subs = gameStore.balls.subscribe(setBalls);
     subs.add(gameStore.currentLevel.subscribe(setCurrentLevel));
     subs.add(gameStore.ballLaunched.subscribe(setBallLaunched));
+    subs.add(gameStore.score.subscribe(setGameScore));
     return () => subs.unsubscribe();
   }, []);
 
@@ -37,6 +39,8 @@ export function Game() {
       gameStore.resetGame();
     } else if (!ballLaunched) {
       gameStore.launchBall();
+    } else {
+      setBalls(balls - 1);
     }
   }
 
@@ -74,6 +78,7 @@ export function Game() {
         <div id="hud">
           <p>Balls: {balls}</p>
           <p>Level: {currentLevel}</p>
+          <p>Score: {score}</p>
           <p onClick={gameStore.resetGame}>Click to restart</p>
         </div>
       </div>

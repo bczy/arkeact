@@ -17,8 +17,7 @@
     "react-three-fiber": "^4.0.21",
     "three": "^0.114.0",
     "uifx": "^2.0.7",
-    "use-cannon": "^0.2.4",
-    "zustand": "^2.2.3"
+    "use-cannon": "^0.2.4"
   },
   "scripts": {
     "predeploy": "npm run build",

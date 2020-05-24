@@ -1,32 +1,48 @@
-import { Subject } from 'rxjs';
-export const initialBallCount = 3;
+import { Subject, BehaviorSubject } from 'rxjs';
 
+export const GAME_STATES = { WELCOME: 0, LEVEL_CHOICE: 1, GAME: 2 };
 class GameStore {
   constructor() {
     if (!GameStore.instance) {
-      console.log('init gamestore...');
       GameStore.instance = this;
-      this.balls = new Subject(3);
+      this.gameState = new BehaviorSubject(GAME_STATES.WELCOME);
+      this.balls = new BehaviorSubject(3);
+      this.score = new BehaviorSubject(0);
       this.inGame = new Subject(false);
       this.ballLaunched = new Subject(false);
-      this.currentLevel = new Subject(1);
-      this.score = new Subject(0);
-      this.tiles = new Subject([]);
+      this.currentLevel = new BehaviorSubject(1);
       this.glitching = new Subject(false);
     }
 
     return GameStore.instance;
   }
+  setGameState = (gameState) => {
+    this.gameState.next(gameState);
+  };
+  launchLevel = (levelId) => {
+    console.log(levelId);
+    this.currentLevel.next(levelId);
+    this.gameState.next(GAME_STATES.GAME);
+  };
   launchGame = () => {
+    this.resetGame();
     this.inGame.next(true);
   };
   launchBall = () => {
     this.ballLaunched.next(true);
   };
   resetBall = () => {
+    this.balls.next(this.balls.value - 1);
+    this.ballLaunched.next(false);
+  };
+  resetGame = () => {
+    this.balls.next(3);
+    this.score.next(0);
+    this.inGame.next(false);
     this.ballLaunched.next(false);
   };
   setGlitching = (value) => this.glitching.next(value);
+  addScore = (score) => this.score.next(this.score.value + score);
 }
 
 export const gameStore = new GameStore();
