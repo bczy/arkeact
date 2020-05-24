@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 
 import * as THREE from 'three';
 import { useThree, useFrame } from 'react-three-fiber';
@@ -6,16 +6,18 @@ import { useBox } from 'use-cannon';
 
 import UIFx from 'uifx';
 
-import { useGameStore } from '../../data/stores/game';
-
 import brick from '../../assets/sounds/brick.mp3';
 import wall from '../../assets/sounds/wall.mp3';
 
-import { GameContext } from '../../data/game-context';
+import { gameStore } from '../../store/gameStore';
 
 export function Box({ position, size = [2, 2, 2], userData, id }) {
-  const { retrieveBall, resetBall } = useGameStore();
-  const { setGlitching } = useContext(GameContext);
+  const [balls, setBalls] = useState(3);
+
+  useLayoutEffect(() => {
+    const subs = gameStore.balls.subscribe(setBalls);
+    return () => subs.unsubscribe();
+  }, []);
 
   const isWall = isNaN(userData.strength);
   const isCorner = isNaN(userData.isCorner);
@@ -76,11 +78,11 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
           api.position.set(-1000, -1000, -100);
           setParticleSystem(buildParticleSystem());
         } else if (userData.isRoof) {
-          resetBall();
-          setGlitching(true);
+          gameStore.resetBall();
+          gameStore.setGlitching(true);
           setTimeout(() => {
-            setGlitching(false);
-            retrieveBall();
+            gameStore.setGlitching(false);
+            setBalls(balls - 1);
           }, 300);
         }
       },

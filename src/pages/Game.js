@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useLayoutEffect } from 'react';
 
 import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
+
+import { gameStore } from '../store/gameStore';
 
 import { Tiles } from '../components/game/Tiles';
 import { Walls } from '../components/game/Walls';
@@ -10,16 +12,20 @@ import { Paddle } from '../components/game/Paddle';
 import { Lights } from '../components/game/Lights';
 import { Effect } from '../components/vfx/Effect';
 
-import { GameContext } from '../data/game-context';
-import { useGameStore } from '../data/stores/game';
 import { PerspectiveCamera } from 'three';
 
 export function Game() {
-  const [glitching, setGlitching] = useState(false);
-  const value = { glitching, setGlitching };
-  const { ballLaunched, launchBall, balls, resetGame, currentLevel } = useGameStore(
-    (state) => state
-  );
+  const [balls, setBalls] = useState(3);
+  const [ballLaunched, setBallLaunched] = useState(false);
+  const [currentLevel, setCurrentLevel] = useState(1);
+
+  useLayoutEffect(() => {
+    const subs = gameStore.balls.subscribe(setBalls);
+    subs.add(gameStore.currentLevel.subscribe(setCurrentLevel));
+    subs.add(gameStore.ballLaunched.subscribe(setBallLaunched));
+    return () => subs.unsubscribe();
+  }, []);
+
   const camera = useMemo(() => {
     const camera = new PerspectiveCamera(45, 1, 1, 57);
     camera.position.set(0, 0, 45);
@@ -28,10 +34,9 @@ export function Game() {
 
   function handleClick() {
     if (balls < 0) {
-      resetGame();
+      gameStore.resetGame();
     } else if (!ballLaunched) {
-      launchBall();
-      console.log(glitching);
+      gameStore.launchBall();
     }
   }
 
@@ -41,25 +46,23 @@ export function Game() {
         {balls >= 0 ? (
           <div id="canvas">
             <Canvas shadowMap camera={camera}>
-              <GameContext.Provider value={value}>
-                <Lights />
-                <Physics
-                  iterations={20}
-                  tolerance={0.0001}
-                  defaultContactMaterial={{
-                    friction: 0,
-                    restitution: 1,
-                  }}
-                  gravity={[0, 0, 0]}
-                  allowSleep={false}
-                >
-                  <Walls />
-                  <Tiles />
-                  <Paddle />
-                  <Ball />
-                  <Effect camera={camera} />
-                </Physics>
-              </GameContext.Provider>
+              <Lights />
+              <Physics
+                iterations={20}
+                tolerance={0.0001}
+                defaultContactMaterial={{
+                  friction: 0,
+                  restitution: 1,
+                }}
+                gravity={[0, 0, 0]}
+                allowSleep={false}
+              >
+                <Walls />
+                <Tiles />
+                <Paddle />
+                <Ball />
+                <Effect camera={camera} />
+              </Physics>
             </Canvas>
           </div>
         ) : (
@@ -71,7 +74,7 @@ export function Game() {
         <div id="hud">
           <p>Balls: {balls}</p>
           <p>Level: {currentLevel}</p>
-          <p onClick={resetGame}>Click to restart</p>
+          <p onClick={gameStore.resetGame}>Click to restart</p>
         </div>
       </div>
     </>

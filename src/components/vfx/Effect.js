@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useMemo, useEffect } from 'react';
+import React, { useRef, useLayoutEffect, useState, useMemo, useEffect } from 'react';
 import { useFrame, useThree, extend } from 'react-three-fiber';
 import * as THREE from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
@@ -8,12 +8,17 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
 
 import { GlitchPass } from './GlitchPass';
-import { GameContext } from '../../data/game-context';
+
+import { gameStore } from '../../store/gameStore';
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass, FilmPass, GlitchPass });
 
 export function Effect(camera) {
-  const { glitching } = useContext(GameContext);
+  const [glitching, setGlitching] = useState(false);
+  useLayoutEffect(() => {
+    const subs = gameStore.glitching.subscribe(setGlitching);
+    return () => subs.unsubscribe();
+  }, []);
   const composer = useRef();
   const { scene, gl, size } = useThree();
   const aspect = useMemo(() => new THREE.Vector2(size.width, size.height), [size]);

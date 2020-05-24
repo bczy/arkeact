@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { useSphere } from 'use-cannon';
 import { useFrame, useLoader } from 'react-three-fiber';
-import { useGameStore } from '../../data/stores/game';
+
+import { gameStore } from '../../store/gameStore';
+
 import * as THREE from 'three';
 import cross from '../../assets/textures/cross.jpg';
 export function Ball() {
-  const { ballLaunched } = useGameStore((state) => state);
+  const [ballLaunched, setBallLaunched] = useState(false);
+
+  useLayoutEffect(() => {
+    const subs = gameStore.ballLaunched.subscribe(setBallLaunched);
+    return () => subs.unsubscribe();
+  }, []);
   const map = useLoader(THREE.TextureLoader, cross);
   const [ref, api] = useSphere(() => ({
     mass: 1,

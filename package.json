@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "rxjs": "^6.5.5"
   }
 }
