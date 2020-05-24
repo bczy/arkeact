@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/arkareact/static/css/main.bd41be1d.chunk.css",
-    "main.js": "/arkareact/static/js/main.d24d52c4.chunk.js",
-    "main.js.map": "/arkareact/static/js/main.d24d52c4.chunk.js.map",
+    "main.js": "/arkareact/static/js/main.0223e4b0.chunk.js",
+    "main.js.map": "/arkareact/static/js/main.0223e4b0.chunk.js.map",
     "runtime-main.js": "/arkareact/static/js/runtime-main.1c708503.js",
     "runtime-main.js.map": "/arkareact/static/js/runtime-main.1c708503.js.map",
     "static/js/2.354857b0.chunk.js": "/arkareact/static/js/2.354857b0.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.7e4e91aa.chunk.js": "/arkareact/static/js/3.7e4e91aa.chunk.js",
     "static/js/3.7e4e91aa.chunk.js.map": "/arkareact/static/js/3.7e4e91aa.chunk.js.map",
     "index.html": "/arkareact/index.html",
-    "precache-manifest.227101e2603e24e0086874e6ee641d61.js": "/arkareact/precache-manifest.227101e2603e24e0086874e6ee641d61.js",
+    "precache-manifest.97c68b887da0dd326254216197cbecac.js": "/arkareact/precache-manifest.97c68b887da0dd326254216197cbecac.js",
     "service-worker.js": "/arkareact/service-worker.js",
     "static/css/main.bd41be1d.chunk.css.map": "/arkareact/static/css/main.bd41be1d.chunk.css.map",
     "static/js/2.354857b0.chunk.js.LICENSE.txt": "/arkareact/static/js/2.354857b0.chunk.js.LICENSE.txt",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.1c708503.js",
     "static/js/2.354857b0.chunk.js",
     "static/css/main.bd41be1d.chunk.css",
-    "static/js/main.d24d52c4.chunk.js"
+    "static/js/main.0223e4b0.chunk.js"
   ]
 }

@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a8c6fd69c4a1013ee37892a3320e96b3",
+    "revision": "4ab0307e5c3742fe42ceba60a6aa30cf",
     "url": "/arkareact/index.html"
   },
   {
-    "revision": "3e062954ce6b773cfbe6",
+    "revision": "60a01f861fa56bfb7630",
     "url": "/arkareact/static/css/main.bd41be1d.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/arkareact/static/js/3.7e4e91aa.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3e062954ce6b773cfbe6",
-    "url": "/arkareact/static/js/main.d24d52c4.chunk.js"
+    "revision": "60a01f861fa56bfb7630",
+    "url": "/arkareact/static/js/main.0223e4b0.chunk.js"
   },
   {
     "revision": "bffde3297b7026183494",
