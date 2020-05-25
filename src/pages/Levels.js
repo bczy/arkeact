@@ -4,14 +4,16 @@ import * as LEVELS from '../data/levels.json';
 import { gameStore, GAME_STATES } from '../store/gameStore';
 import { playerStore } from '../store/playerStore';
 
-import { Button } from '../components/hud/Button';
+import { Button } from '../components/hud/common/Button';
 
 import styled from 'styled-components';
+import { Title } from '../components/hud/common/Title';
 
 export const LevelContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 0.5em;
+  text-align: left;
 `;
 
 export const LevelList = styled.div`
@@ -40,13 +42,12 @@ export const LevelLocked = styled.div`
   }
 `;
 
-const Level = ({ levelId, unlocked }) => {
-  console.log(playerStore.bestScores[levelId], playerStore.bestScores);
+const Level = ({ levelId, unlocked, score }) => {
   return (
     <LevelContainer>
       <div>
         <h2>Level {levelId + 1}</h2>
-        <h3>Score: {unlocked ? playerStore.bestScores.value[levelId] : ''}</h3>
+        {unlocked && <h3>Score: {score}</h3>}
       </div>
       <Button
         callback={() => {
@@ -57,7 +58,7 @@ const Level = ({ levelId, unlocked }) => {
       >
         Play
       </Button>
-      {!unlocked && <LevelLocked>FINISH LEVEL {levelId} TO UNLOCK</LevelLocked>}
+      {unlocked ? '' : <LevelLocked>FINISH LEVEL {levelId} TO UNLOCK</LevelLocked>}
     </LevelContainer>
   );
 };
@@ -71,12 +72,12 @@ export const Levels = () => {
   return (
     <LevelList>
       <div>
-        <h1>LEVELS</h1>
+        <Title text="LEVELS" />
       </div>
       <div>
         <div>
           {LEVELS.levels.map((level, i) => (
-            <Level key={level.id} levelId={i} unlocked={!isNaN(bestScores[i])} />
+            <Level key={i} levelId={i} unlocked={!isNaN(bestScores[i])} score={bestScores[i]} />
           ))}
         </div>
       </div>

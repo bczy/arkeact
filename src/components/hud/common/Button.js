@@ -20,16 +20,18 @@ export const StyledButton = styled.button`
 
 export function Button({ callback, text, enabled, big = false }) {
   return (
-    <StyledButton
-      big={big}
-      enabled={enabled}
-      onClick={() => {
-        if (enabled) {
-          callback();
-        }
-      }}
-    >
-      {text}
-    </StyledButton>
+    <div>
+      <StyledButton
+        big={big}
+        enabled={enabled}
+        onClick={() => {
+          if (enabled) {
+            callback();
+          }
+        }}
+      >
+        {text}
+      </StyledButton>
+    </div>
   );
 }

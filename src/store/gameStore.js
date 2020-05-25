@@ -1,4 +1,6 @@
 import { Subject, BehaviorSubject } from 'rxjs';
+import { levelStore } from './levelStore';
+import { playerStore } from './playerStore';
 
 export const GAME_STATES = { WELCOME: 0, LEVEL_CHOICE: 1, GAME: 2, LEVEL_DEBRIEF: 3 };
 class GameStore {
@@ -6,6 +8,7 @@ class GameStore {
     if (!GameStore.instance) {
       GameStore.instance = this;
       this.gameState = new BehaviorSubject(GAME_STATES.WELCOME);
+      this.nbBrickDestroyed = new BehaviorSubject(0);
       this.balls = new BehaviorSubject(3);
       this.score = new BehaviorSubject(0);
       this.inGame = new Subject(false);
@@ -45,7 +48,20 @@ class GameStore {
     this.ballLaunched.next(false);
   };
   setGlitching = (value) => this.glitching.next(value);
-  addScore = (score) => this.score.next(this.score.value + score);
+  addScore = (score) => {
+    console.log(
+      this.nbBrickDestroyed.value + 1,
+      levelStore.tiles.value.length,
+      this.currentLevel.value,
+      levelStore.tiles.value[this.currentLevel.value].length
+    );
+    this.score.next(this.score.value + score);
+    if (this.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length) {
+      playerStore.addHighScore();
+      this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
+    }
+    this.nbBrickDestroyed.next(this.nbBrickDestroyed.value + 1);
+  };
 }
 
 export const gameStore = new GameStore();

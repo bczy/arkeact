@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { gameStore, GAME_STATES } from '../store/gameStore';
-import { Button } from '../components/hud/Button';
-import { Title } from '../components/hud/Title';
+import { Button } from '../components/hud/common/Button';
+import { Title } from '../components/hud/common/Title';
 
 export function Welcome() {
   return (

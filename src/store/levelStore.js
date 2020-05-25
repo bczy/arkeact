@@ -5,7 +5,7 @@ class LevelStore {
   constructor() {
     if (!LevelStore.instance) {
       LevelStore.instance = this;
-      this.tiles = new BehaviorSubject([1, 2]);
+      this.tiles = new BehaviorSubject([]);
     }
   }
 

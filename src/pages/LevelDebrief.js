@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { gameStore, GAME_STATES } from '../store/gameStore';
+import { levelStore } from '../store/levelStore';
 
-export function LevelDebrief({ winned }) {
+export function LevelDebrief() {
+  const winned = gameStore.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length;
   return (
     <div
       onClick={() => {

@@ -1,4 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
+import { gameStore } from './gameStore';
 
 class PlayerStore {
   constructor() {
@@ -10,6 +11,12 @@ class PlayerStore {
 
     return PlayerStore.instance;
   }
+  addHighScore = () => {
+    const bestScores = [...this.bestScores.value];
+    bestScores[gameStore.currentLevel.value] = gameStore.score.value;
+    bestScores[gameStore.currentLevel.value + 1] = 0;
+    this.bestScores.next(bestScores);
+  };
 }
 
 export const playerStore = new PlayerStore();

@@ -185,6 +185,9 @@ export const StyledTitle = styled.div`
   font-family: VT323;
   font-size: 5em;
   color: #0f0;
+  h1 {
+    margin: 0;
+  }
 `;
 
 export function Title({ text }) {

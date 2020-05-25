@@ -9,7 +9,9 @@ import UIFx from 'uifx';
 import brick from '../../assets/sounds/brick.mp3';
 import wall from '../../assets/sounds/wall.mp3';
 
-import { gameStore } from '../../store/gameStore';
+import { gameStore, GAME_STATES } from '../../store/gameStore';
+import { levelStore } from '../../store/levelStore';
+import { playerStore } from '../../store/playerStore';
 
 export function Box({ position, size = [2, 2, 2], userData, id }) {
   const [balls, setBalls] = useState(3);
@@ -73,18 +75,23 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
       userData: userData,
       onCollide: (e) => {
         hitSound.play();
-        if (!isWall) {
-          userData.strength--;
-          api.position.set(-1000, -1000, -100);
-          setParticleSystem(buildParticleSystem());
-          gameStore.addScore(userData.score);
-        } else if (userData.isRoof) {
+        console.log('onCollide ');
+        if (userData.isRoof) {
           gameStore.resetBall();
           gameStore.setGlitching(true);
           setTimeout(() => {
             gameStore.setGlitching(false);
             setBalls(balls - 1);
           }, 300);
+        } else if (!isWall) {
+          userData.strength--;
+          console.log('onCollide = hit');
+          if (userData.strength <= 0) {
+            console.log('onCollide = boom');
+            api.position.set(-1000, -1000, -100);
+            setParticleSystem(buildParticleSystem());
+            gameStore.addScore(userData.score);
+          }
         }
       },
     };
