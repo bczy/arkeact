@@ -26,40 +26,47 @@ export const LevelList = styled.div`
 `;
 
 export const LevelLocked = styled.div`
-  position: absolute;
-  padding: 0%;
+  margin: -3.5em auto;
+  width: 88%;
+  max-width: 26em;
   font-size: 2em;
+  color: rgba(255, 0, 0, 0.4);
   background-color: rgba(0, 0, 0, 0.4);
-  padding: 4.25% 10%;
-  color: rgb(200, 0, 0);
-  border: rgb(200, 0, 0) solid;
+  height: 3.5em;
   transition: 0.5s all ease-out;
-  margin-top: -0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
-    padding: 4.25% 10%;
-    color: red;
+    color: rgba(255, 0, 0, 1);
     border: red solid;
   }
 `;
 
 const Level = ({ levelId, unlocked, score }) => {
   return (
-    <LevelContainer>
-      <div>
-        <h2>Level {levelId + 1}</h2>
-        {unlocked && <h3>Score: {score}</h3>}
-      </div>
-      <Button
-        callback={() => {
-          gameStore.launchLevel(levelId);
-        }}
-        enabled={unlocked}
-        text="Play"
-      >
-        Play
-      </Button>
-      {unlocked ? '' : <LevelLocked>FINISH LEVEL {levelId} TO UNLOCK</LevelLocked>}
-    </LevelContainer>
+    <div>
+      <LevelContainer>
+        <div>
+          <h2>Level {levelId + 1}</h2>
+          {unlocked && <h3>Score: {score}</h3>}
+        </div>
+        <Button
+          callback={() => {
+            gameStore.launchLevel(levelId);
+          }}
+          enabled={unlocked}
+          text={unlocked ? 'Play' : 'Locked'}
+        ></Button>
+      </LevelContainer>
+      {unlocked ? (
+        ''
+      ) : (
+        <LevelLocked>
+          <div>FINISH LEVEL {levelId} TO UNLOCK</div>
+        </LevelLocked>
+      )}
+    </div>
   );
 };
 
@@ -82,7 +89,7 @@ export const Levels = () => {
         </div>
       </div>
 
-      <div>
+      <div style={{ marginTop: '3em' }}>
         <Button
           callback={() => {
             gameStore.setGameState(GAME_STATES.WELCOME);

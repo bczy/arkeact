@@ -13,6 +13,7 @@ export const StyledButton = styled.button`
   padding: ${(props) => (props.big ? '0.1em 1em' : '0.5em 1em')};
   transition: 0.5s all ease-out;
   box-shadow: 0.02em 0.02em 0.01em 0.01em;
+  width: 4.5em;
   ${(props) =>
     props.enabled &&
     '&:hover { color: rgb(0, 255, 0);border: rgb(0, 255, 0) solid;box-shadow: 0.04em 0.04em 0.02em 0.02em;}'}
