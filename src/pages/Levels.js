@@ -88,7 +88,6 @@ export const Levels = () => {
           ))}
         </div>
       </div>
-
       <div style={{ marginTop: '3em' }}>
         <Button
           callback={() => {

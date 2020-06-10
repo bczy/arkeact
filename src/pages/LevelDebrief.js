@@ -8,6 +8,7 @@ export function LevelDebrief() {
   return (
     <div
       onClick={() => {
+        gameStore.resetGame();
         gameStore.setGameState(GAME_STATES.LEVEL_CHOICE);
       }}
       style={{ margin: 'auto' }}

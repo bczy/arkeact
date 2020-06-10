@@ -16,7 +16,6 @@ class GameStore {
       this.currentLevel = new BehaviorSubject(1);
       this.glitching = new Subject(false);
     }
-
     return GameStore.instance;
   }
   setGameState = (gameState) => {
@@ -43,6 +42,7 @@ class GameStore {
   };
   resetGame = () => {
     this.balls.next(3);
+    this.nbBrickDestroyed.next(0);
     this.score.next(0);
     this.inGame.next(false);
     this.ballLaunched.next(false);
