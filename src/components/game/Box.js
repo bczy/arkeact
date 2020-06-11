@@ -9,7 +9,7 @@ import UIFx from 'uifx';
 import brick from '../../assets/sounds/brick.mp3';
 import wall from '../../assets/sounds/wall.mp3';
 
-import { gameStore } from '../../store/gameStore';
+import { gameStore } from '../../stores/gameStore';
 
 export function Box({ position, size = [2, 2, 2], userData, id }) {
   const [balls, setBalls] = useState(3);

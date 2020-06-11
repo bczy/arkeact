@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { useSphere } from 'use-cannon';
 import { useFrame, useLoader } from 'react-three-fiber';
 
-import { gameStore } from '../../store/gameStore';
+import { gameStore } from '../../stores/gameStore';
 
 import * as THREE from 'three';
 import cross from '../../assets/textures/cross.jpg';

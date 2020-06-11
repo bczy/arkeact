@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { gameStore, GAME_STATES } from '../store/gameStore';
+import { gameStore, GAME_STATES } from '../stores/gameStore';
 import { Button } from '../components/hud/common/Button';
 import { Title } from '../components/hud/common/Title';
 

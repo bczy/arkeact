@@ -3,7 +3,7 @@ import React, { useMemo, useState, useLayoutEffect } from 'react';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
 
-import { gameStore } from '../store/gameStore';
+import { gameStore } from '../stores/gameStore';
 
 import { Tiles } from '../components/game/Tiles';
 import { Walls } from '../components/game/Walls';

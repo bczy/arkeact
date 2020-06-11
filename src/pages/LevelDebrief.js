@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { gameStore, GAME_STATES } from '../store/gameStore';
-import { levelStore } from '../store/levelStore';
+import { gameStore, GAME_STATES } from '../stores/gameStore';
+import { levelStore } from '../stores/levelStore';
 
 export function LevelDebrief() {
   const winned = gameStore.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length;

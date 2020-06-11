@@ -3,8 +3,8 @@ import { Box } from './Box.js';
 
 import { tiles as TILES } from '../../data/gameBalanceData.json';
 
-import { levelStore } from '../../store/levelStore';
-import { gameStore } from '../../store/gameStore';
+import { levelStore } from '../../stores/levelStore';
+import { gameStore } from '../../stores/gameStore';
 
 function Tile({ position, userData, id }) {
   return <Box id={id} position={position} userData={userData} />;

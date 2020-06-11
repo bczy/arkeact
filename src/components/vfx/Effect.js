@@ -9,7 +9,7 @@ import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
 
 import { GlitchPass } from './GlitchPass';
 
-import { gameStore } from '../../store/gameStore';
+import { gameStore } from '../../stores/gameStore';
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass, FilmPass, GlitchPass });
 

@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import { gameStore, GAME_STATES } from './store/gameStore';
+import { gameStore, GAME_STATES } from './stores/gameStore';
 
 import { Welcome } from './pages/Welcome';
 import { Game } from './pages/Game';

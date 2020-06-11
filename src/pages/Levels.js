@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 
 import * as LEVELS from '../data/levels.json';
-import { gameStore, GAME_STATES } from '../store/gameStore';
-import { playerStore } from '../store/playerStore';
+import { gameStore, GAME_STATES } from '../stores/gameStore';
+import { playerStore } from '../stores/playerStore';
 
 import { Button } from '../components/hud/common/Button';
 
