@@ -46,21 +46,20 @@ export const LevelLocked = styled.div`
 const Level = ({ levelId, unlocked, score }) => {
   return (
     <div>
-      <LevelContainer>
-        <div>
-          <h2>Level {levelId + 1}</h2>
-          {unlocked && <h3>Score: {score}</h3>}
-        </div>
-        <Button
-          callback={() => {
-            gameStore.launchLevel(levelId);
-          }}
-          enabled={unlocked}
-          text={unlocked ? 'Play' : 'Locked'}
-        ></Button>
-      </LevelContainer>
       {unlocked ? (
-        ''
+        <LevelContainer>
+          <div>
+            <h2>Level {levelId + 1}</h2>
+            {unlocked && <h3>Score: {score}</h3>}
+          </div>
+          <Button
+            callback={() => {
+              gameStore.launchLevel(levelId);
+            }}
+            enabled={unlocked}
+            text={unlocked ? 'Play' : 'Locked'}
+          ></Button>
+        </LevelContainer>
       ) : (
         <LevelLocked>
           <div>FINISH LEVEL {levelId} TO UNLOCK</div>

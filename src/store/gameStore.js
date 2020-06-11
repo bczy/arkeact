@@ -2,6 +2,9 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { levelStore } from './levelStore';
 import { playerStore } from './playerStore';
 
+import UIFx from 'uifx';
+import ambiantMusicSource from '../assets/sounds/ambient.mp3';
+
 export const GAME_STATES = { WELCOME: 0, LEVEL_CHOICE: 1, GAME: 2, LEVEL_DEBRIEF: 3 };
 class GameStore {
   constructor() {
@@ -15,10 +18,15 @@ class GameStore {
       this.ballLaunched = new Subject(false);
       this.currentLevel = new BehaviorSubject(1);
       this.glitching = new Subject(false);
+      this.ambiantMusic = new UIFx(ambiantMusicSource);
     }
     return GameStore.instance;
   }
   setGameState = (gameState) => {
+    if (gameState === GAME_STATES.LEVEL_CHOICE) {
+      this.ambiantMusic.play();
+      this.ambiantMusic.setVolume(1);
+    } else this.ambiantMusic.setVolume(0);
     this.gameState.next(gameState);
   };
   launchLevel = (levelId) => {

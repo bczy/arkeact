@@ -29,7 +29,6 @@ export default function App() {
   const [gameState, setGameState] = useState(GAME_STATES.WELCOME);
   useLayoutEffect(() => {
     const subs = gameStore.gameState.subscribe(setGameState);
-
     return () => subs.unsubscribe();
   }, []);
 
