@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import { gameStore, GAME_STATES } from './stores/gameStore';
@@ -27,7 +27,7 @@ const ArkaReact = ({ gameState }) => {
 
 export default function App() {
   const [gameState, setGameState] = useState(GAME_STATES.WELCOME);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const subs = gameStore.gameState.subscribe(setGameState);
     return () => subs.unsubscribe();
   }, []);
