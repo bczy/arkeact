@@ -19,7 +19,7 @@ export const StyledButton = styled.button`
     '&:hover { color: rgb(0, 255, 0);border: rgb(0, 255, 0) solid;box-shadow: 0.04em 0.04em 0.02em 0.02em;}'}
 `;
 
-export function Button({ callback, text, enabled, big = false }) {
+export function Button({ callback, text, enabled = true, big = false }) {
   return (
     <div>
       <StyledButton
