@@ -85,7 +85,7 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
           if (userData.strength <= 0) {
             api.position.set(-1000, -1000, -100);
             setParticleSystem(buildParticleSystem());
-            gameStore.addScore(userData.score);
+            gameStore.increaseScore(userData.score);
           }
         }
       },

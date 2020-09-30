@@ -34,12 +34,6 @@ export function Game() {
           canvasContainer.current.style.height = `${window.innerHeight}px`;
           setSize(window.innerHeight);
         }
-        console.log(
-          'canvasContainer.dim',
-          'muf',
-          canvasContainer.current.style,
-          canvasContainer.current.style.height
-        );
       }
       window.addEventListener('resize', updateSize);
       updateSize();

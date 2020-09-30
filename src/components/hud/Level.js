@@ -29,7 +29,6 @@ export const LevelLocked = styled.div`
 `;
 
 export const Level = ({ levelData, bestScore, levelId }) => {
-  console.log(levelData);
   const unlocked = bestScore > 0;
   return (
     <div>

@@ -11,7 +11,10 @@ class PlayerStore {
 
     return PlayerStore.instance;
   }
+
+  //TODO: call
   addHighScore = () => {
+    console.log('bestScores', bestScores)
     const bestScores = [...this.bestScores.value];
     bestScores[gameStore.currentLevel.value] = gameStore.score.value;
     bestScores[gameStore.currentLevel.value + 1] = 0;

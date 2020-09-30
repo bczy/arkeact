@@ -50,13 +50,7 @@ class GameStore {
     this.ballLaunched.next(false);
   };
   setGlitching = (value) => this.glitching.next(value);
-  addScore = (score) => {
-    console.log(
-      this.nbBrickDestroyed.value + 1,
-      levelStore.tiles.value.length,
-      this.currentLevel.value,
-      levelStore.tiles.value[this.currentLevel.value].length
-    );
+  increaseScore = (score) => {
     this.score.next(this.score.value + score);
     if (this.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length) {
       playerStore.addHighScore();

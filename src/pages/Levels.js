@@ -11,20 +11,13 @@ import { Title } from '../components/hud/common/Title';
 import { Level } from '../components/hud/Level';
 
 export const LevelsChoice = styled.div`
-  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  text-align: center;
 `;
 
 export const LevelList = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: grid;
   text-align: center;
 `;
 
