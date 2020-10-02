@@ -4,34 +4,38 @@
       "color": "#fe5e51",
       "bonusProbability": 0,
       "strength": 2,
-      "score": 500
+      "score": 500,
+      "isTile":true
     },
     "pink": {
-      "color": "#ffb5ff",
+      "color": "#F12C71",
       "bonusProbability": 0,
       "strength": 1,
-      "score": 250
+      "score": 250,
+      "isTile":true
     },
     "blue": {
       "color": "#36abb5",
       "bonusProbability": 0,
       "strength": 3,
-      "score": 1000
+      "score": 1000,
+      "isTile":true
     },
     "yellow": {
       "color": "#f6db5f",
       "bonusProbability": 0,
       "strength": 2,
-      "score": 500
+      "score": 500,
+      "isTile":true
     }
   },
   "walls": {
     "side": {
-      "color": "#5433FF"
+      "color": "#0b0f17"
     },
-    "ground": { "color": "#5433FF" },
+    "ground": { "color": "#000" },
     "roof": { "isRoof": true, "color": "#000" },
-    "corner": { "color": "#FFF", "isCorner": true }
+    "corner": { "color": "#F12C71", "isCorner": true }
   },
   "game": {
     "balls": 3,

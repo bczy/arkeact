@@ -101,10 +101,21 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
     }
   });
 
-  return (
-    <mesh key={id} ref={ref} receiveShadow userData={userData}>
-      <boxGeometry attach="geometry" args={size} />
-      <meshStandardMaterial attach="material" color={userData.color} />
-    </mesh>
-  );
+  return (<>
+    {userData.isTile ? 
+      (<mesh key={id} ref={ref} userData={userData}>
+        <boxGeometry attach="geometry" args={size} />
+        <meshStandardMaterial attach="material" wireframe={true} color={userData.color} />
+      <mesh userData={userData}>
+        <boxGeometry attach="geometry" args={size.map(i => i *0.99)} />
+        <meshStandardMaterial attach="material" opacity={0.1} color="#F00" />
+      </mesh>
+    </mesh>) : 
+    (<mesh key={id} ref={ref} userData={userData}>
+    <boxGeometry attach="geometry" args={size} />
+
+    <meshStandardMaterial attach="material" color={userData.color} />
+
+</mesh>)}</>)
+  ;
 }
