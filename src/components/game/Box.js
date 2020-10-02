@@ -111,10 +111,10 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
         <meshStandardMaterial attach="material" opacity={0.1} color="#F00" />
       </mesh>
     </mesh>) : 
-    (<mesh key={id} ref={ref} userData={userData}>
-    <boxGeometry attach="geometry" args={size} />
+    (<mesh key={id} ref={ref} receiveShadow  userData={userData}>
+    <boxGeometry attach="geometry" args={size} receiveShadow  />
 
-    <meshStandardMaterial attach="material" color={userData.color} />
+    <meshStandardMaterial attach="material" receiveShadow color={userData.color} />
 
 </mesh>)}</>)
   ;
