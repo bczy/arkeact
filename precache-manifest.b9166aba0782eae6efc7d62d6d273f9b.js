@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0f1a790f0c93c68c15174828100dfec7",
+    "revision": "4f667927748f713fbf73e5684faecfe4",
     "url": "/arkareact/index.html"
   },
   {
