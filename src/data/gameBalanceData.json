@@ -33,7 +33,7 @@
     "side": {
       "color": "#0b0f17"
     },
-    "ground": { "color": "#000" },
+    "ground": { "color": "#0b0f17" },
     "roof": { "isRoof": true, "color": "#000" },
     "corner": { "color": "#F12C71", "isCorner": true }
   },
