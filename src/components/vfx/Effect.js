@@ -5,7 +5,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
-import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
+import { FilmPass } from './FilmPass';
 
 import { GlitchPass } from './GlitchPass';
 
@@ -28,8 +28,8 @@ export function Effect(camera) {
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" scene={scene} camera={camera.camera} />
       <unrealBloomPass attachArray="passes" args={[aspect, 0.25, 0.2, 0]} />
+      <filmPass attachArray="passes" noiseIntensity={0} args={[0.35, 0.6, 1500, false]} />
       <glitchPass attachArray="passes" factor={glitching ? 1 : 0} />
-      <filmPass attachArray="passes" args={[0.35, 0.6, 1500, false]} />
     </effectComposer>
   );
 }

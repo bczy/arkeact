@@ -9,6 +9,7 @@
     },
     "pink": {
       "color": "#F12C71",
+      "fillColor": "#F2417F",
       "bonusProbability": 0,
       "strength": 1,
       "score": 250,
