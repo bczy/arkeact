@@ -9,7 +9,7 @@ export function Welcome() {
     <>
       <div style={{ flexDirection: 'column' }}>
         <div>
-          <Title text="ARKAREACT" />
+          <Title text="ARKEACT" />
         </div>
         <div style={{ textAlign: 'center' }}>
           <Button
