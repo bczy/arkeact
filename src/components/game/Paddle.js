@@ -8,7 +8,7 @@ export function Paddle() {
     args: 1.3,
     scale: [1, 1, 0.01],
     position: [0, 0, 10],
-    sleepSpeedLimit: 4,
+    sleepSpeedLimit: 4, 
     onCollide: (e) => {},
   }));
   function clampMouseMovement(diffCurrentPos, maxVelocity = 1) {
@@ -38,7 +38,7 @@ export function Paddle() {
     <>
       <mesh ref={ref} castShadow>
         <boxGeometry attach="geometry" args={[5, 5, 1]} />
-        <meshBasicMaterial attach="material" wireframe={true} color={'#FFF'} />
+        <meshBasicMaterial attach="material" wireframe={true} color={'#0a94ab'} />
       </mesh>
     </>
   );

@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import * as LEVELS from '../data/levels.json';
 import { gameStore, GAME_STATES } from '../stores/gameStore';
 import { playerStore } from '../stores/playerStore';
 
@@ -9,6 +8,8 @@ import { Button } from '../components/hud/common/Button';
 import { Title } from '../components/hud/common/Title';
 
 import { Level } from '../components/hud/Level';
+
+import { levelStore } from '../stores/levelStore';
 
 export const LevelsChoice = styled.div`
   height: 100%;
@@ -29,20 +30,20 @@ export const Levels = () => {
   }, []);
   return (
     <LevelsChoice>
-      <div>
-        <Title text="LEVELS" />
-      </div>
+      <Title text="LEVELS" />
       <LevelList>
-        {LEVELS.levels.map((levelData, levelId) => {
+        {bestScores.map(( _,levelId) => {
           return (
             <Level
               key={levelId}
-              levelData={levelData}
               levelId={levelId}
-              bestScore={bestScores[levelId]}
+              highScore={bestScores[levelId]} 
+              unlocked={true}
             />
           );
         })}
+        {
+        }
       </LevelList>
       <div style={{ marginTop: '3em' }}>
         <Button

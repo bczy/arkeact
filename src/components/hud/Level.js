@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { gameStore } from '../../stores/gameStore';
+import { playerStore } from '../../stores/playerStore';
+
 import { Button } from './common/Button';
 
 export const LevelContainer = styled.div`
@@ -20,7 +22,7 @@ export const LevelLocked = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   height: 3.5em;
   transition: 0.5s all ease-out;
-  align-items: center;
+  align-items: center;gameStore
   justify-content: center;
   &:hover {
     color: rgba(255, 0, 0, 1);
@@ -28,15 +30,14 @@ export const LevelLocked = styled.div`
   }
 `;
 
-export const Level = ({ levelData, bestScore, levelId }) => {
-  const unlocked = bestScore > 0;
+export const Level = ({ levelId, unlocked, highScore }) => {
   return (
     <div>
-      {levelId < 1 ? (
+      {unlocked ? (
         <LevelContainer>
           <div>
             <h2>Level {levelId + 1}</h2>
-            {unlocked && <h3>Best score: {bestScore}</h3>}
+            {unlocked && <h3>Highscore: {highScore}</h3>}
           </div>
           <Button
             callback={() => {

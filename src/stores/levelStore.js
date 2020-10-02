@@ -12,6 +12,11 @@ class LevelStore {
   buildLevel = (levelId) => {
     this.tiles.next(LEVELS.levels[levelId].layers.flat());
   };
+
+  getLockedLevels(bestScores){
+    const levels = LEVELS.levels;
+    return [...levels].splice(bestScores.length - 1, levels.length - 1);
+  }
 }
 
 export const levelStore = new LevelStore();

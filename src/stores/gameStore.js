@@ -27,6 +27,9 @@ class GameStore {
     this.currentLevel.next(levelId);
     this.gameState.next(GAME_STATES.GAME);
   };
+  increaseLevelNumber = () => {
+    this.currentLevel.next(this.currentLevel.value + 1);
+  }
   launchGame = () => {
     this.resetGame();
     this.inGame.next(true);
