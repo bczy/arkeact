@@ -13,9 +13,9 @@ class LevelStore {
     this.tiles.next(LEVELS.levels[levelId].layers.flat());
   };
 
-  getLockedLevels(bestScores){
+  getLockedLevels(bestscoreValues){
     const levels = LEVELS.levels;
-    return [...levels].splice(bestScores.length - 1, levels.length - 1);
+    return [...levels].splice(bestscoreValues.length - 1, levels.length - 1);
   }
 }
 

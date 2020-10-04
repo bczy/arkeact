@@ -11,7 +11,7 @@ export function LevelDebrief() {
   return (
     <div style={{ margin: 'auto' }}>
       <h2>Level {winned ? 'Cleared' : 'Failed'}</h2>
-      <h3>Score: {gameStore.score.value}</h3>
+      <h3>scoreValue: {gameStore.scoreValue.value}</h3>
       <Button callback={() => {
         if (!winned){
           gameStore.resetGame();

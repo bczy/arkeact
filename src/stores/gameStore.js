@@ -10,7 +10,7 @@ class GameStore {
       this.gameState = new BehaviorSubject(GAME_STATES.WELCOME);
       this.nbBrickDestroyed = new BehaviorSubject(0);
       this.balls = new BehaviorSubject(3);
-      this.score = new BehaviorSubject(0);
+      this.scoreValue = new BehaviorSubject(0);
       this.inGame = new Subject(false);
       this.ballLaunched = new Subject(false);
       this.currentLevel = new BehaviorSubject(1);
@@ -48,15 +48,15 @@ class GameStore {
   resetGame = () => {
     this.balls.next(3);
     this.nbBrickDestroyed.next(0);
-    this.score.next(0);
+    this.scoreValue.next(0);
     this.inGame.next(false);
     this.ballLaunched.next(false);
   };
   setGlitching = (value) => this.glitching.next(value);
-  increaseScore = (score) => {
-    this.score.next(this.score.value + score);
+  increasescoreValue = (scoreValue) => {
+    this.scoreValue.next(this.scoreValue.value + scoreValue);
     if (this.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length) {
-      playerStore.addHighScore();
+      playerStore.addHighscoreValue();
       this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
     }
     this.nbBrickDestroyed.next(this.nbBrickDestroyed.value + 1);

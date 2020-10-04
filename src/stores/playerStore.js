@@ -5,7 +5,7 @@ class PlayerStore {
   constructor() {
     if (!PlayerStore.instance) {
       PlayerStore.instance = this;
-      this.bestScores = new BehaviorSubject([0]);
+      this.bestscoreValues = new BehaviorSubject([0]);
       this.achievements = new BehaviorSubject([]);
     }
 
@@ -13,12 +13,12 @@ class PlayerStore {
   }
 
   //TODO: call
-  addHighScore = () => {
-    const bestScores = [...this.bestScores.value];
-    bestScores[gameStore.currentLevel.value] = gameStore.score.value;
-    bestScores[gameStore.currentLevel.value + 1] = 0;
-    this.bestScores.next(bestScores);
-    console.log('bestScores', bestScores)
+  addHighscoreValue = () => {
+    const bestscoreValues = [...this.bestscoreValues.value];
+    bestscoreValues[gameStore.currentLevel.value] = gameStore.scoreValue.value;
+    bestscoreValues[gameStore.currentLevel.value + 1] = 0;
+    this.bestscoreValues.next(bestscoreValues);
+    console.log('bestscoreValues', bestscoreValues)
   };
 }
 

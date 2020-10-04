@@ -30,14 +30,14 @@ export const LevelLocked = styled.div`
   }
 `;
 
-export const Level = ({ levelId, unlocked, highScore }) => {
+export const Level = ({ levelId, unlocked, highscoreValue }) => {
   return (
     <div>
       {unlocked ? (
         <LevelContainer>
           <div>
             <h2>Level {levelId + 1}</h2>
-            {unlocked && <h3>Highscore: {highScore}</h3>}
+            {unlocked && <h3>HighscoreValue: {highscoreValue}</h3>}
           </div>
           <Button
             callback={() => {

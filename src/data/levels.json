@@ -3,19 +3,12 @@
     {
       "layers": [
         [
-          { "position": [0, 2.5, -10], "userDataType": "pink" },
-          { "position": [-2.5, -2.5, -10], "userDataType": "pink" },
-          { "position": [2.5, -2.5, -10], "userDataType": "pink" }
-        ]
-      ]
-    },
-    {
-      "layers": [
-        [
-          { "position": [0, 2.5, -10], "userDataType": "pink" },
-          { "position": [-2.5, -2.5, -10], "userDataType": "pink" },
-          { "position": [2.5, -2.5, -10], "userDataType": "pink" },
-            { "position": [0, 0, 10], "userDataType": "blue" }
+          { "position": [0, 10, -10], "userDataType": "blue" },
+            { "position": [0, -10, -10], "userDataType": "blue" },
+              { "position": [0, -10, -10], "userDataType": "blue" }
+        ],
+        [ 
+          { "position": [2.5, -1.25, -5], "userDataType": "red" }
         ]
       ]
     },

@@ -23,21 +23,21 @@ export const LevelList = styled.div`
 `;
 
 export const Levels = () => {
-  const [bestScores, setBestScores] = useState([0]);
+  const [bestscoreValues, setBestscoreValues] = useState([0]);
   useLayoutEffect(() => {
-    const subs = playerStore.bestScores.subscribe(setBestScores);
+    const subs = playerStore.bestscoreValues.subscribe(setBestscoreValues);
     return () => subs.unsubscribe();
   }, []);
   return (
     <LevelsChoice>
       <Title text="LEVELS" />
       <LevelList>
-        {bestScores.map(( _,levelId) => {
+        {bestscoreValues.map(( _,levelId) => {
           return (
             <Level
               key={levelId}
               levelId={levelId}
-              highScore={bestScores[levelId]} 
+              highscoreValue={bestscoreValues[levelId]} 
               unlocked={true}
             />
           );
