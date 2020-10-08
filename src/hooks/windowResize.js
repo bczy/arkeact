@@ -20,6 +20,6 @@ export function useFullScreen(container, sizeHook, fillHeight = true) {
 		window.addEventListener('resize', updateSize);
 		updateSize();
 		return () => window.removeEventListener('resize', updateSize);
-	}, [fillHeight]);
+	}, [fillHeight, container, sizeHook]);
 	return sizeHook;
 }

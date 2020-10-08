@@ -38,7 +38,7 @@ export const Level = ({ levelId, unlocked, highscoreValue }) => {
 				<LevelContainer>
 					<div>
 						<h2>Level {levelId + 1}</h2>
-						{unlocked && <h3>HighscoreValue: {highscoreValue}</h3>}
+						{unlocked && <h3>Highscore: {highscoreValue}</h3>}
 					</div>
 					<Button
 						callback={() => {

@@ -11,10 +11,10 @@ import wall from '../../assets/sounds/wall.mp3';
 
 import { gameStore } from '../../stores/gameStore';
 
-function createParticals(particleCount, ref, material){
+function createParticals(particleCount, ref){
   const particles = new THREE.Geometry();
   
-  // now create the individual particles
+  // TODO: object pooling
   for (let p = 0; p < particleCount; p++) {
     // create a particle with random
     // position values, -250 -> 250

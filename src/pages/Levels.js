@@ -42,9 +42,6 @@ export const Levels = () => {
 						/>
 					);
 				})}
-				{}
-			</LevelList>
-			<div style={{ marginTop: '3em' }}>
 				<Button
 					callback={() => {
 						gameStore.setGameState(GAME_STATES.WELCOME);
@@ -52,7 +49,8 @@ export const Levels = () => {
 					enabled
 					text="Back"
 				/>
-			</div>
+			</LevelList>
+			<div style={{ marginTop: '3em' }}></div>
 		</LevelsChoice>
 	);
 };
