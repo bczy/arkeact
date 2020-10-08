@@ -1,15 +1,16 @@
+/** @format */
+
 import React from 'react';
 import styled from 'styled-components';
 
 import { gameStore } from '../../stores/gameStore';
-import { playerStore } from '../../stores/playerStore';
 
 import { Button } from './common/Button';
 
 export const LevelContainer = styled.div`
-  justify-content: space-evenly;
-  margin-bottom: 0.5em;
-  grid-row: 1;
+	justify-content: space-evenly;
+	margin-bottom: 0.5em;
+	grid-row: 1;
 `;
 
 export const LevelLocked = styled.div`
@@ -31,26 +32,26 @@ export const LevelLocked = styled.div`
 `;
 
 export const Level = ({ levelId, unlocked, highscoreValue }) => {
-  return (
-    <div>
-      {unlocked ? (
-        <LevelContainer>
-          <div>
-            <h2>Level {levelId + 1}</h2>
-            {unlocked && <h3>HighscoreValue: {highscoreValue}</h3>}
-          </div>
-          <Button
-            callback={() => {
-              gameStore.launchLevel(levelId);
-            }}
-            text="Play"
-          />
-        </LevelContainer>
-      ) : (
-        <LevelLocked>
-          <div>FINISH LEVEL {levelId} TO UNLOCK</div>
-        </LevelLocked>
-      )}
-    </div>
-  );
+	return (
+		<div>
+			{unlocked ? (
+				<LevelContainer>
+					<div>
+						<h2>Level {levelId + 1}</h2>
+						{unlocked && <h3>HighscoreValue: {highscoreValue}</h3>}
+					</div>
+					<Button
+						callback={() => {
+							gameStore.launchLevel(levelId);
+						}}
+						text="Play"
+					/>
+				</LevelContainer>
+			) : (
+				<LevelLocked>
+					<div>FINISH LEVEL {levelId} TO UNLOCK</div>
+				</LevelLocked>
+			)}
+		</div>
+	);
 };
