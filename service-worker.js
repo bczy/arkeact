@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/arkareact/precache-manifest.a84d79cbd5f65256107e5091f5e7bfef.js"
+  "/arkareact/precache-manifest.70ea699b30348c56077b179f768f13ea.js"
 );
 
 self.addEventListener('message', (event) => {
