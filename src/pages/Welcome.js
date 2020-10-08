@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { gameStore, GAME_STATES } from '../stores/gameStore';
 import { Button } from '../components/hud/common/Button';
 
-import background from '../assets/images/title_small.png';
+import background from '../assets/images/game_title.png';
 
 import { useFullScreen } from '../hooks/windowResize';
 
