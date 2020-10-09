@@ -14,7 +14,7 @@ export const StyledButton = styled.button`
 	border-style: none;
 	padding: ${(props) => (props.big ? '0.1em 1em' : '0.5em 1em')};
 	transition: 0.5s all ease-out;
-	${(props) => props.enabled && '&:hover { text-shadow: 2px 2px #FFF; }'}
+	${(props) => props.enabled && '&:hover { text-shadow: 2px 2px #fff; }'}
 `;
 
 export function Button({

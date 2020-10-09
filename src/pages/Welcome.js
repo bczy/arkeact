@@ -36,8 +36,15 @@ export function Welcome() {
 					gameStore.setGameState(GAME_STATES.LEVEL_CHOICE);
 				}}
 				enabled
-				text="S TA R T"
-				style={{ height: '5%', marginTop: '20%', width: '20%' }}
+				text="PLAY"
+				style={{
+					height: '5%',
+					marginTop: '20%',
+					width: '50%',
+					letterSpacing: '',
+					transform: 'rotate(-3deg)',
+					fontSize: '3rem',
+				}}
 			/>
 		</BackgroundContainer>
 	);

@@ -10,16 +10,19 @@ import { Button } from '../components/hud/common/Button';
 import { Title } from '../components/hud/common/Title';
 
 import { Level } from '../components/hud/Level';
+import { levelStore } from '../stores/levelStore';
 
-export const LevelsChoice = styled.div`
-	height: 100%;
-`;
-
-export const LevelList = styled.div`
+const LevelsPage = styled.div`
 	width: 100%;
 	height: 100%;
-	display: grid;
+	display: flex;
+	flex-direction: column;
+`;
+
+const LevelList = styled.div`
 	text-align: center;
+	height: 65%;
+	width: 100%;
 `;
 
 export const Levels = () => {
@@ -29,7 +32,7 @@ export const Levels = () => {
 		return () => subs.unsubscribe();
 	}, []);
 	return (
-		<LevelsChoice>
+		<LevelsPage>
 			<Title text="LEVELS" />
 			<LevelList>
 				{bestscoreValues.map((_, levelId) => {
@@ -42,15 +45,25 @@ export const Levels = () => {
 						/>
 					);
 				})}
-				<Button
-					callback={() => {
-						gameStore.setGameState(GAME_STATES.WELCOME);
-					}}
-					enabled
-					text="Back"
-				/>
+				{levelStore.getLockedLevels(bestscoreValues).map((_, index) => {
+					return (
+						<Level
+							key={index}
+							levelId={index + bestscoreValues.length}
+							highscoreValue={0}
+							unlocked={false}
+						/>
+					);
+				})}
 			</LevelList>
+			<Button
+				callback={() => {
+					gameStore.setGameState(GAME_STATES.WELCOME);
+				}}
+				enabled
+				text="Back"
+			/>
 			<div style={{ marginTop: '3em' }}></div>
-		</LevelsChoice>
+		</LevelsPage>
 	);
 };

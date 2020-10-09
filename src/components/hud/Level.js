@@ -9,26 +9,16 @@ import { Button } from './common/Button';
 
 export const LevelContainer = styled.div`
 	justify-content: space-evenly;
-	margin-bottom: 0.5em;
 	grid-row: 1;
+	color: green;
+	display: flex;
 `;
 
 export const LevelLocked = styled.div`
-  grid-row: 1;
-  margin: -3.5em auto;
-  width: 88%;
-  max-width: 26em;
-  font-size: 2em;
-  color: rgba(255, 0, 0, 0.4);
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 3.5em;
-  transition: 0.5s all ease-out;
-  align-items: center;gameStore
-  justify-content: center;
-  &:hover {
-    color: rgba(255, 0, 0, 1);
-    border: red solid;
-  }
+	justify-content: space-evenly;
+	grid-row: 1;
+	color: green;
+	display: flex;
 `;
 
 export const Level = ({ levelId, unlocked, highscoreValue }) => {

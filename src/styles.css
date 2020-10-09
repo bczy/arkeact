@@ -80,7 +80,25 @@ canvas {
 	src: url(/public/fonts/lazer84.ttf);
 	font-family: 'lazer84';
 	src: local('lazer84'), local('lazer84'),
-		url('./assets/fonts/lazer84.woff') format('woff2'),
+		url('./assets/fonts/lazer84.woff2') format('woff2'),
 		url('./assets/fonts/lazer84.woff') format('woff'),
 		url('./assets/fonts/lazer84.ttf') format('truetype');
+}
+
+.fade-transition-enter {
+	opacity: 1;
+}
+
+.fade-transition-enter.fade-transition-enter-active {
+	opacity: 1;
+	transition: opacity 500ms ease-in;
+}
+
+.fade-transition-leave {
+	opacity: 0;
+}
+
+.fade-transition-leave.fade-transition-leave-active {
+	opacity: 1;
+	transition: opacity 300ms ease-in;
 }

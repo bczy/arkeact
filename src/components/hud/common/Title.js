@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 export const StyledTitle = styled.div`
 	h1 {
-		margin: 0;
 		width: 100%;
 		text-align: center;
+		font-size: 3.3em;
 	}
 `;
 
