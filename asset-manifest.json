@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/arkareact/static/css/main.f93dec76.chunk.css",
-    "main.js": "/arkareact/static/js/main.a68a5e01.chunk.js",
-    "main.js.map": "/arkareact/static/js/main.a68a5e01.chunk.js.map",
+    "main.css": "/arkareact/static/css/main.15974eb9.chunk.css",
+    "main.js": "/arkareact/static/js/main.9d19df87.chunk.js",
+    "main.js.map": "/arkareact/static/js/main.9d19df87.chunk.js.map",
     "runtime-main.js": "/arkareact/static/js/runtime-main.178bee18.js",
     "runtime-main.js.map": "/arkareact/static/js/runtime-main.178bee18.js.map",
     "static/js/2.095efca6.chunk.js": "/arkareact/static/js/2.095efca6.chunk.js",
@@ -10,9 +10,9 @@
     "static/js/3.a1fa6b44.chunk.js": "/arkareact/static/js/3.a1fa6b44.chunk.js",
     "static/js/3.a1fa6b44.chunk.js.map": "/arkareact/static/js/3.a1fa6b44.chunk.js.map",
     "index.html": "/arkareact/index.html",
-    "precache-manifest.70ea699b30348c56077b179f768f13ea.js": "/arkareact/precache-manifest.70ea699b30348c56077b179f768f13ea.js",
+    "precache-manifest.34438a53a34259512a0d72b5acd8783c.js": "/arkareact/precache-manifest.34438a53a34259512a0d72b5acd8783c.js",
     "service-worker.js": "/arkareact/service-worker.js",
-    "static/css/main.f93dec76.chunk.css.map": "/arkareact/static/css/main.f93dec76.chunk.css.map",
+    "static/css/main.15974eb9.chunk.css.map": "/arkareact/static/css/main.15974eb9.chunk.css.map",
     "static/js/2.095efca6.chunk.js.LICENSE.txt": "/arkareact/static/js/2.095efca6.chunk.js.LICENSE.txt",
     "static/js/3.a1fa6b44.chunk.js.LICENSE.txt": "/arkareact/static/js/3.a1fa6b44.chunk.js.LICENSE.txt",
     "static/media/brick.mp3": "/arkareact/static/media/brick.eed03f13.mp3",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.178bee18.js",
     "static/js/2.095efca6.chunk.js",
-    "static/css/main.f93dec76.chunk.css",
-    "static/js/main.a68a5e01.chunk.js"
+    "static/css/main.15974eb9.chunk.css",
+    "static/js/main.9d19df87.chunk.js"
   ]
 }

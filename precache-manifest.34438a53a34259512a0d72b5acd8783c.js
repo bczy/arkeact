@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f719c65fefd60017294b41f25dcb5ff3",
+    "revision": "cb79e46e4010afa35ddd975422771985",
     "url": "/arkareact/index.html"
   },
   {
-    "revision": "78ba226d39f06507a0a7",
-    "url": "/arkareact/static/css/main.f93dec76.chunk.css"
+    "revision": "21add268194944f8bed5",
+    "url": "/arkareact/static/css/main.15974eb9.chunk.css"
   },
   {
     "revision": "d85b895b0057c5fd8e04",
     "url": "/arkareact/static/js/2.095efca6.chunk.js"
   },
   {
-    "revision": "65f59937e5e306d6011bcc80f6c10d67",
+    "revision": "257a826bc2c8a06b4c42d007d2b28449",
     "url": "/arkareact/static/js/2.095efca6.chunk.js.LICENSE.txt"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/arkareact/static/js/3.a1fa6b44.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "78ba226d39f06507a0a7",
-    "url": "/arkareact/static/js/main.a68a5e01.chunk.js"
+    "revision": "21add268194944f8bed5",
+    "url": "/arkareact/static/js/main.9d19df87.chunk.js"
   },
   {
     "revision": "33abcb1bc63c8bb64eb1",
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "62e617f59eeee5ca026bce6214619428",
     "url": "/arkareact/static/media/game_title.62e617f5.png"
+  },
+  {
+    "revision": "71e67f62fbb02814763c34f01d9993e6",
+    "url": "/arkareact/static/media/lazer84.71e67f62.woff2"
   },
   {
     "revision": "b12d7dca411657fd1645b9db83e4573d",
