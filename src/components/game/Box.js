@@ -59,7 +59,7 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
 	const isWall = isNaN(strength);
 	const isCorner = isNaN(cornerData);
 	const [particleSystem, setParticleSystem] = useState();
-
+	// TODO : Object pooling
 	function buildParticleSystem() {
 		const material = createMaterial(color);
 		const particles = createParticals(25, ref, material);
@@ -77,7 +77,6 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
 		soundAsset = brick;
 	}
 	const hitSound = new UIFx(soundAsset);
-
 	const { scene } = useThree();
 
 	const [ref, api] = useBox(() => {
@@ -117,6 +116,10 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
 			particleSystem.rotation.y += particleSystem.customRotation / 50;
 		}
 	});
+	
+	if (isRoof){
+		return 	<mesh key={id} ref={ref} userData={userData}/>
+	}
 
 	return (
 		<>
