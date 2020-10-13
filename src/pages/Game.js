@@ -1,8 +1,8 @@
 /** @format */
 
-import React, { useMemo, useState, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
 
-import { Canvas } from 'react-three-fiber';
+import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
 
 import { gameStore } from '../stores/gameStore';
@@ -14,10 +14,25 @@ import { Paddle } from '../components/game/Paddle';
 import { Lights } from '../components/game/Lights';
 import { Effect } from '../components/vfx/Effect';
 
-import { PerspectiveCamera } from 'three';
 import { Hud } from '../components/hud/Hud';
 
 import { useFullScreen } from '../hooks/windowResize';
+
+function Camera(props) {
+	const ref = useRef()
+	const { setDefaultCamera } = useThree()
+	// Make the camera known to the system
+	useEffect(() => void setDefaultCamera(ref.current), [setDefaultCamera])
+	// Update it every frame
+	useFrame(() => {
+		if (ref.current.position.z > 45){
+			ref.current.position.z -= 0.75
+		}
+		ref.current.updateMatrixWorld()
+	})
+	
+	return <perspectiveCamera ref={ref} position={[0, 0, 85]} {...props} fov={45} far={157} />
+}
 
 export function Game() {
 	const [balls, setBalls] = useState(3);
@@ -32,12 +47,6 @@ export function Game() {
 		const subs = gameStore.balls.subscribe(setBalls);
 		subs.add(gameStore.ballLaunched.subscribe(setBallLaunched));
 		return () => subs.unsubscribe();
-	}, []);
-
-	const camera = useMemo(() => {
-		const camera = new PerspectiveCamera(45, 1, 1, 57);
-		camera.position.set(0, 0, 45);
-		return camera;
 	}, []);
 
 	function handleClick() {
@@ -57,8 +66,8 @@ export function Game() {
 					<Canvas
 						style={{ width: '100%', height: '100%' }}
 						shadowMap
-						camera={camera}
 					>
+						<Camera />
 						<Lights />
 						<Physics
 							iterations={20}
@@ -74,7 +83,7 @@ export function Game() {
 							<Tiles />
 							<Paddle />
 							<Ball />
-							<Effect camera={camera} />
+							<Effect />
 						</Physics>
 					</Canvas>
 					<Hud />
