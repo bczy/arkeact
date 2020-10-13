@@ -17,6 +17,8 @@ const LevelsPage = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	color:#2e8693;
+	text-shadow: 2px 2px #60f2ff;
 `;
 
 const LevelList = styled.div`

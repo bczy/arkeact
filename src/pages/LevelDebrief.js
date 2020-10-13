@@ -10,6 +10,7 @@ import { Button } from '../components/hud/common/Button';
 export function LevelDebrief() {
 	const winned =
 		gameStore.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length;
+	const buttonLabel = winned ? 'Next Level' : 'Play again';
 	return (
 		<div style={{ margin: 'auto' }}>
 			<h2>Level {winned ? 'Cleared' : 'Failed'}</h2>
@@ -23,9 +24,11 @@ export function LevelDebrief() {
 						gameStore.resetGame();
 						gameStore.increaseLevelNumber();
 						gameStore.setGameState(GAME_STATES.GAME);
-					}
+					} 
 				}}
-			></Button>
+				text={buttonLabel}/>
+				
+			
 		</div>
 	);
 }

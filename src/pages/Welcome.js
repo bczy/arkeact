@@ -20,32 +20,36 @@ const BackgroundContainer = styled.div`
 	justify-content: center;
 	position: absolute;
 	flex-direction: column;
-	align-items: center;
+	align-items: center; 
 `;
+const MenuButton = ({text, gameState, style}) => <Button
+big
+callback={() => {
+	console.log(gameState)
+	gameStore.setGameState(gameState);
+}}
+text={text}
+style={style}
+/>
 
 export function Welcome() {
 	const [size, setSize] = useState(0);
 	const backgroundContainer = useRef(null);
 	useFullScreen(backgroundContainer, { size, setSize }, false);
-
+	const buttonStyle = {
+		height: '5%',
+		width: '50%',
+		letterSpacing: '',
+		transform: 'rotate(-3deg)',
+		fontSize: '3rem',
+	};
 	return (
 		<BackgroundContainer ref={backgroundContainer}>
-			<Button
-				big
-				callback={() => {
-					gameStore.setGameState(GAME_STATES.LEVEL_CHOICE);
-				}}
-				enabled
-				text="PLAY"
-				style={{
-					height: '5%',
-					marginTop: '20%',
-					width: '50%',
-					letterSpacing: '',
-					transform: 'rotate(-3deg)',
-					fontSize: '3rem',
-				}}
-			/>
+			<MenuButton style={{...buttonStyle,marginTop: '7.5em'}} text="PLAY" gameState={GAME_STATES.LEVEL_CHOICE}/>
+			<div style={{marginTop: '2.5em'}}>
+				<MenuButton style={{...buttonStyle,fontSize:'2.25em'}} text="SETTINGS" gameState={GAME_STATES.SETTINGS}/>
+				<MenuButton style={{...buttonStyle,fontSize:'2.25em'}} text="ABOUT" gameState={GAME_STATES.ABOUT}/>
+			</div>
 		</BackgroundContainer>
 	);
 }
