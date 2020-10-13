@@ -12,7 +12,7 @@
     "nan": "^2.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^3.4.3",
     "react-spring": "^8.0.27",
     "react-three-fiber": "^4.2.21",
     "three": "^0.114.0",
@@ -43,7 +43,6 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
     "gh-pages": "^2.2.0",
     "rxjs": "^6.6.3",
     "styled-components": "^5.2.0"
