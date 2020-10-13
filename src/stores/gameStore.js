@@ -9,6 +9,8 @@ export const GAME_STATES = {
 	LEVEL_CHOICE: 1,
 	GAME: 2,
 	LEVEL_DEBRIEF: 3,
+	SETTINGS: 4,
+	ABOUT: 5,
 };
 class GameStore {
 	constructor() {
@@ -16,12 +18,13 @@ class GameStore {
 			GameStore.instance = this;
 			this.gameState = new BehaviorSubject(GAME_STATES.WELCOME);
 			this.nbBrickDestroyed = new BehaviorSubject(0);
+			this.ball2dPosition = new BehaviorSubject({x:0,y:0});
 			this.balls = new BehaviorSubject(3);
 			this.scoreValue = new BehaviorSubject(0);
 			this.inGame = new Subject(false);
 			this.ballLaunched = new Subject(false);
 			this.currentLevel = new BehaviorSubject(1);
-			this.glitching = new Subject(false);
+			this.glitching = new Subject(true);
 		}
 		return GameStore.instance;
 	}
@@ -59,6 +62,7 @@ class GameStore {
 		this.inGame.next(false);
 		this.ballLaunched.next(false);
 	};
+	setBall2dPosition = (value) => this.ball2dPosition.next(value);
 	setGlitching = (value) => this.glitching.next(value);
 	increaseScoreValue = (scoreValue) => {
 		this.scoreValue.next(this.scoreValue.value + scoreValue);

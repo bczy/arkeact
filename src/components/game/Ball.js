@@ -25,6 +25,7 @@ export function Ball() {
       api.position.set(state.mouse.x * 10, state.mouse.y * 10, 17.6);
       api.velocity.set(0, 0, 0, 1);
     }
+    gameStore.setBall2dPosition({x:ref.current.position.x, y:ref.current.position.y })
   });
   return (
     <mesh castShadow receiveShadow ref={ref}>
