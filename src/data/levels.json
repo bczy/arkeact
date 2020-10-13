@@ -3,6 +3,15 @@
     {
       "layers": [
         [
+          { "position": [0, 0, -10], "userDataType": "pink" },
+          { "position": [0, -5, -10], "userDataType": "pink" },
+          { "position": [0, 5, -10], "userDataType": "pink" } 
+        ]
+      ]
+    },
+    {
+      "layers": [
+        [
           { "position": [0, 10, -10], "userDataType": "blue" },
           { "position": [0, -10, -10], "userDataType": "blue" },
           { "position": [10, -10, -10], "userDataType": "blue" } ,
