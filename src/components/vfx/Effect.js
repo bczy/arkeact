@@ -13,20 +13,21 @@ import { gameStore } from '../../stores/gameStore';
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass, FilmPass, GlitchPass });
 
-export function Effect(camera) {
-  const [glitching, setGlitching] = useState(false);
+export function Effect() {
+  const [glitching, setGlitching] = useState(true);
   useLayoutEffect(() => {
     const subs = gameStore.glitching.subscribe(setGlitching);
     return () => subs.unsubscribe();
   }, []);
   const composer = useRef();
-  const { scene, gl, size } = useThree();
+  const { scene, gl, size,camera } = useThree();
   const aspect = useMemo(() => new THREE.Vector2(size.width, size.height), [size]);
   useEffect(() => void composer.current.setSize(size.width, size.height), [size]);
-  useFrame(() => composer.current.render(), 1);
+  useFrame(() => {
+        composer.current.render()},1)
   return (
     <effectComposer ref={composer} args={[gl]}>
-      <renderPass attachArray="passes" scene={scene} camera={camera.camera} />
+      <renderPass attachArray="passes" scene={scene} camera={camera} />
       <unrealBloomPass attachArray="passes" args={[aspect, 0.25, 0.2, 0]} />
       <filmPass attachArray="passes" noiseIntensity={0} args={[0.35, 0.6, 1500, false]} />
       <glitchPass attachArray="passes" factor={glitching ? 1 : 0} />
