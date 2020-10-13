@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { gameStore } from '../../stores/gameStore';
 
-import { Button } from './common/Button';
+import { MenuButton } from './common/Button';
 
 export const LevelContainer = styled.div`
 	justify-content: space-evenly;
@@ -20,6 +20,7 @@ export const LevelLocked = styled.div`
 	align-self: center;
 `;
 
+
 export const Level = ({ levelId, unlocked, highscoreValue }) => {
 	return (
 		<div>
@@ -28,18 +29,16 @@ export const Level = ({ levelId, unlocked, highscoreValue }) => {
 					<h2>Level {levelId + 1}</h2>
 					{unlocked && <h3>Highscore: {highscoreValue}</h3>}
 				</div>
-			{unlocked ? (
-				<Button
-					callback={() => {
-						gameStore.launchLevel(levelId);
-					}}
-					text="Play"
-				/>
-			) : (
-				<LevelLocked>
-					<div>FINISH LEVEL {levelId} TO UNLOCK</div>
-				</LevelLocked>
-			)}
+				{unlocked ? (
+					<MenuButton
+						text="Play" 
+						callback={() => gameStore.launchLevel(levelId)} />
+				
+				) : (
+					<LevelLocked>
+						<div>FINISH LEVEL {levelId} TO UNLOCK</div>
+					</LevelLocked>
+				)}
 			</LevelContainer>
 		</div>
 	);

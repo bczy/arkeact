@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { gameStore, GAME_STATES } from '../stores/gameStore';
 import { playerStore } from '../stores/playerStore';
 
-import { Button } from '../components/hud/common/Button';
+import { MenuButton } from '../components/hud/common/Button';
 import { Title } from '../components/hud/common/Title';
 
 import { Level } from '../components/hud/Level';
@@ -51,21 +51,19 @@ export const Levels = () => {
 					return (
 						<Level
 							key={index}
-							levelId={index + bestscoreValues.length}
+							levelId={index + bestscoreValues.length - 1}
 							highscoreValue={0}
 							unlocked={false}
 						/>
 					);
 				})}
 			</LevelList>
-			<Button
+			<MenuButton
 				callback={() => {
 					gameStore.setGameState(GAME_STATES.WELCOME);
 				}}
-				enabled
 				text="Back"
 			/>
-			<div style={{ marginTop: '3em' }}></div>
 		</LevelsPage>
 	);
 };
