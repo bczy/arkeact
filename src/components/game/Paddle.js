@@ -12,7 +12,7 @@ export function Paddle() {
     sleepSpeedLimit: 4, 
     onCollide: (e) => {},
   }));
-  const [ paddleColor, setPaddleColor ] = useState('#0a94ab')
+  const [ paddleColor, setPaddleColor ] = useState('#0a94')
   const [ ball2dPosition, setBall2dPosition ] = useState({x:0, y:0})
   useEffect(()=> {
     gameStore.ball2dPosition.subscribe(setBall2dPosition)
@@ -23,11 +23,20 @@ export function Paddle() {
     const currentMousePosY = state.mouse.y * 10;
     const diffCurrentPosX = currentMousePosX - ref.current.position.x;
     const diffCurrentPosY = currentMousePosY - ref.current.position.y;
-    if (ref.current.position.x === ball2dPosition.x){
-      setPaddleColor('#0a94ab')
+    
+    
+    if ((ref.current.position.x >= ball2dPosition.x && ref.current.position.x - ball2dPosition.x < 2.5) || 
+        (ref.current.position.x < ball2dPosition.x && ball2dPosition.x - ref.current.position.x < 2.5)){
+        if ((ref.current.position.y >= ball2dPosition.y && ref.current.position.y - ball2dPosition.y < 2.5) || 
+          (ref.current.position.y < ball2dPosition.y && ball2dPosition.y < ref.current.position.y < 2.5)){
+            setPaddleColor('#fff');
+      } else {
+        setPaddleColor('#F00')
+      }
     } else {
-      setPaddleColor('#F00')
+      setPaddleColor('#F00');
     }
+    
     api.position.set(
       ref.current.position.x + clampMouseMovement(diffCurrentPosX),
       ref.current.position.y + clampMouseMovement(diffCurrentPosY),
