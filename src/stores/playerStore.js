@@ -18,7 +18,6 @@ class PlayerStore {
     bestscoreValues[gameStore.currentLevel.value] = gameStore.scoreValue.value;
     bestscoreValues[gameStore.currentLevel.value + 1] = 0;
     this.bestscoreValues.next(bestscoreValues);
-    console.log('bestscoreValues', bestscoreValues)
   };
 }
 
