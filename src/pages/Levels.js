@@ -3,23 +3,13 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { gameStore, GAME_STATES } from '../stores/gameStore';
 import { playerStore } from '../stores/playerStore';
 
-import { MenuButton } from '../components/hud/common/Button';
 import { Title } from '../components/hud/common/Title';
 
 import { Level } from '../components/hud/Level';
 import { levelStore } from '../stores/levelStore';
-
-const LevelsPage = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	color:#2e8693;
-	text-shadow: 2px 2px #60f2ff;
-`;
+import { PageContainer } from '../components/hud/common/PageContainer';
 
 const LevelList = styled.div`
 	text-align: center;
@@ -34,7 +24,7 @@ export const Levels = () => {
 		return () => subs.unsubscribe();
 	}, []);
 	return (
-		<LevelsPage>
+		<PageContainer>
 			<Title text="LEVELS" />
 			<LevelList>
 				{bestscoreValues.map((_, levelId) => {
@@ -58,12 +48,6 @@ export const Levels = () => {
 					);
 				})}
 			</LevelList>
-			<MenuButton
-				callback={() => {
-					gameStore.setGameState(GAME_STATES.WELCOME);
-				}}
-				text="Back"
-			/>
-		</LevelsPage>
+		</PageContainer>
 	);
 };

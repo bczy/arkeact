@@ -49,7 +49,7 @@ export function Welcome() {
 				<SubMenuButtons>
 					<MenuButton 
 						text="SETTINGS" 
-						callback={() => gameStore.setGameState(GAME_STATES.SETTINGS)}/>
+						callback={() => {console.log('muf');gameStore.setGameState(GAME_STATES.SETTINGS)}}/>
 					<MenuButton 
 						text="ABOUT" 
 						callback={() => gameStore.setGameState(GAME_STATES.ABOUT)}/>
