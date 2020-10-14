@@ -17,7 +17,7 @@ export const About = () =>
         <AboutContent>
             <p>This game is a side project started during my confinment.</p>
             <p>Made with react-three-fiber, canonjs, .</p>
-            <p>A special thanks to <a href="/#">Mat'</a></p>
+            <p>A special thanks to <a href="/#">Mat'</a> for the graphic assets and visual advices!</p>
         </AboutContent>
     </PageContainer>
 

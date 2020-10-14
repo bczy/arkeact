@@ -10,6 +10,7 @@
     "cannon": "^0.6.2",
     "install": "^0.13.0",
     "nan": "^2.14.1",
+    "rc-slider": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
