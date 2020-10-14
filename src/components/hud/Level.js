@@ -36,7 +36,7 @@ export const Level = ({ levelId, unlocked, highscoreValue }) => {
 				
 				) : (
 					<LevelLocked>
-						<div>FINISH LEVEL {levelId} TO UNLOCK</div>
+						<div>FINISH LEVEL {levelId + 1} TO UNLOCK</div>
 					</LevelLocked>
 				)}
 			</LevelContainer>
