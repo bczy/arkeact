@@ -12,7 +12,7 @@ import { About } from './pages/About';
 
 import './styles.css';
 
-const ArkaReact = ({ gameState }) => {
+const Arkeact = ({ gameState }) => {
   switch (gameState) {
     case GAME_STATES.WELCOME:
       return <Welcome />;
@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <div className="main">
-      <ArkaReact gameState={gameState} />
+      <Arkeact gameState={gameState} />
     </div>
   );
 }
