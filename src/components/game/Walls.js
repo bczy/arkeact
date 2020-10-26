@@ -20,25 +20,25 @@ export function Walls() {
       <Box
         position={[-12, -12, -12.5]}
         {...BRICKS.walls.corner}
-        size={[0.25, 0.25, 130]}
+        size={[0.25, 0.25, 200]}
         rotation={Math.PI / 2}
       />
       <Box
         position={[-12, 12, -12.5]}
         {...BRICKS.walls.corner}
-        size={[0.25, 0.25, 130]}
+        size={[0.25, 0.25, 200]}
         rotation={Math.PI / 2}
       />
       <Box
         position={[12, 12, -12.5]}
         {...BRICKS.walls.corner}
-        size={[0.25, 0.25, 130]}
+        size={[0.25, 0.25, 200]}
         rotation={Math.PI / 2}
       />
       <Box
         position={[12, -12, -12.5]}
         {...BRICKS.walls.corner}
-        size={[0.25, 0.25, 130]}
+        size={[0.25, 0.25, 200]}
         rotation={Math.PI / 2}
       />
       <Box
