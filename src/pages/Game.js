@@ -19,24 +19,25 @@ import { Hud } from '../components/hud/Hud';
 import { useFullScreen } from '../hooks/windowResize';
 
 function Camera(props) {
-	const [ glitching,setGlitching ] = useState(true)
+	const [ glitching, setGlitching ] = useState(true)
+	const [ zooming,setZooming ] = useState(false)
 	const ref = useRef()
 	const { setDefaultCamera } = useThree()
 	// Make the camera known to the system
 	useEffect(() => { 
 		const subs = gameStore.glitching.subscribe(setGlitching);
 		setTimeout(() => {gameStore.setGlitching(false)}, 1000)
+		setTimeout(() => {setZooming(true)}, 1500)
 		setDefaultCamera(ref.current)
 		return () => subs.unsubscribe();
 	}, [setDefaultCamera])
 
 	// Update it every frame
 	useFrame(() => {
-		if (!glitching && ref.current.position.z > 45){
-			if (ref.current.position.z < 75){
-				
-			}
+		if (zooming && ref.current.position.z > 45){
 			ref.current.position.z -= 0.75
+		} else {
+			setZooming(false)
 		}
 		ref.current.updateMatrixWorld()
 	})
