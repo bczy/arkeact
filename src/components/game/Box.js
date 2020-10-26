@@ -72,10 +72,8 @@ export function Box({ position, size = [2, 2, 2], strength,
 					}, 300);
 				} else if (isTile) {
 					strength--;
-					console.log(particlesPool[strength],particlesPool)
-					const particles = particlesPool[strength];
-					setParticleSystem(...particles);
-					scene.add(...particles)
+					setParticleSystem(particlesPool[strength]);
+					scene.add(particlesPool[strength])
 					if (strength <= 0) {
 						api.position.set(-1000, -1000, -100);
 						gameStore.increaseScoreValue(scoreValue);
@@ -101,9 +99,7 @@ export function Box({ position, size = [2, 2, 2], strength,
 				const geometry = createParticals(25, ref, material);
 				const particles = new THREE.Points(geometry, material);
 				particles.customRotation = 0;
-				const particlePoolLength = particlesPool.length
-				particlesPool[particlePoolLength] = []
-				particlesPool[particlePoolLength].push(particles)
+				particlesPool.push(particles)
 			}
 		}
 		return () => subs.unsubscribe();
