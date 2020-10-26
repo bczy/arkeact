@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from './Box.js';
+
 import * as TILES from '../../data/gameBalanceData.json'
 import { levelStore } from '../../stores/levelStore';
 import { gameStore } from '../../stores/gameStore';
-
-function Tile(props) {
-  return <Box {...props} />;
-}
+import { Tile } from './Tile.js';
 
 export function Tiles() {
   const [tiles, setTiles] = useState([]);
