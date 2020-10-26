@@ -54,7 +54,6 @@ export function Box({ position, size = [2, 2, 2], strength,
 
 	const isWall = isNaN(strength);
 	const isCorner = isNaN(cornerData);
-	const [particleSystem, setParticleSystem] = useState();
 
 	const [ref, api] = useBox(() => {
 		return {
@@ -72,22 +71,23 @@ export function Box({ position, size = [2, 2, 2], strength,
 					}, 300);
 				} else if (isTile) {
 					strength--;
-					setParticleSystem(particlesPool[strength]);
-					scene.add(particlesPool[strength])
+					ref.current.children.push(particlesPool[strength])
 					if (strength <= 0) {
 						api.position.set(-1000, -1000, -100);
 						gameStore.increaseScoreValue(scoreValue);
-					} 
+					}  
 				}
 			},
 		};
 	});
 
 	useFrame(() => {
-		if (particleSystem && particleSystem.material.opacity > 0) {
-			particleSystem.material.opacity -= 0.0075;
-			particleSystem.scale.x += 0.01;
-			particleSystem.scale.y += 0.01;
+		for (let i = 1 ; i < ref.current.children.length; i++){
+			if (ref.current.children[i] && ref.current.children[i].material.opacity > 0) {
+				ref.current.children[i].material.opacity -= 0.0075;
+				ref.current.children[i].scale.x += 0.01;
+				ref.current.children[i].scale.y += 0.01;
+			}
 		}
 	});
 
