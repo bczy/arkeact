@@ -67,8 +67,10 @@ class GameStore {
 	increaseScoreValue = (scoreValue) => {
 		this.scoreValue.next(this.scoreValue.value + scoreValue);
 		if (this.nbBrickDestroyed.value + 1 === levelStore.tiles.value.length) {
-			playerStore.addHighscoreValue();
-			this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
+			setTimeout(() => {
+				playerStore.addHighscoreValue();
+				this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
+			},1000)
 		}
 		this.nbBrickDestroyed.next(this.nbBrickDestroyed.value + 1);
 	};
