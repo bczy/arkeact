@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from './Box.js';
-
-import { tiles as TILES } from '../../data/gameBalanceData.json';
-
+import * as TILES from '../../data/gameBalanceData.json'
 import { levelStore } from '../../stores/levelStore';
 import { gameStore } from '../../stores/gameStore';
 
-function Tile({ position, userData, id }) {
-  return <Box id={id} position={position} userData={userData} />;
+function Tile(props) {
+  return <Box {...props} />;
 }
 
 export function Tiles() {
@@ -22,6 +20,6 @@ export function Tiles() {
   }, [currentLevel]);
 
   return tiles.map((brick, i) => (
-    <Tile key={i} id={i} position={brick.position} userData={TILES[brick.userDataType]} />
+    <Tile key={i} id={i} position={brick.position} {...TILES.tiles[brick.userDataType]} />
   ));
 }

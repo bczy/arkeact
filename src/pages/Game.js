@@ -20,7 +20,7 @@ import { useFullScreen } from '../hooks/windowResize';
 
 function Camera(props) {
 	const [ glitching, setGlitching ] = useState(true)
-	const [ zooming,setZooming ] = useState(false)
+	const [ zooming, setZooming ] = useState(false)
 	const ref = useRef()
 	const { setDefaultCamera } = useThree()
 	// Make the camera known to the system
@@ -62,10 +62,13 @@ export function Game() {
 
 	function handleClick() {
 		if (balls < 0) {
+			console.log("resetGame")
 			gameStore.resetGame();
 		} else if (!ballLaunched) {
+			console.log("launchBall")
 			gameStore.launchBall();
 		} else {
+			console.log("remove ball")
 			setBalls(balls - 1);
 		}
 	}

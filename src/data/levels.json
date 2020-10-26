@@ -12,19 +12,6 @@
     {
       "layers": [
         [
-          { "position": [0, 10, -10], "userDataType": "blue" },
-          { "position": [0, -10, -10], "userDataType": "blue" },
-          { "position": [10, -10, -10], "userDataType": "blue" } ,
-          { "position": [10, 10, -10], "userDataType": "blue" } 
-        ],
-        [ 
-          { "position": [2.5, -1.25, -5], "userDataType": "red" }
-        ]
-      ]
-    },
-    {
-      "layers": [
-        [
           { "position": [0, 2.5, -10], "userDataType": "blue" },
 
           { "position": [-5, 0, -10], "userDataType": "yellow" },
@@ -38,6 +25,19 @@
           { "position": [2.5, 1.25, -5], "userDataType": "pink" },
 
           { "position": [-2.5, -1.25, -5], "userDataType": "red" },
+          { "position": [2.5, -1.25, -5], "userDataType": "red" }
+        ]
+      ]
+    },
+    {
+      "layers": [
+        [
+          { "position": [0, 10, -10], "userDataType": "blue" },
+          { "position": [0, -10, -10], "userDataType": "blue" },
+          { "position": [10, -10, -10], "userDataType": "blue" } ,
+          { "position": [10, 10, -10], "userDataType": "blue" } 
+        ],
+        [ 
           { "position": [2.5, -1.25, -5], "userDataType": "red" }
         ]
       ]

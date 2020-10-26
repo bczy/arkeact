@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as THREE from 'three';
 import { useThree, useFrame } from 'react-three-fiber';
@@ -14,19 +14,19 @@ import wall from '../../assets/sounds/wall.mp3';
 import { gameStore } from '../../stores/gameStore';
 
 function createParticals(particleCount, ref) {
-	const particles = new THREE.Geometry();
-	// TODO: object pooling
+	const vertices = []
 	for (let p = 0; p < particleCount; p++) {
 		// create a particle with random
 		// position values, -250 -> 250
-		const pX = Math.random() * 2.5 - 1.25 + ref.current.position.x;
-		const pY = Math.random() * 2.5 - 1.25 + ref.current.position.y;
-		const pZ = Math.random() * 2.5 - 1.25 + ref.current.position.z;
-		const particle = new THREE.Vector3(pX, pY, pZ);
+		const pX = Math.random() * 1.25 - 1.25 + ref.current.position.x + 0.5;
+		const pY = Math.random() * 1.25 - 1.25 + ref.current.position.y+ 0.5;
+		const pZ = ref.current.position.z - 0.5;
 		// add it to the geometry
-		particles.vertices.push(particle);
+		vertices.push(pX, pY, pZ);
 	}
-	return particles;
+	const geometry = new THREE.BufferGeometry();
+	geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+	return geometry;
 }
 const createMaterial = (color) =>
 	new THREE.PointsMaterial({
@@ -38,54 +38,30 @@ const createMaterial = (color) =>
 		opacity: 0.9,
 	});
 
-export function Box({ position, size = [2, 2, 2], userData, id }) {
-	const {
-		strength,
-		color,
-		fillColor,
-		cornerData,
-		isRoof,
-		isTile,
-		scoreValue,
-	} = userData;
+export function Box({ position, size = [2, 2, 2], strength,
+	color,
+	fillColor,
+	cornerData,
+	isRoof,
+	isTile,
+	scoreValue, id }) {
+
+	const { scene } = useThree();
 
 	const [balls, setBalls] = useState(3);
 
-	useLayoutEffect(() => {
-		const subs = gameStore.balls.subscribe(setBalls);
-		return () => subs.unsubscribe();
-	}, []);
+	let particlesPool = [];
 
 	const isWall = isNaN(strength);
 	const isCorner = isNaN(cornerData);
 	const [particleSystem, setParticleSystem] = useState();
-	// TODO : Object pooling
-	function buildParticleSystem() {
-		const material = createMaterial(color);
-		const particles = createParticals(25, ref, material);
-
-		const ps = new THREE.Points(particles, material);
-		ps.customRotation = Math.random() * 2 - 1;
-		scene.add(ps);
-		return ps;
-	}
-
-	let soundAsset = null;
-	if (isWall || isCorner) {
-		soundAsset = wall;
-	} else if (isRoof || isTile) {
-		soundAsset = brick;
-	}
-	const hitSound = new UIFx(soundAsset);
-	const { scene } = useThree();
 
 	const [ref, api] = useBox(() => {
 		return {
 			type: isCorner ? 'Static' : 'Kinematic',
 			args: size.map((x) => x / 2),
 			position,
-			userData,
-			onCollide: (e) => {
+			onCollide: () => {
 				hitSound.play();
 				if (isRoof) {
 					gameStore.resetBall();
@@ -94,15 +70,16 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
 						gameStore.setGlitching(false);
 						setBalls(balls - 1);
 					}, 300);
-				} else if (!isWall) {
-					userData.strength--;
-					if (userData.strength <= 0) {
+				} else if (isTile) {
+					strength--;
+					console.log(particlesPool[strength],particlesPool)
+					const particles = particlesPool[strength];
+					setParticleSystem(...particles);
+					scene.add(...particles)
+					if (strength <= 0) {
 						api.position.set(-1000, -1000, -100);
-						setParticleSystem(buildParticleSystem(45));
 						gameStore.increaseScoreValue(scoreValue);
-					} else {
-						setParticleSystem(buildParticleSystem(15));
-					}
+					} 
 				}
 			},
 		};
@@ -113,31 +90,56 @@ export function Box({ position, size = [2, 2, 2], userData, id }) {
 			particleSystem.material.opacity -= 0.0075;
 			particleSystem.scale.x += 0.01;
 			particleSystem.scale.y += 0.01;
-			particleSystem.rotation.y += particleSystem.customRotation / 50;
 		}
 	});
+
+	useEffect(() => {
+		const subs = gameStore.balls.subscribe(setBalls);
+		if (isTile){
+			for (let i = 0; i < strength; i++){
+				const material = createMaterial(color);
+				const geometry = createParticals(25, ref, material);
+				const particles = new THREE.Points(geometry, material);
+				particles.customRotation = 0;
+				const particlePoolLength = particlesPool.length
+				particlesPool[particlePoolLength] = []
+				particlesPool[particlePoolLength].push(particles)
+			}
+		}
+		return () => subs.unsubscribe();
+	}, []);
+
+	
+
+	let soundAsset = null;
+	if (isWall || isCorner) {
+		soundAsset = wall;
+	} else if (isRoof || isTile) {
+		soundAsset = brick;
+	}
+	const hitSound = new UIFx(soundAsset);
 	
 	if (isRoof){
-		return 	<mesh key={id} ref={ref} userData={userData}/>
+		return 	<mesh key={id} ref={ref} />
 	}
 
 	return (
 		<>
 			{isTile ? (
-				<mesh key={id} ref={ref} userData={userData}>
+				<mesh key={id} ref={ref} >
 					<boxGeometry attach="geometry" args={size} />
 					<meshStandardMaterial
 						attach="material"
 						wireframe={true}
 						color={color}
 					/>
-					<mesh receiveShadow userData={userData}>
+					<mesh receiveShadow>
 						<boxGeometry attach="geometry" args={size.map((i) => i * 0.99)} />
 						<meshStandardMaterial attach="material" color={fillColor} />
 					</mesh>
 				</mesh>
 			) : (
-				<mesh key={id} ref={ref} receiveShadow userData={userData}>
+				<mesh key={id} ref={ref} receiveShadow >
 					<boxGeometry attach="geometry" args={size} receiveShadow />
 					<meshStandardMaterial attach="material" receiveShadow color={color} />
 				</mesh>

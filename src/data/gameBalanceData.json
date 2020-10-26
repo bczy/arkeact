@@ -21,7 +21,6 @@
       "fillColor": "#36abb5",
       "bonusProbability": 0,
       "strength": 2,
-      "size" : 2,
       "scoreValue": 1000,
       "isTile":true
     },
