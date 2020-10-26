@@ -20,7 +20,7 @@
       "color": "#36abb5",
       "fillColor": "#36abb5",
       "bonusProbability": 0,
-      "strength": 2,
+      "strength": 3,
       "scoreValue": 1000,
       "isTile":true
     },
