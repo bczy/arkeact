@@ -23,20 +23,13 @@ export function Paddle() {
     const currentMousePosY = state.mouse.y * 10;
     const diffCurrentPosX = currentMousePosX - ref.current.position.x;
     const diffCurrentPosY = currentMousePosY - ref.current.position.y;
-    
-    
-    if ((ref.current.position.x >= ball2dPosition.x && ref.current.position.x - ball2dPosition.x < 2.5) || 
-        (ref.current.position.x < ball2dPosition.x && ball2dPosition.x - ref.current.position.x < 2.5)){
-        if ((ref.current.position.y >= ball2dPosition.y && ref.current.position.y - ball2dPosition.y < 2.5) || 
-          (ref.current.position.y < ball2dPosition.y && ball2dPosition.y < ref.current.position.y < 2.5)){
-            setPaddleColor('#fff');
-      } else {
-        setPaddleColor('#F00')
-      }
-    } else {
-      setPaddleColor('#F00');
-    }
-    
+    const diffX = (ball2dPosition.x + 12.5) - (ref.current.position.x + 12.5) 
+    const diffY = (ball2dPosition.y + 12.5) - (ref.current.position.y + 12.5) 
+    const factor = (1 - Math.abs(diffX + diffY) / 25) * 255 | 0 
+    const factor2 = Math.abs(factor - 190) / 55 * 255 | 0
+    const color = `rgb(255, ${factor2}, ${factor2})`;
+    setPaddleColor(color);
+
     api.position.set(
       ref.current.position.x + clampMouseMovement(diffCurrentPosX),
       ref.current.position.y + clampMouseMovement(diffCurrentPosY),
