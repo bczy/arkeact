@@ -1,20 +1,21 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-
 import { useBox } from 'use-cannon';
-
 import UIFx from 'uifx';
 
 import wall from '../../assets/sounds/wall.mp3';
 
 import { gameStore } from '../../stores/gameStore';
 
-export function Box({ position, size = [2, 2, 2], strength,
-	color,
-	cornerData,
-	isRoof,
-	id }) {
+export function Box({ 
+		position, 
+		color,
+		cornerData,
+		isRoof,
+		id,
+		size = [2, 2, 2], 
+	}) {
 
 	const [balls, setBalls] = useState(3);
 	

@@ -1,5 +1,4 @@
 /** @format */
-
 import React, { useEffect } from 'react';
 
 import * as THREE from 'three';
@@ -12,10 +11,15 @@ import brick from '../../assets/sounds/brick.mp3';
 import { gameStore } from '../../stores/gameStore';
 import { createMaterial, createParticals } from '../../utils/particles';
 
-export function Tile({ position, size = [2, 2, 2], strength,
-	color,
-	fillColor,
-	scoreValue, id }) {
+export function Tile({ 
+        position, 
+        strength,
+        color,
+        fillColor,
+        scoreValue, 
+        id, 
+        size = [2, 2, 2], 
+    }) {
 
 	let particlesPool = [];
 
