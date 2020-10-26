@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/arkeact/static/css/main.983e14da.chunk.css",
-    "main.js": "/arkeact/static/js/main.5dbf4a45.chunk.js",
-    "main.js.map": "/arkeact/static/js/main.5dbf4a45.chunk.js.map",
+    "main.js": "/arkeact/static/js/main.1f613bca.chunk.js",
+    "main.js.map": "/arkeact/static/js/main.1f613bca.chunk.js.map",
     "runtime-main.js": "/arkeact/static/js/runtime-main.01ca207a.js",
     "runtime-main.js.map": "/arkeact/static/js/runtime-main.01ca207a.js.map",
     "static/css/2.ed590494.chunk.css": "/arkeact/static/css/2.ed590494.chunk.css",
-    "static/js/2.3b572911.chunk.js": "/arkeact/static/js/2.3b572911.chunk.js",
-    "static/js/2.3b572911.chunk.js.map": "/arkeact/static/js/2.3b572911.chunk.js.map",
+    "static/js/2.3777e8ec.chunk.js": "/arkeact/static/js/2.3777e8ec.chunk.js",
+    "static/js/2.3777e8ec.chunk.js.map": "/arkeact/static/js/2.3777e8ec.chunk.js.map",
     "static/js/3.28211a97.chunk.js": "/arkeact/static/js/3.28211a97.chunk.js",
     "static/js/3.28211a97.chunk.js.map": "/arkeact/static/js/3.28211a97.chunk.js.map",
     "index.html": "/arkeact/index.html",
-    "precache-manifest.1d95a4c5ab9ce9348d3951fa18e2304a.js": "/arkeact/precache-manifest.1d95a4c5ab9ce9348d3951fa18e2304a.js",
+    "precache-manifest.3cb176bdaa521c175a26369df470f1fb.js": "/arkeact/precache-manifest.3cb176bdaa521c175a26369df470f1fb.js",
     "service-worker.js": "/arkeact/service-worker.js",
     "static/css/2.ed590494.chunk.css.map": "/arkeact/static/css/2.ed590494.chunk.css.map",
     "static/css/main.983e14da.chunk.css.map": "/arkeact/static/css/main.983e14da.chunk.css.map",
-    "static/js/2.3b572911.chunk.js.LICENSE.txt": "/arkeact/static/js/2.3b572911.chunk.js.LICENSE.txt",
+    "static/js/2.3777e8ec.chunk.js.LICENSE.txt": "/arkeact/static/js/2.3777e8ec.chunk.js.LICENSE.txt",
     "static/js/3.28211a97.chunk.js.LICENSE.txt": "/arkeact/static/js/3.28211a97.chunk.js.LICENSE.txt",
     "static/media/brick.mp3": "/arkeact/static/media/brick.eed03f13.mp3",
     "static/media/cross.jpg": "/arkeact/static/media/cross.00397b42.jpg",
@@ -27,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.01ca207a.js",
     "static/css/2.ed590494.chunk.css",
-    "static/js/2.3b572911.chunk.js",
+    "static/js/2.3777e8ec.chunk.js",
     "static/css/main.983e14da.chunk.css",
-    "static/js/main.5dbf4a45.chunk.js"
+    "static/js/main.1f613bca.chunk.js"
   ]
 }
