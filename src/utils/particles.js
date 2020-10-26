@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 
-export const createParticals = (particleCount, ref) => {
+export const createParticals = (particleCount, ref, size) => {
 	const vertices = []
+	console.log(ref.current)
 	for (let p = 0; p < particleCount; p++) {
-		const pX = Math.random() * 1.25 - 1.25 + ref.current.position.x + 0.5;
-		const pY = Math.random() * 1.25 - 1.25 + ref.current.position.y + 0.5;
+		const pX = Math.random() * size.x - size.x + ref.current.position.x + size.x / 2;
+		const pY = Math.random() * size.y - size.y + ref.current.position.y + size.y / 2;
 		const pZ = ref.current.position.z - 0.5;
 		vertices.push(pX, pY, pZ);
 	}

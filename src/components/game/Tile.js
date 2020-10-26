@@ -59,7 +59,7 @@ export function Tile({
 	useEffect(() => {
         for (let i = 0; i < strength; i++){
             const material = createMaterial(color);
-            const geometry = createParticals(75, ref, material);
+            const geometry = createParticals(75, ref, {x: size[0], y: size[1]});
             const particles = new THREE.Points(geometry, material);
             particles.customRotation = 0;
             particlesPool.push(particles)
