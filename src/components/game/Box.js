@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import * as THREE from 'three';
-import { useThree, useFrame } from 'react-three-fiber';
+import { useFrame } from 'react-three-fiber';
 import { useBox } from 'use-cannon';
 
 import UIFx from 'uifx';
@@ -45,8 +45,6 @@ export function Box({ position, size = [2, 2, 2], strength,
 	isRoof,
 	isTile,
 	scoreValue, id }) {
-
-	const { scene } = useThree();
 
 	const [balls, setBalls] = useState(3);
 
