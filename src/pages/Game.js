@@ -19,7 +19,7 @@ import { Hud } from '../components/hud/Hud';
 import { useFullScreen } from '../hooks/windowResize';
 
 function Camera(props) {
-	const [ glitching, setGlitching ] = useState(true)
+	const [ , setGlitching ] = useState(true)
 	const [ zooming, setZooming ] = useState(false)
 	const ref = useRef()
 	const { setDefaultCamera } = useThree()

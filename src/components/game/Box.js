@@ -103,6 +103,7 @@ export function Box({ position, size = [2, 2, 2], strength,
 			}
 		}
 		return () => subs.unsubscribe();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	
