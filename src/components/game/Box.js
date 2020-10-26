@@ -16,12 +16,9 @@ import { gameStore } from '../../stores/gameStore';
 function createParticals(particleCount, ref) {
 	const vertices = []
 	for (let p = 0; p < particleCount; p++) {
-		// create a particle with random
-		// position values, -250 -> 250
 		const pX = Math.random() * 1.25 - 1.25 + ref.current.position.x + 0.5;
 		const pY = Math.random() * 1.25 - 1.25 + ref.current.position.y+ 0.5;
 		const pZ = ref.current.position.z - 0.5;
-		// add it to the geometry
 		vertices.push(pX, pY, pZ);
 	}
 	const geometry = new THREE.BufferGeometry();
@@ -52,6 +49,8 @@ export function Box({ position, size = [2, 2, 2], strength,
 
 	const isWall = isNaN(strength);
 	const isCorner = isNaN(cornerData);
+	
+	const initialStrength = strength;
 
 	const [ref, api] = useBox(() => {
 		return {
@@ -73,7 +72,10 @@ export function Box({ position, size = [2, 2, 2], strength,
 					if (strength <= 0) {
 						api.position.set(-1000, -1000, -100);
 						gameStore.increaseScoreValue(scoreValue);
-					}  
+					} else {
+						console.log(ref.current)
+						ref.current.children[0].material.opacity = strength / initialStrength
+					}
 				}
 			},
 		};
@@ -83,8 +85,8 @@ export function Box({ position, size = [2, 2, 2], strength,
 		for (let i = 1 ; i < ref.current.children.length; i++){
 			if (ref.current.children[i] && ref.current.children[i].material.opacity > 0) {
 				ref.current.children[i].material.opacity -= 0.0075;
-				ref.current.children[i].scale.x += 0.01;
-				ref.current.children[i].scale.y += 0.01;
+				ref.current.children[i].scale.x += 0.05;
+				ref.current.children[i].scale.y += 0.05;
 			}
 		}
 	});
@@ -94,7 +96,7 @@ export function Box({ position, size = [2, 2, 2], strength,
 		if (isTile){
 			for (let i = 0; i < strength; i++){
 				const material = createMaterial(color);
-				const geometry = createParticals(25, ref, material);
+				const geometry = createParticals(75, ref, material);
 				const particles = new THREE.Points(geometry, material);
 				particles.customRotation = 0;
 				particlesPool.push(particles)
