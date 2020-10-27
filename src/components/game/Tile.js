@@ -1,5 +1,5 @@
 /** @format */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as THREE from 'three';
 import { useFrame } from 'react-three-fiber';
@@ -10,6 +10,7 @@ import brick from '../../assets/sounds/brick.mp3';
 
 import { gameStore } from '../../stores/gameStore';
 import { createMaterial, createParticals } from '../../utils/particles';
+import { Bonus } from './Bonus';
 
 export function Tile({ 
         position, 
@@ -18,6 +19,7 @@ export function Tile({
         fillColor,
         scoreValue, 
         id, 
+        bonus,
         size = [2, 2, 2], 
     }) {
 
@@ -26,18 +28,23 @@ export function Tile({
 	const initialStrength = strength;
 	const hitSound = new UIFx(brick);
 
+    const [ bonusActive, setBonusActive ] = useState(false);
+
 	const [ref, api] = useBox(() => {
 		return {
 			type:'Kinematic',
 			args: size.map((x) => x / 2),
 			position,
-			onCollide: () => {
+			onCollide: (e) => {
 				hitSound.play();
                 strength--;
                 ref.current.children.push(particlesPool[strength])
                 if (strength <= 0) {
                     api.position.set(-1000, -1000, -100);
                     gameStore.increaseScoreValue(scoreValue);
+                    if (bonus){
+                        setBonusActive(true)
+                    }
                 } else {
                     console.log(ref.current)
                     ref.current.children[0].material.opacity = strength / initialStrength
@@ -68,17 +75,20 @@ export function Tile({
 	}, []);
 
 	return (
-        <mesh key={id} ref={ref} >
-            <boxGeometry attach="geometry" args={size} />
-            <meshStandardMaterial
-                attach="material"
-                wireframe={true}
-                color={color}
-            />
-            <mesh receiveShadow>
-                <boxGeometry attach="geometry" args={size.map((i) => i * 0.99)} />
-                <meshStandardMaterial attach="material" color={fillColor} />
+        <>
+            <mesh key={id} ref={ref} >
+                <boxGeometry attach="geometry" args={size} />
+                <meshStandardMaterial
+                    attach="material"
+                    wireframe={true}
+                    color={color}
+                />
+                <mesh receiveShadow>
+                    <boxGeometry attach="geometry" args={size.map((i) => i * 0.99)} />
+                    <meshStandardMaterial attach="material" color={fillColor} />
+                </mesh>
             </mesh>
-        </mesh>
+            {bonusActive && <Bonus position={position} bonus={bonus}/>}
+        </>
 	);
 }

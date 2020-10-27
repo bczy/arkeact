@@ -17,6 +17,11 @@ export function Tiles() {
   }, [currentLevel]);
 
   return tiles.map((brick, i) => (
-    <Tile key={i} id={i} position={brick.position} {...TILES.tiles[brick.userDataType]} />
+    <Tile 
+      key={i} 
+      id={i} 
+      position={brick.position} 
+      {...TILES.tiles[brick.userDataType]} 
+      bonus={ brick.bonus }/>
   ));
 }

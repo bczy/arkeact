@@ -17,6 +17,7 @@ export function Ball() {
   const [ref, api] = useSphere(() => ({
     mass: 1,
     args: 1,
+    fixedRotation: false,
     position: [0, 0, 0],
     onCollide: (e) => {},
   }));
