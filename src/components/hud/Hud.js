@@ -14,18 +14,18 @@ export const StyledDiv = styled.div`
 `;
 
 export function Hud({ text }) {
-	const [balls, setBalls] = useState(3);
+	const [lifes, setLifes] = useState(3);
 	const [currentLevel, setCurrentLevel] = useState(1);
 	const [scoreValue, setGamescoreValue] = useState(0);
 	useLayoutEffect(() => {
-		const subs = gameStore.balls.subscribe(setBalls);
+		const subs = gameStore.lifes.subscribe(setLifes);
 		subs.add(gameStore.currentLevel.subscribe(setCurrentLevel));
 		subs.add(gameStore.scoreValue.subscribe(setGamescoreValue));
 		return () => subs.unsubscribe();
 	}, []);
 	return (
 		<StyledDiv>
-			<p>Balls: {balls}</p>
+			<p>Lifes: {lifes}</p>
 			<p>Level: {currentLevel + 1}</p>
 			<p>Score: {scoreValue}</p>
 			<div>

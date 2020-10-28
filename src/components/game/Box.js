@@ -17,7 +17,7 @@ export function Box({
 		size = [2, 2, 2], 
 	}) {
 
-	const [balls, setBalls] = useState(3);
+	const [lifes, setLifes] = useState(3);
 	
 	const hitSound = new UIFx(wall);
 	const isCorner = isNaN(cornerData);
@@ -34,7 +34,7 @@ export function Box({
 					gameStore.setGlitching(true);
 					setTimeout(() => {
 						gameStore.setGlitching(false);
-						setBalls(balls - 1);
+						setLifes(lifes - 1);
 					}, 300);
 				}
 			},
@@ -43,7 +43,7 @@ export function Box({
 
 
 	useEffect(() => {
-		const subs = gameStore.balls.subscribe(setBalls);
+		const subs = gameStore.lifes.subscribe(setLifes);
 		return () => subs.unsubscribe();
 	}, []);
 	

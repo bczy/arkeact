@@ -19,7 +19,7 @@ class GameStore {
 			this.gameState = new BehaviorSubject(GAME_STATES.WELCOME);
 			this.nbBrickDestroyed = new BehaviorSubject(0);
 			this.ball2dPosition = new BehaviorSubject({x:0,y:0});
-			this.balls = new BehaviorSubject(3);
+			this.lifes = new BehaviorSubject(3);
 			this.scoreValue = new BehaviorSubject(0);
 			this.inGame = new Subject(false);
 			this.ballLaunched = new Subject(false);
@@ -48,15 +48,15 @@ class GameStore {
 		this.ballLaunched.next(true);
 	};
 	resetBall = () => {
-		if (this.balls.value > 0) {
-			this.balls.next(this.balls.value - 1);
+		if (this.lifes.value > 0) {
+			this.lifes.next(this.lifes.value - 1);
 			this.ballLaunched.next(false);
 		} else {
 			this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
 		}
 	};
 	resetGame = () => {
-		this.balls.next(3);
+		this.lifes.next(3);
 		this.nbBrickDestroyed.next(0);
 		this.scoreValue.next(0);
 		this.inGame.next(false);

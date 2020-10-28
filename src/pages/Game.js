@@ -45,7 +45,7 @@ function Camera(props) {
 }
 
 export function Game() {
-	const [balls, setBalls] = useState(3);
+	const [lifes, setLifes] = useState(3);
 	const [ballLaunched, setBallLaunched] = useState(false);
 	const [size, setSize] = useState(0);
 
@@ -54,13 +54,13 @@ export function Game() {
 	useFullScreen(canvasContainer, { size, setSize });
 
 	useLayoutEffect(() => {
-		const subs = gameStore.balls.subscribe(setBalls);
+		const subs = gameStore.lifes.subscribe(setLifes);
 		subs.add(gameStore.ballLaunched.subscribe(setBallLaunched));
 		return () => subs.unsubscribe();
 	}, []);
 
 	function handleClick() {
-		if (balls < 0) {
+		if (lifes < 0) {
 			console.log("resetGame")
 			gameStore.resetGame();
 		} else if (!ballLaunched) {
@@ -68,7 +68,7 @@ export function Game() {
 			gameStore.launchBall();
 		} else {
 			console.log("remove ball")
-			setBalls(balls - 1);
+			setLifes(lifes - 1);
 		}
 	}
 
