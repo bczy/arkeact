@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useTransition, animated } from 'react-spring'; 
-import { gameStore, GAME_STATES } from '../stores/gameStore';
+import { gameStore, GAME_STATES } from '../subjects/gameStore';
 import { MenuButton } from '../components/hud/common/Button';
 import background from '../assets/images/game_title.png';
 

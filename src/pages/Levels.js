@@ -3,12 +3,12 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { playerStore } from '../stores/playerStore';
+import { playerStore } from '../subjects/playerStore';
 
 import { Title } from '../components/hud/common/Title';
 
 import { Level } from '../components/hud/Level';
-import { levelStore } from '../stores/levelStore';
+import { levelStore } from '../subjects/levelStore';
 import { PageContainer } from '../components/hud/common/PageContainer';
 
 const LevelList = styled.div`

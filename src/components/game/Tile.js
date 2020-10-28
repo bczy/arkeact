@@ -8,7 +8,7 @@ import UIFx from 'uifx';
 
 import brick from '../../assets/sounds/brick.mp3';
 
-import { gameStore } from '../../stores/gameStore';
+import { gameStore } from '../../subjects/gameStore';
 import { createMaterial, createParticals } from '../../utils/particles';
 import { Bonus } from './Bonus';
 

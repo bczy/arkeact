@@ -6,7 +6,7 @@ import UIFx from 'uifx';
 
 import wall from '../../assets/sounds/wall.mp3';
 
-import { gameStore } from '../../stores/gameStore';
+import { gameStore } from '../../subjects/gameStore';
 
 export function Box({ 
 		position, 

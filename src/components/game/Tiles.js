@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import * as TILES from '../../data/gameBalanceData.json'
-import { levelStore } from '../../stores/levelStore';
-import { gameStore } from '../../stores/gameStore';
+import { levelStore } from '../../subjects/levelStore';
+import { gameStore } from '../../subjects/gameStore';
 import { Tile } from './Tile.js';
 
 export function Tiles() {

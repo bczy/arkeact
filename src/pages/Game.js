@@ -5,7 +5,7 @@ import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
 
-import { gameStore } from '../stores/gameStore';
+import { gameStore } from '../subjects/gameStore';
 
 import { Tiles } from '../components/game/Tiles';
 import { Walls } from '../components/game/Walls';

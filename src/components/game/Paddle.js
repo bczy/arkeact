@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useFrame } from 'react-three-fiber';
 import { useSphere } from 'use-cannon';
-import { gameStore } from '../../stores/gameStore';
+import { gameStore } from '../../subjects/gameStore';
 
 export function Paddle() {
   const [ref, api] = useSphere(() => ({

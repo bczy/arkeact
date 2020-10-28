@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { gameStore, GAME_STATES } from '../../../stores/gameStore';
+import { gameStore, GAME_STATES } from '../../../subjects/gameStore';
 import { MenuButton } from './Button';
 import { Title } from './Title';
 

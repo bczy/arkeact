@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import { gameStore, GAME_STATES } from './stores/gameStore';
+import { gameStore, GAME_STATES } from './subjects/gameStore';
 
 import { Welcome } from './pages/Welcome';
 import { Game } from './pages/Game';

@@ -9,7 +9,7 @@ import { FilmPass } from './FilmPass';
 
 import { GlitchPass } from './GlitchPass';
 
-import { gameStore } from '../../stores/gameStore';
+import { gameStore } from '../../subjects/gameStore';
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass, FilmPass, GlitchPass });
 

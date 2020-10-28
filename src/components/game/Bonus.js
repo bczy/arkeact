@@ -1,5 +1,5 @@
 /** @format */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 import { useSphere } from 'use-cannon';
 

@@ -4,7 +4,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { Button } from './common/Button';
 
-import { gameStore, GAME_STATES } from '../../stores/gameStore';
+import { gameStore, GAME_STATES } from '../../subjects/gameStore';
 export const StyledDiv = styled.div`
 	position: absolute;
 	top: 0;

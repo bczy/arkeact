@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { gameStore, GAME_STATES } from '../stores/gameStore';
-import { levelStore } from '../stores/levelStore';
+import { gameStore, GAME_STATES } from '../subjects/gameStore';
+import { levelStore } from '../subjects/levelStore';
 
 import { Button } from '../components/hud/common/Button';
 
