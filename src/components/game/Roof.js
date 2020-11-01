@@ -5,7 +5,7 @@ import { useBox } from 'use-cannon';
 import { gameStore } from '../../subjects/gameStore';
 
 const Roof = () => {
-    const [lifes, setLifes] = useState(3);
+    const [, setLifes] = useState(3);
     const { scene } = useThree();
     useEffect(() => {
 		const subs = gameStore.lifes.subscribe(setLifes);
@@ -17,7 +17,6 @@ const Roof = () => {
             args: [28, 28, 0.001],
             position: [0, 0, 45],
             onCollide: (e) => {
-                console.log(gameStore.bonusBalls.getValue())
                 if (gameStore.bonusBalls.getValue().length === 0){
                     gameStore.resetBall();
                 }
@@ -31,7 +30,6 @@ const Roof = () => {
                         }
                     }
                     else{
-                        console.log(e.body)
                         e.body.position.set(-1000,-1000,-1000)
                         gameStore.ballLost.next(true)
 

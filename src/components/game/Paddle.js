@@ -12,7 +12,7 @@ export function Paddle() {
     sleepSpeedLimit: 4,
   }));
 
-  const [ paddleColor, setPaddleColor ] = useState('#0a94')
+  const [ paddleColor, setPaddleColor ] = useState('#fff')
   const [ ball2dPosition, setBall2dPosition ] = useState({x:0, y:0})
   
   useEffect(()=> {

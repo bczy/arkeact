@@ -23,7 +23,6 @@ export function Ball() {
     fixedRotation: false,
     position: [0, 0, 0],
     onCollide: (e) => {
-      console.log(e.body.userData)
       if (e.body.userData.isRoof){
         api.position.set(-1000, -1000, -1000)
       }

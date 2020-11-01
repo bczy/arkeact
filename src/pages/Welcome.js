@@ -48,9 +48,11 @@ export function Welcome() {
 					callback={() => gameStore.setGameState(GAME_STATES.LEVEL_CHOICE)}/>
 				<SubMenuButtons>
 					<MenuButton 
+						key={0}
 						text="SETTINGS" 
 						callback={() => {gameStore.setGameState(GAME_STATES.SETTINGS)}}/>
 					<MenuButton 
+						key={1} 
 						text="ABOUT" 
 						callback={() => gameStore.setGameState(GAME_STATES.ABOUT)}/>
 				</SubMenuButtons>

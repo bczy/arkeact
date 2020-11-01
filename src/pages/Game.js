@@ -47,7 +47,7 @@ function Camera(props) {
 }
 
 export function Game() {
-	const [lifes, setLifes] = useState(3);
+	const [, setLifes] = useState(3);
 	const [ballLaunched, setBallLaunched] = useState(false);
 	const [bonus, setBonus] = useState([]);
 	const [size, setSize] = useState(0);
