@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 export const createParticals = (particleCount, ref, size) => {
 	const vertices = []
-	console.log(ref.current)
+	
 	for (let p = 0; p < particleCount; p++) {
 		const pX = Math.random() * size.x - size.x + ref.current.position.x + size.x / 2;
 		const pY = Math.random() * size.y - size.y + ref.current.position.y + size.y / 2;
