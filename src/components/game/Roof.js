@@ -23,10 +23,12 @@ const Roof = () => {
                 else{
                     const { userData } = e.body;
                     if (userData.bonusType === 'ball'){
-                        gameStore.removeBonusBall(userData.id)
                         scene.remove(e.body)
-                        if (gameStore.ballLost && gameStore.bonusBalls.getValue().length === 0){
+                        if (gameStore.ballLost && gameStore.bonusBalls.getValue().length === 1){
                             gameStore.resetBall();
+                        }
+                        else{
+                            gameStore.removeBonusBall(userData.id)
                         }
                     }
                     else{
