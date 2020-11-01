@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 
-import { Canvas, useFrame, useThree } from 'react-three-fiber';
+import { Canvas } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
 
 import { gameStore } from '../subjects/gameStore';
@@ -19,32 +19,7 @@ import { Hud } from '../components/hud/Hud';
 import { useFullScreen } from '../hooks/windowResize';
 import { Bonus } from '../components/game/Bonus';
 import Roof from '../components/game/Roof';
-
-function Camera(props) {
-	const [ , setGlitching ] = useState(true)
-	const [ zooming, setZooming ] = useState(false)
-	const ref = useRef()
-	const { setDefaultCamera } = useThree()
-	
-	useEffect(() => { 
-		const subs = gameStore.glitching.subscribe(setGlitching);
-		setTimeout(() => {gameStore.setGlitching(false)}, 1000)
-		setTimeout(() => {setZooming(true)}, 1500)
-		setDefaultCamera(ref.current)
-		return () => subs.unsubscribe();
-	}, [setDefaultCamera])
-	
-	useFrame(() => {
-		if (zooming && ref.current.position.z > 45){
-			ref.current.position.z -= 0.75
-		} else {
-			setZooming(false)
-		}
-		ref.current.updateMatrixWorld()
-	})
-	
-	return <perspectiveCamera ref={ref} position={[0, 0, 85]} {...props} fov={45} far={157} />
-}
+import Camera from '../components/game/Camera';
 
 export function Game() {
 	const [, setLifes] = useState(3);
