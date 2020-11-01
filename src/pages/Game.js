@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { Physics } from 'use-cannon';
@@ -17,6 +17,8 @@ import { Effect } from '../components/vfx/Effect';
 import { Hud } from '../components/hud/Hud';
 
 import { useFullScreen } from '../hooks/windowResize';
+import { Bonus } from '../components/game/Bonus';
+import Roof from '../components/game/Roof';
 
 function Camera(props) {
 	const [ , setGlitching ] = useState(true)
@@ -47,29 +49,24 @@ function Camera(props) {
 export function Game() {
 	const [lifes, setLifes] = useState(3);
 	const [ballLaunched, setBallLaunched] = useState(false);
+	const [bonus, setBonus] = useState([]);
 	const [size, setSize] = useState(0);
 
 	const canvasContainer = useRef(null);
 
 	useFullScreen(canvasContainer, { size, setSize });
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const subs = gameStore.lifes.subscribe(setLifes);
 		subs.add(gameStore.ballLaunched.subscribe(setBallLaunched));
+		subs.add(gameStore.bonusBalls.subscribe(setBonus));
 		return () => subs.unsubscribe();
 	}, []);
 
 	function handleClick() {
-		if (lifes < 0) {
-			console.log("resetGame")
-			gameStore.resetGame();
-		} else if (!ballLaunched) {
-			console.log("launchBall")
+		if (!ballLaunched) {
 			gameStore.launchBall();
-		} else {
-			console.log("remove ball")
-			setLifes(lifes - 1);
-		}
+		} 
 	}
 
 	return (
@@ -91,11 +88,16 @@ export function Game() {
 							}}
 							gravity={[0, 0, 0]}
 							allowSleep={false}
+							id="gamePhysics"
 						>
 							<Walls />
 							<Tiles />
-							<Paddle />
 							<Ball />
+							<Paddle />
+							<Roof />
+							{ bonus.map((bonusItem,id) => {
+								return <Bonus key={id} {...bonusItem} id={id}/>
+							})}
 							<Effect />
 						</Physics>
 					</Canvas>

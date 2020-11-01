@@ -20,9 +20,11 @@ class GameStore {
 			this.nbBrickDestroyed = new BehaviorSubject(0);
 			this.ball2dPosition = new BehaviorSubject({x:0,y:0});
 			this.lifes = new BehaviorSubject(3);
+			this.bonusBalls = new BehaviorSubject([]);
 			this.scoreValue = new BehaviorSubject(0);
 			this.inGame = new Subject(false);
 			this.ballLaunched = new Subject(false);
+			this.ballLost = new Subject(false);
 			this.currentLevel = new BehaviorSubject(1);
 			this.glitching = new Subject(true);
 		}
@@ -51,17 +53,32 @@ class GameStore {
 		if (this.lifes.value > 0) {
 			this.lifes.next(this.lifes.value - 1);
 			this.ballLaunched.next(false);
+			this.bonusBalls.next([]);
+			this.setGlitching(true);
+			setTimeout(() => {
+				this.setGlitching(false);
+				this.lifes.next(this.lifes.getValue() - 1);
+			}, 300);
 		} else {
 			this.gameState.next(GAME_STATES.LEVEL_DEBRIEF);
 		}
 	};
 	resetGame = () => {
 		this.lifes.next(3);
+		this.bonusBalls.next([]);
 		this.nbBrickDestroyed.next(0);
 		this.scoreValue.next(0);
 		this.inGame.next(false);
 		this.ballLaunched.next(false);
 	};
+	addBonusBall = (bonusType, position, id) => {
+		this.bonusBalls.next([...this.bonusBalls.getValue(),{bonusType, position, id: this.bonusBalls.getValue().length}])
+	}
+	removeBonusBall = (id) => {
+		this.bonusBalls.next(this.bonusBalls.getValue().filter(bonusItem => {
+			console.log(id, bonusItem )
+			return bonusItem.id !== id}))
+	}
 	setBall2dPosition = (value) => this.ball2dPosition.next(value);
 	setGlitching = (value) => this.glitching.next(value);
 	increaseScoreValue = (scoreValue) => {

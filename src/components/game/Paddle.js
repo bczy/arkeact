@@ -9,11 +9,12 @@ export function Paddle() {
     args: 1.3,
     scale: [1, 1, 0.01],
     position: [0, 0, 10],
-    sleepSpeedLimit: 4, 
-    onCollide: (e) => {},
+    sleepSpeedLimit: 4,
   }));
+
   const [ paddleColor, setPaddleColor ] = useState('#0a94')
   const [ ball2dPosition, setBall2dPosition ] = useState({x:0, y:0})
+  
   useEffect(()=> {
     gameStore.ball2dPosition.subscribe(setBall2dPosition)
   },[])
