@@ -1,5 +1,7 @@
 This side project is a 3D arkanoid like game made with react three fiber.
 
+[Online version](https://bczy.itch.io/arkeact)
+
 TODO: 
 
 * sound and music clean implementation
