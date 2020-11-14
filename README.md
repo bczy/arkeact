@@ -2,11 +2,10 @@ This side project is a 3D arkanoid like game made with react three fiber.
 
 TODO: 
 
-* include menu graphic bitmap assets
-* sound and music implementation
+* sound and music clean implementation
 * level design and game balance
 * level design tool
-* unit tests
+* unit tests :O
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
