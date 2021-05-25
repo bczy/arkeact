@@ -17,7 +17,7 @@ const LevelList = styled.div`
 	width: 100%;
 `;
 
-export const Levels = () => {
+const Levels = () => {
 	const [bestscoreValues, setBestscoreValues] = useState([0]);
 	useLayoutEffect(() => {
 		const subs = playerStore.bestscoreValues.subscribe(setBestscoreValues);
@@ -51,3 +51,5 @@ export const Levels = () => {
 		</PageContainer>
 	);
 };
+
+export default Levels;

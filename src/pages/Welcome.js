@@ -26,7 +26,7 @@ const SubMenuButtons = styled.div`
 	width: 100%;
 `
 
-export function Welcome() {
+export default function Welcome() {
 	const [ size, setSize ] = useState(0);
 	const [ show ] = useState(false);
 	const backgroundContainer = useRef(null);
