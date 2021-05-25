@@ -16,7 +16,7 @@
     "react-scripts": "^3.4.4",
     "react-spring": "^8.0.27",
     "react-three-fiber": "^4.2.21",
-    "three": "^0.122.0",
+    "three": "^0.125.0",
     "uifx": "^2.0.7",
     "use-cannon": "^0.5.3",
     "rxjs": "^6.6.3",
